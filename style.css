@@ -1,0 +1,15 @@
+#calendar{
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.row{
+	height: 15px;
+	display: inline-block;
+}
+
+.box{
+	width: 15px;
+	height: 15px;
+}
+
