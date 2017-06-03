@@ -5,7 +5,9 @@
 }
 
 .row{
-
+	stroke: black;
+    stroke-width: 0.01;
+	stroke-dasharray:0 0 0 1;
 }
 
 .box{
@@ -13,3 +15,10 @@
 	height: 1px;
 }
 
+.nego{
+	
+}
+
+.prov{
+	
+}

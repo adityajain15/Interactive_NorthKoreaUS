@@ -34,7 +34,7 @@ function makeStuff(theData){
 
 	d3.selectAll(".row")
 		.append("rect")
-		.attr("class","box")
+		.attr("class","box nego")
 		.attr("x",function(d,i){return (2*i)%24})
 		.attr("y",function(d,i){return Math.floor(i/12)})
 		.attr('width','1')
@@ -45,6 +45,7 @@ function makeStuff(theData){
 	d3.selectAll(".row")
 		.append("rect")
 		.attr("class","box")
+		.attr("class","prov")
 		.attr('width','1')
 		.attr('height','1')
 		.attr("x",function(d,i){return 1+(2*i)%24})
