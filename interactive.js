@@ -25,7 +25,7 @@ function makeStuff(theData){
     	.range(["#eff3ff", "#bdd7e7", "#6baed6","#2171b5"]);
 
 	d3.select('#calendar')
-		.attr('width','100%')
+		.attr('width','70%')
 		.selectAll('g')
 		.data(theData)
 		.enter()
