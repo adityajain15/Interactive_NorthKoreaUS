@@ -15,7 +15,7 @@ function makeStuff(theData){
 			ProvMax=theData[i].Prov;
 		}
 	}
-
+	
 	var provColor = d3.scaleQuantize()
     	.domain([0,ProvMax])
     	.range(["#fee5d9","#fcae91","#fb6a4a","#cb181d"]);
@@ -25,12 +25,12 @@ function makeStuff(theData){
     	.range(["#eff3ff", "#bdd7e7", "#6baed6","#2171b5"]);
 
 	d3.select('#calendar')
-		.attr('height','70%')
+		.attr('height','40%')
 		.selectAll('g')
 		.data(theData)
 		.enter()
 		.append("g")
-		.attr("class","row")
+		.attr("class","row");
 
 	d3.selectAll(".row")
 		.append("rect")
@@ -44,14 +44,32 @@ function makeStuff(theData){
 
 	d3.selectAll(".row")
 		.append("rect")
-		.attr("class","box")
-		.attr("class","prov")
+		.attr("class","box prov")
 		.attr('width','1')
 		.attr('height','1')
 		.attr("x",function(d,i){return 1+(2*i)%24})
 		.attr("y",function(d,i){return Math.floor(i/12)})
 		.attr("fill",function(d){if(d.Prov==0){return "white"} else return provColor(d.Prov)})
 		.text(function(d){return d.Prov;})
+
+	var SVGWidth = document.getElementById('calendar').clientWidth; 
+
+	var scale =  d3.scaleBand()
+		.domain(["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"])
+    	.range([0, SVGWidth]);
+	var axis = d3.axisTop(scale)
+				.tickSizeOuter(0);
+
+	d3.select('#topAxis')
+		.attr('width',SVGWidth)
+		.attr('height','45px')
+		.append("g")
+		.attr("transform", "translate(0,44)")
+    	.call(axis)
+    	.selectAll("text")
+    	.attr("transform", "rotate(-45 0,0) translate(0,0) ")
+    	.style("text-anchor", "start");
+
 }
 
-document.resize(function(){console.log("sup")})
+//document.resize(function(){console.log("sup")})

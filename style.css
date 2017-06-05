@@ -4,21 +4,27 @@
 	margin-left: auto;
 }
 
+#topAxis{
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+}
+
 .row{
-	stroke: black;
-    stroke-width: 0.01;
-	stroke-dasharray:0 0 0 1;
+	
 }
 
 .box{
 	width: 1px;
 	height: 1px;
+	stroke: black;
+    stroke-width: 0.01;
 }
 
 .nego{
-	
+	stroke-dasharray: 0,3,1;
 }
 
 .prov{
-	
+	stroke-dasharray: 0,1,1,2;
 }
