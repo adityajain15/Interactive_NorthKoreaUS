@@ -1,7 +1,5 @@
 var theData = d3.csv("USKoreaData.csv",makeStuff);
 
-
-
 function makeStuff(theData){
 
 	var NegoMax = 0;
@@ -25,7 +23,8 @@ function makeStuff(theData){
     	.range(["#eff3ff", "#bdd7e7", "#6baed6","#2171b5"]);
 
 	d3.select('#calendar')
-		.attr('height','40%')
+		.attr('height','45%')
+		.attr('width','100%')
 		.selectAll('g')
 		.data(theData)
 		.enter()
@@ -35,41 +34,75 @@ function makeStuff(theData){
 	d3.selectAll(".row")
 		.append("rect")
 		.attr("class","box nego")
-		.attr("x",function(d,i){return (2*i)%24})
-		.attr("y",function(d,i){return Math.floor(i/12)})
-		.attr('width','1')
-		.attr('height','1')
+		.attr("x",function(d,i){return ((30*i)%360)+35})
+		.attr("y",function(d,i){return (15*Math.floor(i/12))+26})
+		.attr('width','15')
+		.attr('height','15')
+		.attr('data',function(d){return d.Date;})
 		.attr("fill",function(d){if(d.Nego==0){return "white"} else return negoColor(d.Nego)})
 		.text(function(d){return d.Nego;})
 
 	d3.selectAll(".row")
 		.append("rect")
 		.attr("class","box prov")
-		.attr('width','1')
-		.attr('height','1')
-		.attr("x",function(d,i){return 1+(2*i)%24})
-		.attr("y",function(d,i){return Math.floor(i/12)})
+		.attr('width','15')
+		.attr('height','15')
+		.attr("x",function(d,i){return (15+(30*i)%360)+35})
+		.attr("y",function(d,i){return (15*Math.floor(i/12))+26})
 		.attr("fill",function(d){if(d.Prov==0){return "white"} else return provColor(d.Prov)})
 		.text(function(d){return d.Prov;})
 
-	var SVGWidth = document.getElementById('calendar').clientWidth; 
-
-	var scale =  d3.scaleBand()
+	var xScale =  d3.scaleBand()
 		.domain(["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"])
-    	.range([0, SVGWidth]);
-	var axis = d3.axisTop(scale)
+    	.range([0, 360]);
+	var xAxis = d3.axisTop(xScale)
 				.tickSizeOuter(0);
 
-	d3.select('#topAxis')
-		.attr('width',SVGWidth)
-		.attr('height','45px')
+	d3.select('#calendar')
 		.append("g")
-		.attr("transform", "translate(0,44)")
-    	.call(axis)
+		.attr('height','25px')
+		.attr("transform", "translate(35,25)")
+    	.call(xAxis)
     	.selectAll("text")
     	.attr("transform", "rotate(-45 0,0) translate(0,0) ")
     	.style("text-anchor", "start");
 
+    var yScale =  d3.scaleTime()
+		.domain([new Date(1989, 5, 1), new Date(2017, 5, 1)])
+    	.range([0, 420]);
+	var yAxis = d3.axisLeft(yScale)
+				.ticks(8)
+				.tickSizeOuter(0);
+
+	d3.select('#calendar')
+		.append("g")
+    	.call(yAxis)
+    	.attr("transform","translate(35,25)")
+
+    	var waypoint = new Waypoint({
+    		element: document.getElementById('calendar'),
+    		handler: function() {
+    			console.log('Basic waypoint triggered')
+    		}
+})
+
+
+    windowResize();
 }
 
-//document.resize(function(){console.log("sup")})
+function getSVGWidth(){
+	return document.getElementById('calendar').clientWidth;
+}
+
+function getSVGHeight(){
+	return document.getElementById('calendar').clientHeight;
+}
+
+function windowResize(){
+	d3.select("#calendar")
+    	.style("position","fixed")
+    	.style("left",(window.innerWidth/2)-(getSVGWidth()/2))
+    	.style("top","2px");
+}
+
+window.onresize = windowResize;

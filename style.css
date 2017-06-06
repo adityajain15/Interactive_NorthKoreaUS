@@ -1,10 +1,116 @@
-#calendar{
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
 	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/*My CSS*/
+
+#contentWrapper{
+	width: 75%;
 	margin-right: auto;
 	margin-left: auto;
 }
 
-#topAxis{
+@font-face {
+    font-family: Nobel-Book;
+    src: url(fonts/Font Bureau - Nobel-Book.otf);
+}
+
+@font-face {
+    font-family: Nobel-ExtraLight;
+    src: url(fonts/Font Bureau - Nobel-ExtraLight.ttf);
+}
+
+@font-face {
+    font-family: Nobel-Light;
+    src: url(fonts/Font Bureau - Nobel-Light.ttf);
+}
+
+@font-face {
+    font-family: Nobel-Regular;
+    src: url(fonts/Font Bureau - Nobel-Regular.ttf);
+}
+
+@font-face {
+    font-family: Sabon;
+    src: url(fonts/SabonLTPro-Roman.otf);
+}
+
+
+h1{
+	font-size: 4em;
+	text-align: center;
+	font-family: Nobel-Regular;
+	margin-top: 5%;
+	margin-bottom: 5%;
+}
+
+h2{
+	font-size: 3em;
+	text-align: center;
+	font-family: Nobel-Regular;
+	margin-top: 4%;
+	margin-bottom: 4%;
+}
+
+p{
+	font-family: Sabon;
+	font-size: 20px;
+	margin-top: 3%;
+	margin-bottom: 3%;
+	margin-left: auto;
+	margin-right: auto;
+	width: 60%;
+	line-height: 1.2;
+
+}
+
+#calendar{
 	display: block;
 	margin-right: auto;
 	margin-left: auto;
@@ -15,16 +121,14 @@
 }
 
 .box{
-	width: 1px;
-	height: 1px;
 	stroke: black;
-    stroke-width: 0.01;
+    stroke-width: 0.25;
 }
 
 .nego{
-	stroke-dasharray: 0,3,1;
+	stroke-dasharray: 0,45,15;
 }
 
 .prov{
-	stroke-dasharray: 0,1,1,2;
+	stroke-dasharray: 0,15,15,30;
 }
