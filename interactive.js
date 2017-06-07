@@ -23,8 +23,6 @@ function makeStuff(theData){
     	.range(["#eff3ff", "#bdd7e7", "#6baed6","#2171b5"]);
 
 	d3.select('#calendar')
-		.attr('height','45%')
-		.attr('width','100%')
 		.selectAll('g')
 		.data(theData)
 		.enter()
@@ -62,6 +60,7 @@ function makeStuff(theData){
 		.append("g")
 		.attr('height','25px')
 		.attr("transform", "translate(35,25)")
+		.attr('id','xAxis')
     	.call(xAxis)
     	.selectAll("text")
     	.attr("transform", "rotate(-45 0,0) translate(0,0) ")
@@ -77,32 +76,83 @@ function makeStuff(theData){
 	d3.select('#calendar')
 		.append("g")
     	.call(yAxis)
-    	.attr("transform","translate(35,25)")
+    	.attr("transform","translate(35,25)");
 
-    	var waypoint = new Waypoint({
-    		element: document.getElementById('calendar'),
-    		handler: function() {
-    			console.log('Basic waypoint triggered')
-    		}
-})
 
+    
+
+	var waypointAction1 = new Waypoint({
+	    element: document.getElementById('action1'),
+	    handler: function() {
+
+
+
+	    	var t = d3.transition()
+    		.duration(1500)
+    		.ease(d3.easeQuadInOut);
+	    	
+	    	d3.select("#calendar")
+	    		.transition(t)
+    			.attr("viewBox","0 0 395 115");
+    			
+	    	},
+	    offset: getSVGHeight()
+	});
+
+	var WaypointImage1 = new Waypoint({
+		element: document.getElementById('hwbush'),
+		handler: function(direction){
+			if(direction=='down'){
+				//console.log("sup");
+				d3.select('#hwbush')
+				.style("width",document.getElementById('hwbush').getBoundingClientRect().width)
+				.style("height",document.getElementById('hwbush').getBoundingClientRect().height)
+				.style("position",null)
+				.style("left",document.getElementById('hwbush').getBoundingClientRect().left)
+				.style("top","20px")
+				.style("position","fixed");
+			d3.select('#ilsung')
+				.style("width",document.getElementById('ilsung').getBoundingClientRect().width)
+				.style("height",document.getElementById('ilsung').getBoundingClientRect().height)
+				.style("position",null)
+				.style("left",document.getElementById('ilsung').getBoundingClientRect().left)
+				.style("top","20px")
+				.style("position","fixed");
+			}
+			else{
+				d3.select('#hwbush')
+					.style("position","relative")
+					.style("top",null)
+					.style("left",null);
+				d3.select('#ilsung')
+					.style("position","relative")
+					.style("top",null)
+					.style("left",null);
+			}
+
+		},
+		offset: 20
+	});
 
     windowResize();
 }
 
 function getSVGWidth(){
-	return document.getElementById('calendar').clientWidth;
+	return document.getElementById('calendar').getBoundingClientRect().width;
 }
 
 function getSVGHeight(){
-	return document.getElementById('calendar').clientHeight;
+	return document.getElementById('calendar').getBoundingClientRect().height;
 }
 
 function windowResize(){
 	d3.select("#calendar")
     	.style("position","fixed")
-    	.style("left",(window.innerWidth/2)-(getSVGWidth()/2))
-    	.style("top","2px");
+    	.style("left",window.innerWidth/2-(getSVGWidth()/2))
+    	.style("top","60px");
+
+    d3.select("#mainHeading")
+    	.style("margin-top",getSVGHeight()+document.getElementById('calendar').getBoundingClientRect().top);
 }
 
 window.onresize = windowResize;
