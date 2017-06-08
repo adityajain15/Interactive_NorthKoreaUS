@@ -45,6 +45,7 @@ function makeStuff(theData){
 		.attr("class","box prov")
 		.attr('width','15')
 		.attr('height','15')
+		.attr('data',function(d){return d.Date;})
 		.attr("x",function(d,i){return (15+(30*i)%360)+35})
 		.attr("y",function(d,i){return (15*Math.floor(i/12))+26})
 		.attr("fill",function(d){if(d.Prov==0){return "white"} else return provColor(d.Prov)})
@@ -84,9 +85,6 @@ function makeStuff(theData){
 	var waypointAction1 = new Waypoint({
 	    element: document.getElementById('action1'),
 	    handler: function() {
-
-
-
 	    	var t = d3.transition()
     		.duration(1500)
     		.ease(d3.easeQuadInOut);
@@ -94,9 +92,8 @@ function makeStuff(theData){
 	    	d3.select("#calendar")
 	    		.transition(t)
     			.attr("viewBox","0 0 395 115");
-    			
 	    	},
-	    offset: getSVGHeight()
+	    	offset: 10
 	});
 
 	var WaypointImage1 = new Waypoint({
@@ -111,20 +108,33 @@ function makeStuff(theData){
 				.style("left",document.getElementById('hwbush').getBoundingClientRect().left)
 				.style("top","20px")
 				.style("position","fixed");
-			d3.select('#ilsung')
+				
+				d3.select('#ilsung')
 				.style("width",document.getElementById('ilsung').getBoundingClientRect().width)
 				.style("height",document.getElementById('ilsung').getBoundingClientRect().height)
 				.style("position",null)
 				.style("left",document.getElementById('ilsung').getBoundingClientRect().left)
 				.style("top","20px")
 				.style("position","fixed");
+
+				d3.select("#action1")
+    			.style("position","fixed")
+    			.style("top","0px")
+    			.style("left",window.innerWidth/2-(document.getElementById('action1').getBoundingClientRect().width/2))
 			}
 			else{
+				
 				d3.select('#hwbush')
 					.style("position","relative")
 					.style("top",null)
 					.style("left",null);
+				
 				d3.select('#ilsung')
+					.style("position","relative")
+					.style("top",null)
+					.style("left",null);
+				
+				d3.select("#action1")
 					.style("position","relative")
 					.style("top",null)
 					.style("left",null);
@@ -132,6 +142,17 @@ function makeStuff(theData){
 
 		},
 		offset: 20
+	});
+
+	var WaypointImage2 = new Waypoint({
+		element: document.getElementById('para6'),
+		handler: function(){
+			d3.select('#hwbush')
+				.style("position","absolute")
+				.style("top",document.body.scrollTop)
+				.style("left",document.getElementById('hwbush').getBoundingClientRect().left);
+		},
+		offset: document.getElementById('hwbush').getBoundingClientRect().height-document.getElementById('para6').getBoundingClientRect().height
 	});
 
     windowResize();
