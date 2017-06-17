@@ -1,13 +1,29 @@
 function calendarAbsolute(){
+	calendar.style("max-width",null);
+
 	calendar.style("position","absolute")
 	.style("top",document.body.scrollTop)
 	.style("left","0px");
 }
 
+function calLeftPosition(){
+	d3.select("#calendar")
+	  .style("left",window.innerWidth/2-(getSVGWidth()/2));
+}
+
+function getSVGWidth(){
+	return document.getElementById('calendar').getBoundingClientRect().width;
+}
+
+function getSVGHeight(){
+	return document.getElementById('calendar').getBoundingClientRect().height;
+}
+
 function action1on(){
 	calendar.style("position","fixed")
-			.style("left","0px")
 			.style("top","0px");
+
+	calLeftPosition();
 
 	d3.select("#para5")
 		.transition()
@@ -27,7 +43,7 @@ function action1on(){
 	}]
 	makeAnnotations = d3.annotation().type(type).annotations(annotations);
 
-	d3.select("#calendar")
+	calendar
   		.append("g")
   		.attr("class", "annotation-group")
   		.call(makeAnnotations);

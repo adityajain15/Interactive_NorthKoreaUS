@@ -1,4 +1,6 @@
 var theData = d3.csv("USKoreaData.csv",makeStuff);
+const calendar = d3.select("#calendar");
+var makeAnnotations;
 
 function makeStuff(theData){
 
@@ -15,87 +17,140 @@ function makeStuff(theData){
 	}
 	
 	var provColor = d3.scaleQuantize()
-    	.domain([0,ProvMax])
-    	.range(["#fee5d9","#fcae91","#fb6a4a","#cb181d"]);
+	.domain([0,ProvMax])
+	.range(["#fee5d9","#fcae91","#fb6a4a","#cb181d"]);
 
-    var negoColor = d3.scaleQuantize()
-    	.domain([0,NegoMax])
-    	.range(["#eff3ff", "#bdd7e7", "#6baed6","#2171b5"]);
+	var negoColor = d3.scaleQuantize()
+	.domain([0,NegoMax])
+	.range(["#eff3ff", "#bdd7e7", "#6baed6","#2171b5"]);
 
-	d3.select('#calendar')
-		.selectAll('g')
-		.data(theData)
-		.enter()
-		.append("g")
-		.attr("class","row");
-
-	d3.selectAll(".row")
-		.append("rect")
-		.attr("class","box nego")
-		.attr("x",function(d,i){return ((30*i)%360)+35})
-		.attr("y",function(d,i){return (15*Math.floor(i/12))+26})
-		.attr('width','15')
-		.attr('height','15')
-		.attr('data',function(d){return d.Date;})
-		.attr("fill",function(d){if(d.Nego==0){return "white"} else return negoColor(d.Nego)})
-		.text(function(d){return d.Nego;})
+	calendar.selectAll('g')
+	.data(theData)
+	.enter()
+	.append("g")
+	.attr("class","row");
 
 	d3.selectAll(".row")
-		.append("rect")
-		.attr("class","box prov")
-		.attr('width','15')
-		.attr('height','15')
-		.attr('data',function(d){return d.Date;})
-		.attr("x",function(d,i){return (15+(30*i)%360)+35})
-		.attr("y",function(d,i){return (15*Math.floor(i/12))+26})
-		.attr("fill",function(d){if(d.Prov==0){return "white"} else return provColor(d.Prov)})
-		.text(function(d){return d.Prov;})
+	.append("rect")
+	.attr("class","box nego")
+	.attr("x",function(d,i){return ((30*i)%360)+35})
+	.attr("y",function(d,i){return (15*Math.floor(i/12))+26})
+	.attr('width','15')
+	.attr('height','15')
+	.attr('data',function(d){return d.Date;})
+	.attr("fill",function(d){if(d.Nego==0){return "white"} else return negoColor(d.Nego)})
+	.text(function(d){return d.Nego;})
+
+	d3.selectAll(".row")
+	.append("rect")
+	.attr("class","box prov")
+	.attr('width','15')
+	.attr('height','15')
+	.attr('data',function(d){return d.Date;})
+	.attr("x",function(d,i){return (15+(30*i)%360)+35})
+	.attr("y",function(d,i){return (15*Math.floor(i/12))+26})
+	.attr("fill",function(d){if(d.Prov==0){return "white"} else return provColor(d.Prov)})
+	.text(function(d){return d.Prov;})
 
 	var xScale =  d3.scaleBand()
-		.domain(["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"])
-    	.range([0, 360]);
+	.domain(["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"])
+	.range([0, 360]);
 	var xAxis = d3.axisTop(xScale)
-				.tickSizeOuter(0);
+	.tickSizeOuter(0);
 
-	d3.select('#calendar')
-		.append("g")
-		.attr('height','25px')
-		.attr("transform", "translate(35,25)")
-		.attr('id','xAxis')
-    	.call(xAxis)
-    	.selectAll("text")
-    	.attr("transform", "rotate(-45 0,0) translate(0,0) ")
-    	.style("text-anchor", "start");
+	calendar.append("g")
+	.attr('height','25px')
+	.attr("transform", "translate(35,25)")
+	.attr('id','xAxis')
+	.call(xAxis)
+	.selectAll("text")
+	.attr("transform", "rotate(-45 0,0) translate(0,0) ")
+	.style("text-anchor", "start");
 
-    var yScale =  d3.scaleTime()
-		.domain([new Date(1989, 5, 1), new Date(2017, 5, 1)])
-    	.range([0, 420]);
+	var yScale =  d3.scaleTime()
+	.domain([new Date(1989, 5, 1), new Date(2017, 5, 1)])
+	.range([0, 420]);
 	var yAxis = d3.axisLeft(yScale)
-				.ticks(8)
-				.tickSizeOuter(0);
+	.ticks(27)
+	.tickSizeOuter(0);
 
-	d3.select('#calendar')
-		.append("g")
-    	.call(yAxis)
-    	.attr("transform","translate(35,25)");
+	calendar.append("g")
+	.call(yAxis)
+	.attr("transform","translate(35,25)");
 
+	//calLeftPosition();
 
-    
 
 	var waypointAction1 = new Waypoint({
-	    element: document.getElementById('action1'),
-	    handler: function() {
+		element: document.getElementById('calendar'),
+		handler: function(direction) {
+			if(direction==="down"){
+	    		if(window.matchMedia("screen and (min-width: 500px)").matches){
+	    			d3.select("#calendar")
+	    			  .style("max-width","70vw");
+				}
+				action1on();
+			}
+			else{
+				calendarAbsolute();
+				action1off();
+			}
+			//calLeftPosition();
+		}
+	});
+
+	var waypointAction2 = new Waypoint({
+		element: document.getElementById('para5'),
+		handler: function(direction) {
+			if(direction==="down"){
+				action1off();
+				action2on();
+			}
+			else{
+				action1on();
+				action2off();
+			}
+		},
+		offset: document.getElementById('calendar').clientHeight-document.getElementById('para5').clientHeight
+	});
+
+	var waypointAction3 = new Waypoint({
+		element: document.getElementById('para6'),
+		handler: function(direction) {
+			if(direction==="down"){
+				action2off();
+				action3on();
+			}
+			else{
+				action3off();
+				action2on();
+			}
+		},
+		offset: document.getElementById('calendar').clientHeight-document.getElementById('para6').clientHeight
+	});
+
+	var waypointAction4 = new Waypoint({
+	    element: document.getElementById('section2'),
+	    handler: function(direction) {
 	    	var t = d3.transition()
     		.duration(1500)
     		.ease(d3.easeQuadInOut);
-	    	
-	    	d3.select("#calendar")
+	    	if(direction==="down"){
+	    		d3.select("#calendar")
 	    		.transition(t)
-    			.attr("viewBox","0 0 395 115");
-	    	},
-	    	offset: 10
+    			.attr("viewBox","0 0 395 100");
+    			action3off();
+	    	}
+	    	else{
+	    		d3.select("#calendar")
+	    		.transition(t)
+    			.attr("viewBox","0 0 395 445");
+    			action3on();
+	    	}
+	    },
+	    offset: document.getElementById('calendar').clientHeight-document.getElementById('section2').clientHeight
 	});
-
+/*
 	var WaypointImage1 = new Waypoint({
 		element: document.getElementById('hwbush'),
 		handler: function(direction){
@@ -146,34 +201,28 @@ function makeStuff(theData){
 
 	var WaypointImage2 = new Waypoint({
 		element: document.getElementById('para6'),
-		handler: function(){
-			d3.select('#hwbush')
+		handler: function(direction){
+			if(direction==='down'){
+				d3.select('#hwbush')
 				.style("position","absolute")
 				.style("top",document.body.scrollTop)
 				.style("left",document.getElementById('hwbush').getBoundingClientRect().left);
+			}
+			else{
+				d3.select('#hwbush')
+				.style("position","fixed")
+				.style("top","20px")
+				.style("left",document.getElementById('hwbush').getBoundingClientRect().left);
+			}
 		},
 		offset: document.getElementById('hwbush').getBoundingClientRect().height-document.getElementById('para6').getBoundingClientRect().height
 	});
-
-    windowResize();
-}
-
-function getSVGWidth(){
-	return document.getElementById('calendar').getBoundingClientRect().width;
-}
-
-function getSVGHeight(){
-	return document.getElementById('calendar').getBoundingClientRect().height;
+*/
+	
 }
 
 function windowResize(){
-	d3.select("#calendar")
-    	.style("position","fixed")
-    	.style("left",window.innerWidth/2-(getSVGWidth()/2))
-    	.style("top","60px");
 
-    d3.select("#mainHeading")
-    	.style("margin-top",getSVGHeight()+document.getElementById('calendar').getBoundingClientRect().top);
 }
 
 window.onresize = windowResize;
