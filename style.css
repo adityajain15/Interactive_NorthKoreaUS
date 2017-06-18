@@ -129,11 +129,25 @@ img{
 }
 
 .leftImage{
-	
+	position: absolute;
+	height: 100px;
+	width: 100px;
+	border-radius: 50%;
+	object-fit: cover;
+	object-position: 50% 50%;
 }
 
 .rightImage{
-	
+	position: absolute;
+	height: 100px;
+	width: 100px;
+	border-radius: 50%;
+	object-position: 50% 50%;
+	object-fit: cover;
+}
+
+#hwbush{
+	object-position: 50% 0;
 }
 
 
@@ -174,7 +188,7 @@ img{
 }
 
 .textWrapper{
-	width: 50%;
+	width: 55%;
 	margin-right: auto;
 	margin-left: auto;
 }

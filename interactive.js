@@ -78,8 +78,7 @@ function makeStuff(theData){
 	.call(yAxis)
 	.attr("transform","translate(35,25)");
 
-	//calLeftPosition();
-
+	windowResize();
 
 	var waypointAction1 = new Waypoint({
 		element: document.getElementById('calendar'),
@@ -87,7 +86,8 @@ function makeStuff(theData){
 			if(direction==="down"){
 	    		if(window.matchMedia("screen and (min-width: 500px)").matches){
 	    			d3.select("#calendar")
-	    			  .style("max-width","70vw");
+	    			  .style("width","70vw")
+	    			  .style("max-width","660px");
 				}
 				action1on();
 			}
@@ -135,10 +135,12 @@ function makeStuff(theData){
 	    	var t = d3.transition()
     		.duration(1500)
     		.ease(d3.easeQuadInOut);
+
 	    	if(direction==="down"){
 	    		d3.select("#calendar")
 	    		.transition(t)
-    			.attr("viewBox","0 0 395 100");
+    			.attr("viewBox","0 0 395 100")
+    			.on("end",makeWaypoint5);
     			action3off();
 	    	}
 	    	else{
@@ -150,6 +152,8 @@ function makeStuff(theData){
 	    },
 	    offset: document.getElementById('calendar').clientHeight-document.getElementById('section2').clientHeight
 	});
+
+	
 /*
 	var WaypointImage1 = new Waypoint({
 		element: document.getElementById('hwbush'),
@@ -222,7 +226,7 @@ function makeStuff(theData){
 }
 
 function windowResize(){
-
+	placeImages();
 }
 
 window.onresize = windowResize;
