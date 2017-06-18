@@ -1,5 +1,6 @@
 var theData = d3.csv("USKoreaData.csv",makeStuff);
 const calendar = d3.select("#calendar");
+
 var makeAnnotations;
 
 function makeStuff(theData){
@@ -77,25 +78,21 @@ function makeStuff(theData){
 	calendar.append("g")
 	.call(yAxis)
 	.attr("transform","translate(35,25)");
-
+	calLeftPosition();
 	windowResize();
 
 	var waypointAction1 = new Waypoint({
 		element: document.getElementById('calendar'),
 		handler: function(direction) {
 			if(direction==="down"){
-	    		if(window.matchMedia("screen and (min-width: 500px)").matches){
-	    			d3.select("#calendar")
-	    			  .style("width","70vw")
-	    			  .style("max-width","660px");
-				}
 				action1on();
 			}
 			else{
-				calendarAbsolute();
+				calendar.style("position","absolute")
+						.style("top",document.getElementById('calendar').getBoundingClientRect.top)
+				calLeftPosition();
 				action1off();
 			}
-			//calLeftPosition();
 		}
 	});
 
@@ -139,8 +136,7 @@ function makeStuff(theData){
 	    	if(direction==="down"){
 	    		d3.select("#calendar")
 	    		.transition(t)
-    			.attr("viewBox","0 0 395 100")
-    			.on("end",makeWaypoint5);
+    			.attr("viewBox","0 0 395 100");
     			action3off();
 	    	}
 	    	else{
@@ -153,7 +149,7 @@ function makeStuff(theData){
 	    offset: document.getElementById('calendar').clientHeight-document.getElementById('section2').clientHeight
 	});
 
-	
+	makeWaypoint5();
 /*
 	var WaypointImage1 = new Waypoint({
 		element: document.getElementById('hwbush'),
@@ -227,6 +223,7 @@ function makeStuff(theData){
 
 function windowResize(){
 	placeImages();
+	calLeftPosition();
 }
 
 window.onresize = windowResize;

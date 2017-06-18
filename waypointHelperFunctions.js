@@ -1,22 +1,51 @@
-function calendarAbsolute(){
-	calendar.style("max-width",null);
-	calendar.style("width",null);
+function calendarAbsolute(topPos){
+	console.log(topPos);
 	calendar.style("position","absolute")
-	.style("top",document.body.scrollTop)
-	.style("left","0px");
+	.style("top",topPos)
+	calLeftPosition();
+}
+
+function getCalendarShortHeight(){
+	var shortHeight = d3.select("#calendar")
+		.attr("viewBox","0 0 395 100")
+		.style("height");
+	d3.select("#calendar").attr("viewBox","0 0 395 445");
+	return shortHeight;
+}
+
+
+/*This returns the width of the margin between the <body> and the <div id=contentWrapper>*/
+function getMargin(){
+	return (document.body.clientWidth-document.getElementById('contentWrapper').getBoundingClientRect().width)/2;
 }
 
 function calLeftPosition(){
-	d3.select("#calendar")
-	  .style("left",window.innerWidth/2-(getSVGWidth()/2));
+	var margin = getMargin();
+
+	if(d3.select("#calendar").style("position")==="fixed"){
+		d3.select("#calendar")
+	  .style("left",margin+(document.getElementById('contentWrapper').getBoundingClientRect().width/2)-(getSVGWidth()/2));
+	}
+	else{
+		d3.select("#calendar")
+	  .style("left",(document.getElementById('contentWrapper').getBoundingClientRect().width/2)-(getSVGWidth()/2));
+	}
 }
 
 function placeImages(){
+	var margin = getMargin();
+	var imagePos;
+	if(d3.select("#hwbush").style("position")==="fixed"){
+		imagePos = (margin+(document.getElementById('contentWrapper').clientWidth-document.getElementById('para5').clientWidth)/4)-(document.getElementById('hwbush').clientWidth/2);
+	}
+	else{
+		imagePos = ((document.getElementById('contentWrapper').clientWidth-document.getElementById('para5').clientWidth)/4)-(document.getElementById('hwbush').clientWidth/2);
+	}
 	d3.selectAll(".leftImage")
-	.style("left","9%");
+		.style("left",imagePos);
 
 	d3.selectAll(".rightImage")
-	.style("right","9%");
+	.style("right",imagePos);
 }
 
 function getSVGWidth(){
