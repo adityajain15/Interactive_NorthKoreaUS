@@ -130,7 +130,7 @@ function makeStuff(theData){
 	    element: document.getElementById('section2'),
 	    handler: function(direction) {
 	    	var t = d3.transition()
-    		.duration(1500)
+    		.duration(1000)
     		.ease(d3.easeQuadInOut);
 
 	    	if(direction==="down"){
@@ -150,6 +150,8 @@ function makeStuff(theData){
 	});
 
 	makeWaypoint5();
+	makeWaypoint6();
+	
 /*
 	var WaypointImage1 = new Waypoint({
 		element: document.getElementById('hwbush'),
@@ -225,6 +227,7 @@ function windowResize(){
 	calendarShortHeight = getCalendarShortHeight();
 	d3.selectAll(".leftImage").call(placeLeftImage,this);
 	d3.selectAll(".rightImage").call(placeRightImage,this);
+	document.getElementById('clinton').style.top = document.getElementById('para10').offsetTop;
 	calLeftPosition();
 }
 

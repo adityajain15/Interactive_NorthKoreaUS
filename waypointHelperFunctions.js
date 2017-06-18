@@ -10,7 +10,10 @@ function getCalendarShortHeight(){
 		.attr("viewBox","0 0 395 100")
 		.style("height");
 	d3.select("#calendar").attr("viewBox","0 0 395 445");
-	return shortHeight;
+	
+	var re = /_px$/;
+	shortHeight.replace(re, "");
+	return parseFloat(shortHeight);
 }
 
 
