@@ -32,20 +32,28 @@ function calLeftPosition(){
 	}
 }
 
-function placeImages(){
+function placeLeftImage(theElement){
 	var margin = getMargin();
 	var imagePos;
-	if(d3.select("#hwbush").style("position")==="fixed"){
+	if(theElement.style("position")==="fixed"){
 		imagePos = (margin+(document.getElementById('contentWrapper').clientWidth-document.getElementById('para5').clientWidth)/4)-(document.getElementById('hwbush').clientWidth/2);
 	}
 	else{
 		imagePos = ((document.getElementById('contentWrapper').clientWidth-document.getElementById('para5').clientWidth)/4)-(document.getElementById('hwbush').clientWidth/2);
 	}
-	d3.selectAll(".leftImage")
-		.style("left",imagePos);
+	theElement.style("left",imagePos);
+}
 
-	d3.selectAll(".rightImage")
-	.style("right",imagePos);
+function placeRightImage(theElement){
+	var margin = getMargin();
+	var imagePos;
+	if(theElement.style("position")==="fixed"){
+		imagePos = (margin+(document.getElementById('contentWrapper').clientWidth-document.getElementById('para5').clientWidth)/4)-(document.getElementById('hwbush').clientWidth/2);
+	}
+	else{
+		imagePos = ((document.getElementById('contentWrapper').clientWidth-document.getElementById('para5').clientWidth)/4)-(document.getElementById('hwbush').clientWidth/2);
+	}
+	theElement.style("right",imagePos);
 }
 
 function getSVGWidth(){

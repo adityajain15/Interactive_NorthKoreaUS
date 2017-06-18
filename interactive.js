@@ -222,7 +222,9 @@ function makeStuff(theData){
 }
 
 function windowResize(){
-	placeImages();
+	calendarShortHeight = getCalendarShortHeight();
+	d3.selectAll(".leftImage").call(placeLeftImage,this);
+	d3.selectAll(".rightImage").call(placeRightImage,this);
 	calLeftPosition();
 }
 

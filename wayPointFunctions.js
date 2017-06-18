@@ -1,4 +1,6 @@
+var calendarShortHeight = getCalendarShortHeight();
 var waypointAction5;
+
 function makeWaypoint5(){
 	waypointAction5 = new Waypoint({
 	    element: document.getElementById('hwbush'),
@@ -6,24 +8,26 @@ function makeWaypoint5(){
 	    	if(direction==="down"){
 	    		d3.select("#hwbush")
 	    			.style("position","fixed")
-	    			.style("top",document.getElementById('hwbush').getBoundingClientRect().top-document.body.scrollTop);
+	    			.style("top",calendarShortHeight)
+	    			.call(placeRightImage,this);
 
 	    		d3.select("#ilsung")
 	    			.style("position","fixed")
-	    			.style("top",document.getElementById('ilsung').getBoundingClientRect().top-document.body.scrollTop);
-	    		placeImages();
+	    			.style("top",calendarShortHeight)
+	    			.call(placeLeftImage,this);
 	    	}
 	    	else{
 	    		d3.select("#hwbush")
 	    			.style("position","absolute")
-	    			.style("top",null);
+	    			.style("top",null)
+	    			.call(placeRightImage,this);
 	    		d3.select("#ilsung")
 	    			.style("position","absolute")
-	    			.style("top",null);
-	    		placeImages();
+	    			.style("top",null)
+	    			.call(placeLeftImage,this);
 	    	}
 	    },
-	    offset: getCalendarShortHeight()
+	    offset: calendarShortHeight
 	});
 }
 
