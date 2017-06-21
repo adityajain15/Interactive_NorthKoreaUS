@@ -75,6 +75,14 @@ table {
     src: url(fonts/SabonLTPro-Roman.otf);
 }
 
+#tooltip{
+	display: none;
+	position: fixed;
+	background: turquoise;
+	height: 200px;
+	width: 200px;
+}
+
 
 h1{
 	font-size: 42px;
@@ -164,6 +172,8 @@ img{
     background: white;
     z-index: 5;
     max-height: 50vh;
+    box-shadow: 2px 9px 20px 5px;
+    color: rgb(255,255,255);
 }
 
 .row{

@@ -67,9 +67,27 @@ function getSVGHeight(){
 	return document.getElementById('calendar').getBoundingClientRect().height;
 }
 
+function turnCalShadowOn(){
+	d3.select("#calendar")
+		.transition()
+		.ease(d3.easeLinear)
+		.duration(150)
+		.style("color","rgb(158, 158, 158)");
+}
+
+function turnCalShadowOff(){
+	d3.select("#calendar")
+		.transition()
+		.ease(d3.easeLinear)
+		.duration(150)
+		.style("color","rgb(255, 255, 255)");
+}
+
 function action1on(){
 	calendar.style("position","fixed")
 			.style("top","0px");
+
+	turnCalShadowOn();
 
 	calLeftPosition();
 

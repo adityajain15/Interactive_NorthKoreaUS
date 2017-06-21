@@ -1,6 +1,7 @@
 var calendarShortHeight = getCalendarShortHeight();
 var waypointAction5;
 var waypointAction6;
+var waypointAction7;
 
 function makeWaypoint5(){
 	waypointAction5 = new Waypoint({
@@ -36,7 +37,6 @@ function makeWaypoint6(){
 	waypointAction6 = new Waypoint({
 		element: document.getElementById('para9'),
 	    handler: function(direction) {
-	    	console.log("trigger");
 	    	if(direction==="down"){
 	    		d3.select("#hwbush")
 	    		.style("top",document.getElementById('para9').offsetTop+document.getElementById('para9').clientHeight-document.getElementById('hwbush').clientHeight)
@@ -52,5 +52,27 @@ function makeWaypoint6(){
 
 	    },
 	    offset: calendarShortHeight+document.getElementById('hwbush').clientHeight-document.getElementById('para9').clientHeight
+	});
+}
+
+function makeWaypoint7(){
+	waypointAction7 = new Waypoint({
+		element: document.getElementById('clinton'),
+	    handler: function(direction) {
+	    	if(direction==="down"){
+	    		d3.select("#clinton")
+	    		.style("top",calendarShortHeight)
+	    		.style("position","fixed")
+	    		.call(placeRightImage,this);
+	    	}
+	    	else{
+	    		d3.select("#clinton")
+	    		.style("position","absolute")
+	    		.style("top",document.getElementById('para10').offsetTop)
+	    		.call(placeRightImage,this);
+	    	}
+
+	    },
+	    offset: calendarShortHeight
 	});
 }
