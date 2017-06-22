@@ -1,9 +1,16 @@
-var theData = d3.csv("USKoreaData.csv",makeStuff);
+var q = d3.queue()
+    .defer(d3.csv, "USKoreaData.csv")
+    .defer(d3.csv, "Negotiations.csv")
+    .awaitAll(makeStuff);
+
 const calendar = d3.select("#calendar");
 
 var makeAnnotations;
+var negoData;
+function makeStuff(error,data){
 
-function makeStuff(theData){
+	var theData = data[0];
+	negoData = data[1];
 
 	var NegoMax = 0;
 	var ProvMax = 0;
@@ -40,7 +47,14 @@ function makeStuff(theData){
 	.attr('height','15')
 	.attr('data',function(d){return d.Date;})
 	.attr("fill",function(d){if(d.Nego==0){return "white"} else return negoColor(d.Nego)})
-	.text(function(d){return d.Nego;})
+	.on("mouseenter",function(d){
+		console.log(negoData.filter(function(w){return w.Date==d.Date}));
+		d3.select("#tooltip").style("display","block");
+	})
+	.on("mouseleave",function(){
+		console.log("sup");
+		d3.select("#tooltip").style("display","none");
+	})
 
 	d3.selectAll(".row")
 	.append("rect")
@@ -92,6 +106,7 @@ function makeStuff(theData){
 						.style("top",document.getElementById('calendar').getBoundingClientRect.top)
 				calLeftPosition();
 				action1off();
+				turnCalShadowOff();
 			}
 		}
 	});
@@ -151,76 +166,7 @@ function makeStuff(theData){
 
 	makeWaypoint5();
 	makeWaypoint6();
-	
-/*
-	var WaypointImage1 = new Waypoint({
-		element: document.getElementById('hwbush'),
-		handler: function(direction){
-			if(direction=='down'){
-				//console.log("sup");
-				d3.select('#hwbush')
-				.style("width",document.getElementById('hwbush').getBoundingClientRect().width)
-				.style("height",document.getElementById('hwbush').getBoundingClientRect().height)
-				.style("position",null)
-				.style("left",document.getElementById('hwbush').getBoundingClientRect().left)
-				.style("top","20px")
-				.style("position","fixed");
-				
-				d3.select('#ilsung')
-				.style("width",document.getElementById('ilsung').getBoundingClientRect().width)
-				.style("height",document.getElementById('ilsung').getBoundingClientRect().height)
-				.style("position",null)
-				.style("left",document.getElementById('ilsung').getBoundingClientRect().left)
-				.style("top","20px")
-				.style("position","fixed");
-
-				d3.select("#action1")
-    			.style("position","fixed")
-    			.style("top","0px")
-    			.style("left",window.innerWidth/2-(document.getElementById('action1').getBoundingClientRect().width/2))
-			}
-			else{
-				
-				d3.select('#hwbush')
-					.style("position","relative")
-					.style("top",null)
-					.style("left",null);
-				
-				d3.select('#ilsung')
-					.style("position","relative")
-					.style("top",null)
-					.style("left",null);
-				
-				d3.select("#action1")
-					.style("position","relative")
-					.style("top",null)
-					.style("left",null);
-			}
-
-		},
-		offset: 20
-	});
-
-	var WaypointImage2 = new Waypoint({
-		element: document.getElementById('para6'),
-		handler: function(direction){
-			if(direction==='down'){
-				d3.select('#hwbush')
-				.style("position","absolute")
-				.style("top",document.body.scrollTop)
-				.style("left",document.getElementById('hwbush').getBoundingClientRect().left);
-			}
-			else{
-				d3.select('#hwbush')
-				.style("position","fixed")
-				.style("top","20px")
-				.style("left",document.getElementById('hwbush').getBoundingClientRect().left);
-			}
-		},
-		offset: document.getElementById('hwbush').getBoundingClientRect().height-document.getElementById('para6').getBoundingClientRect().height
-	});
-*/
-	
+	makeWaypoint7();
 }
 
 function windowResize(){
