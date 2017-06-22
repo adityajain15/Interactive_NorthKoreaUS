@@ -52,7 +52,7 @@ function makeStuff(error,data){
 		d3.select("#tooltip").style("display","block");
 	})
 	.on("mouseleave",function(){
-		console.log("test");
+		console.log("test2");
 		d3.select("#tooltip").style("display","none");
 	})
 
