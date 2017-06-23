@@ -49,26 +49,51 @@ function makeStuff(error,data){
 	.attr('data',function(d){return d.Date;})
 	.attr("fill",function(d){if(d.Nego==0){return "white"} else return negoColor(d.Nego)})
 	.on("mouseenter",function(d){
+		console.log(d3.select(this).style("fill"));
+		if(d3.select(this).style("fill")!=="rgb(255, 255, 255)"){
+			d3.select(this)
+			.style("stroke","#E8336D")
+			.style("stroke-width","3px")
+			.style("stroke-dasharray","60");
+			
+			this.parentNode.parentNode.appendChild(this.parentNode);
+			this.parentNode.appendChild(this);
+			
+			console.log(this.parentNode.parentNode);
 
-		var localNegoData = negoData.filter(function(w){return w.Date==d.Date});
+			var localNegoData = negoData.filter(function(w){return w.Date==d.Date});
 
-		if(localNegoData.length!=0){
-			for(var i=0;i<localNegoData.length;i++)
-			{
-				//console.log(d3.mouse(this));
-				//console.log(this.getBoundingClientRect());
+			if(localNegoData.length!=0){
+				for(var i=0;i<localNegoData.length;i++)
+				{
+					//console.log(d3.mouse(this));
+					//console.log(this.getBoundingClientRect());
+					d3.select("#tooltip")
+					.append("div")
+					.attr("class","tooltipDescription")
+					.text(localNegoData[i].Description);
+				}
 				d3.select("#tooltip")
+				.style("display","block")
 				.style("top",this.getBoundingClientRect().top+20)
-				.style("left",this.getBoundingClientRect().left+20)
-				.style("border","3px solid #E8336D") 
-				.append("div")
-				.attr("class","tooltipDescription")
-				.text(localNegoData[i].Description);
+				.style("left",this.getBoundingClientRect().left+20);
 			}
-			d3.select("#tooltip").style("display","block");
 		}
 	})
 	.on("mouseleave",function(){
+		var firstChild = this.parentNode.parentNode.firstChild; 
+        if(firstChild){ 
+        	this.parentNode.parentNode.insertBefore(this.parentNode, firstChild); 
+		} 
+		firstChild = this.parentNode.firstChild; 
+		if(firstChild){ 
+        	this.parentNode.insertBefore(this, firstChild); 
+		} 
+		d3.select(this)
+		.style("stroke",null)
+		.style("stroke-width",null)
+		.style("stroke-dasharray"," 0,45,15");
+
 		d3.select("#tooltip").style("display","none");
 		d3.selectAll(".tooltipDescription").remove();
 	})
