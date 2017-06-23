@@ -3,7 +3,7 @@ var q = d3.queue()
     .defer(d3.csv, "Negotiations.csv")
     .awaitAll(makeStuff);
 
-const calendar = d3.select("#calendar");
+var calendar = d3.select("#calendar");
 
 var makeAnnotations;
 var negoData;
@@ -38,6 +38,7 @@ function makeStuff(error,data){
 	.append("g")
 	.attr("class","row");
 
+
 	d3.selectAll(".row")
 	.append("rect")
 	.attr("class","box nego")
@@ -48,12 +49,28 @@ function makeStuff(error,data){
 	.attr('data',function(d){return d.Date;})
 	.attr("fill",function(d){if(d.Nego==0){return "white"} else return negoColor(d.Nego)})
 	.on("mouseenter",function(d){
-		console.log(negoData.filter(function(w){return w.Date==d.Date}));
-		d3.select("#tooltip").style("display","block");
+
+		var localNegoData = negoData.filter(function(w){return w.Date==d.Date});
+
+		if(localNegoData.length!=0){
+			for(var i=0;i<localNegoData.length;i++)
+			{
+				//console.log(d3.mouse(this));
+				//console.log(this.getBoundingClientRect());
+				d3.select("#tooltip")
+				.style("top",this.getBoundingClientRect().top+20)
+				.style("left",this.getBoundingClientRect().left+20)
+				.style("border","3px solid #E8336D") 
+				.append("div")
+				.attr("class","tooltipDescription")
+				.text(localNegoData[i].Description);
+			}
+			d3.select("#tooltip").style("display","block");
+		}
 	})
 	.on("mouseleave",function(){
-		console.log("te");
 		d3.select("#tooltip").style("display","none");
+		d3.selectAll(".tooltipDescription").remove();
 	})
 
 	d3.selectAll(".row")
@@ -92,78 +109,13 @@ function makeStuff(error,data){
 	calendar.append("g")
 	.call(yAxis)
 	.attr("transform","translate(35,25)");
+	
 	calLeftPosition();
 	windowResize();
-
-	var waypointAction1 = new Waypoint({
-		element: document.getElementById('calendar'),
-		handler: function(direction) {
-			if(direction==="down"){
-				action1on();
-			}
-			else{
-				calendar.style("position","absolute")
-						.style("top",document.getElementById('calendar').getBoundingClientRect.top)
-				calLeftPosition();
-				action1off();
-				turnCalShadowOff();
-			}
-		}
-	});
-
-	var waypointAction2 = new Waypoint({
-		element: document.getElementById('para5'),
-		handler: function(direction) {
-			if(direction==="down"){
-				action1off();
-				action2on();
-			}
-			else{
-				action1on();
-				action2off();
-			}
-		},
-		offset: document.getElementById('calendar').clientHeight-document.getElementById('para5').clientHeight
-	});
-
-	var waypointAction3 = new Waypoint({
-		element: document.getElementById('para6'),
-		handler: function(direction) {
-			if(direction==="down"){
-				action2off();
-				action3on();
-			}
-			else{
-				action3off();
-				action2on();
-			}
-		},
-		offset: document.getElementById('calendar').clientHeight-document.getElementById('para6').clientHeight
-	});
-
-	var waypointAction4 = new Waypoint({
-	    element: document.getElementById('section2'),
-	    handler: function(direction) {
-	    	var t = d3.transition()
-    		.duration(1000)
-    		.ease(d3.easeQuadInOut);
-
-	    	if(direction==="down"){
-	    		d3.select("#calendar")
-	    		.transition(t)
-    			.attr("viewBox","0 0 395 100");
-    			action3off();
-	    	}
-	    	else{
-	    		d3.select("#calendar")
-	    		.transition(t)
-    			.attr("viewBox","0 0 395 445");
-    			action3on();
-	    	}
-	    },
-	    offset: document.getElementById('calendar').clientHeight-document.getElementById('section2').clientHeight
-	});
-
+	makeWaypoint1();
+	makeWaypoint2();
+	makeWaypoint3();
+	makeWaypoint4();
 	makeWaypoint5();
 	makeWaypoint6();
 	makeWaypoint7();
@@ -174,7 +126,6 @@ function windowResize(){
 	d3.selectAll(".leftImage").call(placeLeftImage,this);
 	d3.selectAll(".rightImage").call(placeRightImage,this);
 	document.getElementById('clinton').style.top = document.getElementById('para10').offsetTop;
-	calLeftPosition();
 }
 
 window.onresize = windowResize;

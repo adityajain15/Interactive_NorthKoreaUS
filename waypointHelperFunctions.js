@@ -84,7 +84,7 @@ function turnCalShadowOff(){
 }
 
 function action1on(){
-	calendar.style("position","fixed")
+	d3.select("#calendar").style("position","fixed")
 			.style("top","0px");
 
 	turnCalShadowOn();
@@ -189,7 +189,8 @@ function action3on(){
 	d3.selectAll(".nego")
 		.transition()
 		.duration(500)
-		.style("fill-opacity",0);
+		.style("fill-opacity",0)
+		.on("end", function(){d3.select(this).style("display","none")});
 }
 
 function action3off(){
@@ -201,6 +202,7 @@ function action3off(){
 	.style("padding-left","21px");
 
 	d3.selectAll(".nego")
+		.style("display",null)
 		.transition()
 		.duration(500)
 		.style("fill-opacity",1);
