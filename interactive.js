@@ -49,7 +49,7 @@ function makeStuff(error,data){
 	.attr('data',function(d){return d.Date;})
 	.attr("fill",function(d){if(d.Nego==0){return "white"} else return negoColor(d.Nego)})
 	.on("mouseenter",function(d){
-		console.log(d3.select(this).style("fill"));
+
 		if(d3.select(this).style("fill")!=="rgb(255, 255, 255)"){
 			d3.select(this)
 			.style("stroke","#E8336D")
@@ -58,20 +58,42 @@ function makeStuff(error,data){
 			
 			this.parentNode.parentNode.appendChild(this.parentNode);
 			this.parentNode.appendChild(this);
-			
-			console.log(this.parentNode.parentNode);
 
 			var localNegoData = negoData.filter(function(w){return w.Date==d.Date});
 
 			if(localNegoData.length!=0){
-				for(var i=0;i<localNegoData.length;i++)
+				console.log(localNegoData);
+				d3.select("#tooltipHeader")
+					.text(localNegoData.length+(localNegoData.length==1?" Negotation":" Negotations")+" during "+d.Date);
+				for(let i=0;i<localNegoData.length;i++)
 				{
-					//console.log(d3.mouse(this));
-					//console.log(this.getBoundingClientRect());
-					d3.select("#tooltip")
+					let negoBox = d3.select("#tooltip")
 					.append("div")
+					.attr("class","tooltipNegotiation");
+
+					negoBox
+					.append("span")
+					.attr("class","tooltipType")
+					.text(localNegoData[i]['Event Type']);
+
+					negoBox
+					.append("p")
 					.attr("class","tooltipDescription")
-					.text(localNegoData[i].Description);
+					.text(localNegoData[i]['Description']);
+
+					var partyBox = negoBox.append("div").attr("class","tooltipParties");
+
+					var nationString = localNegoData[i]['Parties Involved'].split(',');
+					var leaderString = localNegoData[i]['Leadership'].split(',');
+
+					for(var j=0;j<leaderString.length;j++){
+						partyBox.append("span").attr("class","leaderName").text(leaderString[j]);
+						partyBox.append("span").attr("class","nationName").text(nationString[j]);;
+					}
+
+					
+
+
 				}
 				d3.select("#tooltip")
 				.style("display","block")
@@ -95,7 +117,7 @@ function makeStuff(error,data){
 		.style("stroke-dasharray"," 0,45,15");
 
 		d3.select("#tooltip").style("display","none");
-		d3.selectAll(".tooltipDescription").remove();
+		d3.selectAll(".tooltipNegotiation").remove();
 	})
 
 	d3.selectAll(".row")

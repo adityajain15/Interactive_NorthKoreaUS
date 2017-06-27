@@ -16,7 +16,7 @@ waypointAction1 = new Waypoint({
 			}
 			else{
 				calendar.style("position","absolute")
-						.style("top",document.getElementById('calendar').getBoundingClientRect.top)
+						.style("top",document.getElementById('calendar').getBoundingClientRect.top);
 				calLeftPosition();
 				action1off();
 				turnCalShadowOff();

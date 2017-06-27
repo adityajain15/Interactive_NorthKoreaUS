@@ -109,18 +109,25 @@ function action1on(){
 	}]
 	makeAnnotations = d3.annotation().type(type).annotations(annotations);
 
-	calendar
-  		.append("g")
-  		.attr("class", "annotation-group")
-  		.call(makeAnnotations);
-
-  	var t = d3.transition().duration(500).ease(d3.easeQuadInOut);
+	var g = d3.transition().duration(500).ease(d3.easeQuadInOut);
   	var i=0;
 
-  	d3.selectAll(".annotation.callout.rect")
-    	.transition(t)
-    	.delay(1000)
-    	.on("start",repeat);
+	d3.select("#calendar")
+	    .transition(d3.transition().duration(0).ease(d3.easeQuadInOut))
+    	.attr("viewBox","0 0 395 445")
+    	.on("end",function(){
+    		d3.select("#calendar")
+  				.append("g")
+  				.attr("class", "annotation-group")
+  				.call(makeAnnotations);
+
+  			d3.selectAll(".annotation.callout.rect")
+    			.transition(g)
+    			.delay(1000)
+    			.on("start",repeat);
+    	});
+
+	
     			
     function repeat() {
     	i+=1;
@@ -131,7 +138,7 @@ function action1on(){
     	yPos = (15*Math.floor(i/12))+26;
         d3.active(this)
             .attr("transform","translate("+xPos+","+yPos+")")
-            .transition(t)
+            .transition(g)
             .delay(1000)
             .on("start", repeat);
 	}
@@ -147,6 +154,7 @@ function action1off(){
 	.duration(150)
 	.style("border-left-width","0px")
 	.style("padding-left","21px");
+
 }
 
 function action2on(){
