@@ -201,7 +201,7 @@ img{
     margin-left: auto;
     background: white;
     z-index: 5;
-    max-height: 50vh;
+    max-height: 50vw;
     box-shadow: 2px 9px 20px 5px;
     color: rgb(255,255,255);
 }
