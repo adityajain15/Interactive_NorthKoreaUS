@@ -157,22 +157,16 @@ function makeStuff(error,data){
 	.call(yAxis)
 	.attr("transform","translate(35,25)");
 	
-	calLeftPosition();
-	windowResize();
 	makeWaypoint1();
 	makeWaypoint2();
 	makeWaypoint3();
 	makeWaypoint4();
-	makeWaypoint5();
-	makeWaypoint6();
-	makeWaypoint7();
+	windowResize();
+	
 }
 
 function windowResize(){
-	calendarShortHeight = getCalendarShortHeight();
-	d3.selectAll(".leftImage").call(placeLeftImage,this);
-	d3.selectAll(".rightImage").call(placeRightImage,this);
-	document.getElementById('clinton').style.top = document.getElementById('para10').offsetTop;
+	d3.select("#calendar").style("left",document.getElementById('contentWrapper').getBoundingClientRect().left)
 }
 
 window.onresize = windowResize;
