@@ -1,97 +1,15 @@
-function calendarAbsolute(topPos){
-	console.log(topPos);
-	calendar.style("position","absolute")
-	.style("top",topPos)
-	calLeftPosition();
-}
-
-function getCalendarShortHeight(){
-	var shortHeight = d3.select("#calendar")
-		.attr("viewBox","0 0 395 100")
-		.style("height");
-	d3.select("#calendar").attr("viewBox","0 0 395 445");
-	
-	var re = /_px$/;
-	shortHeight.replace(re, "");
-	return parseFloat(shortHeight);
-}
-
-
-/*This returns the width of the margin between the <body> and the <div id=contentWrapper>*/
-function getMargin(){
-	return (document.body.clientWidth-document.getElementById('contentWrapper').getBoundingClientRect().width)/2;
-}
-
-function calLeftPosition(){
-	var margin = getMargin();
-
-	if(d3.select("#calendar").style("position")==="fixed"){
-		d3.select("#calendar")
-	  .style("left",margin+(document.getElementById('contentWrapper').getBoundingClientRect().width/2)-(getSVGWidth()/2));
-	}
-	else{
-		d3.select("#calendar")
-	  .style("left",(document.getElementById('contentWrapper').getBoundingClientRect().width/2)-(getSVGWidth()/2));
-	}
-}
-
-function placeLeftImage(theElement){
-	var margin = getMargin();
-	var imagePos;
-	if(theElement.style("position")==="fixed"){
-		imagePos = (margin+(document.getElementById('contentWrapper').clientWidth-document.getElementById('para5').clientWidth)/4)-(document.getElementById('hwbush').clientWidth/2);
-	}
-	else{
-		imagePos = ((document.getElementById('contentWrapper').clientWidth-document.getElementById('para5').clientWidth)/4)-(document.getElementById('hwbush').clientWidth/2);
-	}
-	theElement.style("left",imagePos);
-}
-
-function placeRightImage(theElement){
-	var margin = getMargin();
-	var imagePos;
-	if(theElement.style("position")==="fixed"){
-		imagePos = (margin+(document.getElementById('contentWrapper').clientWidth-document.getElementById('para5').clientWidth)/4)-(document.getElementById('hwbush').clientWidth/2);
-	}
-	else{
-		imagePos = ((document.getElementById('contentWrapper').clientWidth-document.getElementById('para5').clientWidth)/4)-(document.getElementById('hwbush').clientWidth/2);
-	}
-	theElement.style("right",imagePos);
-}
-
-function getSVGWidth(){
-	return document.getElementById('calendar').getBoundingClientRect().width;
-}
-
-function getSVGHeight(){
-	return document.getElementById('calendar').getBoundingClientRect().height;
-}
-
-function turnCalShadowOn(){
-	d3.select("#calendar")
-		.transition()
-		.ease(d3.easeLinear)
-		.duration(150)
-		.style("color","rgb(158, 158, 158)");
-}
-
-function turnCalShadowOff(){
-	d3.select("#calendar")
-		.transition()
-		.ease(d3.easeLinear)
-		.duration(150)
-		.style("color","rgb(255, 255, 255)");
+function placeImages(){
+	var textWrapperPadding = d3.select("#textWrapper").style("padding-left");
+	d3.selectAll(".rightImage").select(function(){
+		d3.select(this).style("right",0);
+		d3.select(this).style("height",textWrapperPadding);
+		d3.select(this).style("width",textWrapperPadding);
+	});
 }
 
 function action1on(){
-	d3.select("#calendar").style("position","fixed")
-			.style("top","0px");
 
-	turnCalShadowOn();
-
-	calLeftPosition();
-
-	d3.select("#para5")
+	d3.select("#para1")
 		.transition()
 		.ease(d3.easeLinear)
 		.duration(150)
@@ -148,7 +66,7 @@ function action1off(){
 	d3.selectAll(".annotation.callout.rect").transition();
 	d3.select(".annotation-group").remove();
 
-	d3.select("#para5")
+	d3.select("#para1")
 	.transition()
 	.ease(d3.easeLinear)
 	.duration(150)
@@ -158,7 +76,7 @@ function action1off(){
 }
 
 function action2on(){
-	d3.select("#para6")
+	d3.select("#para2")
 		.transition()
 		.ease(d3.easeLinear)
 		.duration(150)
@@ -173,7 +91,7 @@ function action2on(){
 }
 
 function action2off(){
-	d3.select("#para6")
+	d3.select("#para2")
 	.transition()
 	.ease(d3.easeLinear)
 	.duration(150)
@@ -187,7 +105,7 @@ function action2off(){
 }
 
 function action3on(){
-	d3.select("#para7")
+	d3.select("#para3")
 		.transition()
 		.ease(d3.easeLinear)
 		.duration(150)
@@ -202,7 +120,7 @@ function action3on(){
 }
 
 function action3off(){
-	d3.select("#para7")
+	d3.select("#para3")
 	.transition()
 	.ease(d3.easeLinear)
 	.duration(150)

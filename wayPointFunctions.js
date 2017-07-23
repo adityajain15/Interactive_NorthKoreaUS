@@ -1,4 +1,3 @@
-var calendarShortHeight = getCalendarShortHeight();
 var waypointAction1;
 var waypointAction2;
 var waypointAction3;
@@ -9,24 +8,21 @@ var waypointAction7;
 
 function makeWaypoint1(){
 waypointAction1 = new Waypoint({
-		element: document.getElementById('calendar'),
+		element: document.getElementById('para1'),
 		handler: function(direction) {
 			if(direction==="down"){
 				action1on();
 			}
 			else{
-				calendar.style("position","absolute")
-						.style("top",document.getElementById('calendar').getBoundingClientRect.top);
-				calLeftPosition();
 				action1off();
-				turnCalShadowOff();
 			}
-		}
+		},
+		offset: window.innerHeight/2
 	});
 }
 function makeWaypoint2(){
 waypointAction2 = new Waypoint({
-		element: document.getElementById('para5'),
+		element: document.getElementById('para2'),
 		handler: function(direction) {
 			if(direction==="down"){
 				action1off();
@@ -37,12 +33,12 @@ waypointAction2 = new Waypoint({
 				action2off();
 			}
 		},
-		offset: document.getElementById('calendar').clientHeight-document.getElementById('para5').clientHeight
+		offset: window.innerHeight/2
 	});
 }
 function makeWaypoint3(){
 	waypointAction3 = new Waypoint({
-		element: document.getElementById('para6'),
+		element: document.getElementById('para3'),
 		handler: function(direction) {
 			if(direction==="down"){
 				action2off();
@@ -53,31 +49,21 @@ function makeWaypoint3(){
 				action2on();
 			}
 		},
-		offset: document.getElementById('calendar').clientHeight-document.getElementById('para6').clientHeight
+		offset: window.innerHeight/2
 	});
 }
 function makeWaypoint4(){
 	waypointAction4 = new Waypoint({
-	    element: document.getElementById('section2'),
+	    element: document.getElementById('para4'),
 	    handler: function(direction) {
-	    	var t = d3.transition()
-    		.duration(1000)
-    		.ease(d3.easeQuadInOut);
-
 	    	if(direction==="down"){
-	    		d3.select("#calendar")
-	    		.transition(t)
-    			.attr("viewBox","0 0 395 100");
     			action3off();
 	    	}
 	    	else{
-	    		d3.select("#calendar")
-	    		.transition(t)
-    			.attr("viewBox","0 0 395 445");
     			action3on();
 	    	}
 	    },
-	    offset: document.getElementById('calendar').clientHeight-document.getElementById('section2').clientHeight
+	    offset: window.innerHeight/2
 	});
 }
 function makeWaypoint5(){

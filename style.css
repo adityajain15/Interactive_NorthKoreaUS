@@ -75,12 +75,51 @@ table {
     src: url(fonts/SabonLTPro-Roman.otf);
 }
 
+#contentWrapper{
+	position: relative;
+	max-width: 1200px;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+
+}
+
 p{
 	font-family: Sabon;
 	font-size: 20px;
 	margin-left: auto;
 	margin-right: auto;
 	line-height: 1.2;
+}
+
+.textpara{
+	margin-top: 100px;
+	margin-bottom: 100px;
+	box-sizing: border-box;
+	border-left:0px solid #E8336D;
+}
+
+.instruc{
+	margin-top: 200px;
+}
+
+#textWrapper{
+	margin-left: 40%;
+    width: 60%;
+    padding: 20px;
+    padding-left: 8%;
+    padding-right: 8%;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.rightImage{
+	position: absolute;
+	height: 100px;
+	width: 100px;
+	border-radius: 50%;
+	object-position: 50% 50%;
+	object-fit: cover;
 }
 
 #tooltip{
@@ -156,9 +195,7 @@ h2{
 	padding-left: 21px;
 }
 
-#para7{
-	margin-bottom: 25%;
-}
+
 
 img{
 	z-index: 3;
@@ -166,44 +203,19 @@ img{
 	width: auto;
 }
 
-.leftImage{
-	position: absolute;
-	height: 100px;
-	width: 100px;
-	border-radius: 50%;
-	object-fit: cover;
-	object-position: 50% 50%;
-}
-
-.rightImage{
-	position: absolute;
-	height: 100px;
-	width: 100px;
-	border-radius: 50%;
-	object-position: 50% 50%;
-	object-fit: cover;
-}
-
-#hwbush{
-	object-position: 50% 0;
-}
-
-#clinton{
-	object-position: 50% 0;
-}
 
 
 
 #calendar{
 	display: block;
-    position: absolute;
-    margin-right: auto;
-    margin-left: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 30%;
+    height: 100%;
     background: white;
     z-index: 5;
-    max-height: 50vw;
-    box-shadow: 2px 9px 20px 5px;
-    color: rgb(255,255,255);
+    max-width: 480px;
 }
 
 .row{
@@ -221,19 +233,6 @@ img{
 
 .prov{
 	stroke-dasharray: 0,15,15,30;
-}
-
-#contentWrapper{
-	position: relative;
-	max-width: 1200px;
-	margin-right: auto;
-	margin-left: auto;
-}
-
-.textWrapper{
-	width: 55%;
-	margin-right: auto;
-	margin-left: auto;
 }
 
 
@@ -264,11 +263,4 @@ img{
 
 text.title {
 	font-size: 3.2em;
-}
-
-@media screen and (min-width: 500px) {
-	#calendar{
-    	width: 70vw;
-    	max-width: 660px;
-    }
 }
