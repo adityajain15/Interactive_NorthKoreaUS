@@ -48,33 +48,6 @@ table {
 	border-spacing: 0;
 }
 
-/*My CSS*/
-
-@font-face {
-    font-family: Nobel-Book;
-    src: url(fonts/Font Bureau - Nobel-Book.otf);
-}
-
-@font-face {
-    font-family: Nobel-ExtraLight;
-    src: url(fonts/Font Bureau - Nobel-ExtraLight.ttf);
-}
-
-@font-face {
-    font-family: Nobel-Light;
-    src: url(fonts/Font Bureau - Nobel-Light.ttf);
-}
-
-@font-face {
-    font-family: Nobel-Regular;
-    src: url(fonts/Font Bureau - Nobel-Regular.ttf);
-}
-
-@font-face {
-    font-family: Sabon;
-    src: url(fonts/SabonLTPro-Roman.otf);
-}
-
 body{
 	background: #16222a; /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #16222a, #323232); /* Chrome 10-25, Safari 5.1-6 */
@@ -90,7 +63,7 @@ body{
 }
 
 p{
-	font-family: Sabon;
+	font-family: 'EB Garamond', serif;
 	font-size: 20px;
 	margin-left: auto;
 	margin-right: auto;
@@ -152,7 +125,7 @@ p{
 	padding-bottom: 5px;
 	border:3px solid black;
 	font-size: 12px;
-	font-family: Sabon;
+	font-family: 'EB Garamond', serif;
 }
 
 #tooltipHeader{
@@ -177,15 +150,19 @@ p{
 }
 
 h1{
-	font-size: 42px;
+	font-size: 62px;
 	text-align: center;
-	font-family: Nobel-Regular;
+	font-family: 'Biryani', sans-serif;
+	font-weight:800;
+	color: white;
 }
 
 h2{
 	font-size: 22px;
 	text-align: center;
-	font-family: Nobel-Regular;
+	font-family: 'Biryani', sans-serif;
+	font-weight:800;
+	color: white;
 	margin-top: 25%;
 	margin-bottom: 25%;
 }
