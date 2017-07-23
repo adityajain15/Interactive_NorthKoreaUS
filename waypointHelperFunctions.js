@@ -1,21 +1,18 @@
 function placeImages(){
 	var textWrapperPadding = d3.select("#textWrapper").style("padding-left");
+	d3.selectAll(".image").select(function(){
+		d3.select(this).style("height",0.85*parseFloat(textWrapperPadding));
+		d3.select(this).style("width",0.85*parseFloat(textWrapperPadding));
+	});
 	d3.selectAll(".rightImage").select(function(){
 		d3.select(this).style("right",0);
-		d3.select(this).style("height",textWrapperPadding);
-		d3.select(this).style("width",textWrapperPadding);
+	});
+	d3.selectAll(".leftImage").select(function(){
+		d3.select(this).style("left",0);
 	});
 }
 
 function action1on(){
-
-	d3.select("#para1")
-		.transition()
-		.ease(d3.easeLinear)
-		.duration(150)
-		.style("border-left-width","4px")
-		.style("padding-left","25px")
-
 	const type = d3.annotationCalloutRect;
 	const annotations = [{
 		x: 35,
@@ -66,38 +63,16 @@ function action1off(){
 	d3.selectAll(".annotation.callout.rect").transition();
 	d3.select(".annotation-group").remove();
 
-	d3.select("#para1")
-	.transition()
-	.ease(d3.easeLinear)
-	.duration(150)
-	.style("border-left-width","0px")
-	.style("padding-left","21px");
-
 }
 
 function action2on(){
-	d3.select("#para2")
-		.transition()
-		.ease(d3.easeLinear)
-		.duration(150)
-		.style("border-left-width","4px")
-		.style("padding-left","25px");
-
 	d3.selectAll(".prov")
 		.transition()
 		.duration(500)
 		.style("fill-opacity",0);
-
 }
 
 function action2off(){
-	d3.select("#para2")
-	.transition()
-	.ease(d3.easeLinear)
-	.duration(150)
-	.style("border-left-width","0px")
-	.style("padding-left","21px");
-
 	d3.selectAll(".prov")
 		.transition()
 		.duration(500)
@@ -105,13 +80,6 @@ function action2off(){
 }
 
 function action3on(){
-	d3.select("#para3")
-		.transition()
-		.ease(d3.easeLinear)
-		.duration(150)
-		.style("border-left-width","4px")
-		.style("padding-left","25px");
-
 	d3.selectAll(".nego")
 		.transition()
 		.duration(500)
@@ -120,13 +88,6 @@ function action3on(){
 }
 
 function action3off(){
-	d3.select("#para3")
-	.transition()
-	.ease(d3.easeLinear)
-	.duration(150)
-	.style("border-left-width","0px")
-	.style("padding-left","21px");
-
 	d3.selectAll(".nego")
 		.style("display",null)
 		.transition()

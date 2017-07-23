@@ -1,3 +1,5 @@
+windowResize();
+
 var q = d3.queue()
     .defer(d3.csv, "USKoreaData.csv")
     .defer(d3.csv, "Negotiations.csv")
@@ -141,10 +143,13 @@ function makeStuff(error,data){
 	.attr('height','25px')
 	.attr("transform", "translate(35,25)")
 	.attr('id','xAxis')
+	.style("background","black")
 	.call(xAxis)
 	.selectAll("text")
 	.attr("transform", "rotate(-45 0,0) translate(0,0) ")
 	.style("text-anchor", "start");
+
+	d3.select("#xAxis").append("rect").style("width","100px").style("height","100px").style("background","black")
 
 	var yScale =  d3.scaleTime()
 	.domain([new Date(1989, 5, 1), new Date(2017, 5, 1)])
@@ -157,16 +162,19 @@ function makeStuff(error,data){
 	.call(yAxis)
 	.attr("transform","translate(35,25)");
 	
+	makeOpacityWaypoints();
 	makeWaypoint1();
 	makeWaypoint2();
 	makeWaypoint3();
 	makeWaypoint4();
-	windowResize();
 	
 }
 
 function windowResize(){
-	d3.select("#calendar").style("left",document.getElementById('contentWrapper').getBoundingClientRect().left)
+	d3.select("#calendar").style("top",(window.innerHeight/2)-(document.getElementById('calendar').clientHeight/2));
+	d3.select("#calendar").style("left",document.getElementById('contentWrapper').getBoundingClientRect().left);
+	d3.select("#calendar").style("width",0.35*document.getElementById("contentWrapper").getBoundingClientRect().width);
+	placeImages();
 }
 
 window.onresize = windowResize;

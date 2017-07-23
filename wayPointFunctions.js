@@ -6,6 +6,58 @@ var waypointAction5;
 var waypointAction6;
 var waypointAction7;
 
+function makeOpacityWaypoints(){
+	var elements = document.getElementsByClassName("textpara");
+	Array.prototype.filter.call(elements, function(testElement){
+	    new Waypoint({
+			element: testElement,
+			handler: function(direction) {
+				if(direction==="down")
+				{
+					d3.select(testElement)
+					.transition()
+					.ease(d3.easeLinear)
+					.duration(150)
+					.style("opacity","0.3");
+				}
+				else{
+					d3.select(testElement)
+					.transition()
+					.ease(d3.easeLinear)
+					.duration(150)
+					.style("opacity","1");
+				}
+	
+			},
+			offset: (window.innerHeight/2)-testElement.clientHeight
+		});
+	});
+
+	Array.prototype.filter.call(elements, function(testElement){
+	    new Waypoint({
+			element: testElement,
+			handler: function(direction) {
+				if(direction==="down"){
+					d3.select(testElement)
+					.transition()
+					.ease(d3.easeLinear)
+					.duration(150)
+					.style("opacity","1");
+				}
+				else{
+					d3.select(testElement)
+					.transition()
+					.ease(d3.easeLinear)
+					.duration(150)
+					.style("opacity","0.3");
+				}
+			},
+			offset: (window.innerHeight/2)
+		});
+	});
+
+}
+
 function makeWaypoint1(){
 waypointAction1 = new Waypoint({
 		element: document.getElementById('para1'),
@@ -20,6 +72,7 @@ waypointAction1 = new Waypoint({
 		offset: window.innerHeight/2
 	});
 }
+
 function makeWaypoint2(){
 waypointAction2 = new Waypoint({
 		element: document.getElementById('para2'),
@@ -36,6 +89,7 @@ waypointAction2 = new Waypoint({
 		offset: window.innerHeight/2
 	});
 }
+
 function makeWaypoint3(){
 	waypointAction3 = new Waypoint({
 		element: document.getElementById('para3'),
@@ -52,12 +106,14 @@ function makeWaypoint3(){
 		offset: window.innerHeight/2
 	});
 }
+
 function makeWaypoint4(){
 	waypointAction4 = new Waypoint({
 	    element: document.getElementById('para4'),
 	    handler: function(direction) {
 	    	if(direction==="down"){
     			action3off();
+    			console.log("chutiya");
 	    	}
 	    	else{
     			action3on();
@@ -66,6 +122,7 @@ function makeWaypoint4(){
 	    offset: window.innerHeight/2
 	});
 }
+
 function makeWaypoint5(){
 	waypointAction5 = new Waypoint({
 	    element: document.getElementById('hwbush'),

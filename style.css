@@ -75,10 +75,15 @@ table {
     src: url(fonts/SabonLTPro-Roman.otf);
 }
 
+body{
+	background: #16222a; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #16222a, #323232); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #16222a, #323232); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
 #contentWrapper{
 	position: relative;
-	max-width: 1200px;
-	width: 100%;
+	width: 90%;
 	margin-left: auto;
 	margin-right: auto;
 
@@ -95,8 +100,10 @@ p{
 .textpara{
 	margin-top: 100px;
 	margin-bottom: 100px;
-	box-sizing: border-box;
+	padding: 20px;
 	border-left:0px solid #E8336D;
+	background: white;
+	opacity: 0.3;
 }
 
 .instruc{
@@ -109,17 +116,25 @@ p{
     padding: 20px;
     padding-left: 8%;
     padding-right: 8%;
-    box-sizing: border-box;
     position: relative;
+    box-sizing: border-box;
 }
 
 .rightImage{
 	position: absolute;
-	height: 100px;
-	width: 100px;
 	border-radius: 50%;
 	object-position: 50% 50%;
 	object-fit: cover;
+}
+.leftImage{
+	position: absolute;
+	border-radius: 50%;
+	object-position: 50% 50%;
+	object-fit: cover;
+}
+
+#kor1{
+	object-position: 0 0;
 }
 
 #tooltip{
@@ -195,24 +210,12 @@ h2{
 	padding-left: 21px;
 }
 
-
-
-img{
-	z-index: 3;
-	height: 100%;
-	width: auto;
-}
-
-
-
-
 #calendar{
 	display: block;
     position: fixed;
     top: 0;
     left: 0;
     width: 30%;
-    height: 100%;
     background: white;
     z-index: 5;
     max-width: 480px;
