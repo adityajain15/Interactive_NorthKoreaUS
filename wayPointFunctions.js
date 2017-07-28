@@ -1,12 +1,4 @@
-var waypointAction1;
-var waypointAction2;
-var waypointAction3;
-var waypointAction4;
-var waypointAction5;
-var waypointAction6;
-var waypointAction7;
-
-function makeOpacityWaypoints(){
+function opacityWaypoint(){
 	var elements = document.getElementsByClassName("textpara");
 	Array.prototype.filter.call(elements, function(testElement){
 	    new Waypoint({
@@ -113,7 +105,6 @@ function makeWaypoint4(){
 	    handler: function(direction) {
 	    	if(direction==="down"){
     			action3off();
-    			console.log("chutiya");
 	    	}
 	    	else{
     			action3on();
@@ -123,76 +114,74 @@ function makeWaypoint4(){
 	});
 }
 
-function makeWaypoint5(){
-	waypointAction5 = new Waypoint({
-	    element: document.getElementById('hwbush'),
-	    handler: function(direction){
-	    	if(direction==="down"){
-	    		d3.select("#hwbush")
-	    			.style("position","fixed")
-	    			.style("top",calendarShortHeight)
-	    			.call(placeRightImage,this);
-
-	    		d3.select("#ilsung")
-	    			.style("position","fixed")
-	    			.style("top",calendarShortHeight)
-	    			.call(placeLeftImage,this);
-	    	}
-	    	else{
-	    		d3.select("#hwbush")
-	    			.style("position","absolute")
-	    			.style("top",null)
-	    			.call(placeRightImage,this);
-	    		d3.select("#ilsung")
-	    			.style("position","absolute")
-	    			.style("top",null)
-	    			.call(placeLeftImage,this);
-	    	}
-	    },
-	    offset: calendarShortHeight
+function imageWaypoints(){
+	var something = new Waypoint({
+		element: document.getElementById('bush41'),
+		handler: function(direction) {
+			if(direction==="down")
+			{
+				d3.select("#bush41")
+				.style("position","fixed")
+				.style("top",document.getElementById('calendar').getBoundingClientRect().top)
+				.style("right",window.innerWidth-document.getElementById('contentWrapper').getBoundingClientRect().right);
+				
+			}
+			else{
+				d3.select("#bush41")
+				.style("position","absolute")
+				.style("top",null)
+				.style("right",0);
+			}
+		},
+		offset: document.getElementById('calendar').style.top
 	});
 }
 
-function makeWaypoint6(){
-	waypointAction6 = new Waypoint({
-		element: document.getElementById('para9'),
-	    handler: function(direction) {
-	    	if(direction==="down"){
-	    		d3.select("#hwbush")
-	    		.style("top",document.getElementById('para9').offsetTop+document.getElementById('para9').clientHeight-document.getElementById('hwbush').clientHeight)
-	    		.style("position","absolute")
-	    		.call(placeRightImage,this);
-	    	}
-	    	else{
-	    		d3.select("#hwbush")
-	    		.style("position","fixed")
-	    		.style("top",calendarShortHeight)
-	    		.call(placeRightImage,this);
-	    	}
-
-	    },
-	    offset: calendarShortHeight+document.getElementById('hwbush').clientHeight-document.getElementById('para9').clientHeight
+function imageWaypoints2(){
+	var glug = new Waypoint({
+		element: document.getElementById('kor1'),
+		handler: function(direction) {
+			if(direction==="down")
+			{
+				d3.select("#kor1")
+				.style("position","fixed")
+				.style("top",document.getElementById('calendar').getBoundingClientRect().top)
+				.style("left",document.getElementById('textWrapper').getBoundingClientRect().left);
+				
+			}
+			else{
+				d3.select("#kor1")
+				.style("position","absolute")
+				.style("top",null)
+				.style("left",0);
+			}
+		},
+		offset: document.getElementById('calendar').style.top
 	});
 }
 
-function makeWaypoint7(){
-	waypointAction7 = new Waypoint({
-		element: document.getElementById('clinton'),
-	    handler: function(direction) {
-	    	if(direction==="down"){
-	    		d3.select("#clinton")
-	    		.style("top",calendarShortHeight)
-	    		.style("position","fixed")
-	    		.call(placeRightImage,this);
-	    	}
-	    	else{
-	    		d3.select("#clinton")
-	    		.style("position","absolute")
-	    		.style("top",document.getElementById('para10').offsetTop)
-	    		.call(placeRightImage,this);
-	    	}
-
-	    },
-	    offset: calendarShortHeight
+function imageWaypoints3(){
+	var bug = new Waypoint({
+		element: document.getElementById('para4'),
+		handler: function(direction) {
+			if(direction==="down")
+			{
+				d3.select("#bush41")
+				.style("position","absolute")
+				.style("top",-document.getElementById('para4').clientHeight+parseFloat(document.getElementById('calendar').style.top)+document.getElementById('bush41').clientHeight)
+				.style("left",0);
+				
+			}
+			else{
+				d3.select("#bush41")
+				.style("position","fixed")
+				.style("top",document.getElementById('para4').getBoundingClientRect().clientHeight)
+				.style("left",document.getElementById('textWrapper').getBoundingClientRect().left);
+			}
+		},
+		offset: -document.getElementById('para4').clientHeight+parseFloat(document.getElementById('calendar').style.top)+document.getElementById('bush41').clientHeight
 	});
 }
+
+
+

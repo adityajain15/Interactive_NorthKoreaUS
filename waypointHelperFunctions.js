@@ -66,10 +66,17 @@ function action1off(){
 }
 
 function action2on(){
+	var g = d3.transition().duration(500).ease(d3.easeQuadInOut);
+
 	d3.selectAll(".prov")
-		.transition()
-		.duration(500)
+		.transition(g)
 		.style("fill-opacity",0);
+
+	d3.selectAll(".nego")
+		.style("display",null)
+		.transition(g)
+		.style("fill-opacity",1);
+
 }
 
 function action2off(){
@@ -80,6 +87,13 @@ function action2off(){
 }
 
 function action3on(){
+	var g = d3.transition().duration(500).ease(d3.easeQuadInOut);
+
+	d3.selectAll(".prov")
+		.style("display",null)
+		.transition(g)
+		.style("fill-opacity",1);	
+
 	d3.selectAll(".nego")
 		.transition()
 		.duration(500)
@@ -88,10 +102,18 @@ function action3on(){
 }
 
 function action3off(){
+	var g = d3.transition().duration(500).ease(d3.easeQuadInOut);
+
 	d3.selectAll(".nego")
+		.filter(function(d){return d.Year>=1990&&d.Year<=1992})
 		.style("display",null)
-		.transition()
-		.duration(500)
+		.transition(g)
 		.style("fill-opacity",1);
+
+	d3.selectAll(".prov")
+		.filter(function(d){return d.Year>1992})
+		.transition(g)
+		.style("fill-opacity",0)
+		.on("end", function(){d3.select(this).style("display","none")});
 }
 

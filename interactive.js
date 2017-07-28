@@ -1,4 +1,4 @@
-windowResize();
+
 
 var q = d3.queue()
     .defer(d3.csv, "USKoreaData.csv")
@@ -12,7 +12,7 @@ var negoData;
 function makeStuff(error,data){
 
 	var theData = data[0];
-	negoData = data[1];
+	var negoData = data[1];
 
 	var NegoMax = 0;
 	var ProvMax = 0;
@@ -34,39 +34,40 @@ function makeStuff(error,data){
 	.domain([0,NegoMax])
 	.range(["#eff3ff", "#bdd7e7", "#6baed6","#2171b5"]);
 
-	calendar.selectAll('g')
+	calendar.append("g").attr("class","rows").selectAll('g')
 	.data(theData)
 	.enter()
 	.append("g")
-	.attr("class","row");
-
+	.attr("class","row")
+	.attr("transform", "translate(35,25)");
 
 	d3.selectAll(".row")
 	.append("rect")
 	.attr("class","box nego")
-	.attr("x",function(d,i){return ((30*i)%360)+35})
-	.attr("y",function(d,i){return (15*Math.floor(i/12))+26})
+	.attr("x",function(d,i){return ((30*i)%360)})
+	.attr("y",function(d,i){return (15*Math.floor(i/12))})
 	.attr('width','15')
 	.attr('height','15')
-	.attr('data',function(d){return d.Date;})
+	.attr('Year',function(d){return d.Year;})
+	.attr('Month',function(d){return d.Month;})
 	.attr("fill",function(d){if(d.Nego==0){return "white"} else return negoColor(d.Nego)})
 	.on("mouseenter",function(d){
-
+		
 		if(d3.select(this).style("fill")!=="rgb(255, 255, 255)"){
 			d3.select(this)
 			.style("stroke","#E8336D")
-			.style("stroke-width","3px")
+			.style("stroke-width","2px")
 			.style("stroke-dasharray","60");
 			
 			this.parentNode.parentNode.appendChild(this.parentNode);
 			this.parentNode.appendChild(this);
 
-			var localNegoData = negoData.filter(function(w){return w.Date==d.Date});
+			var localNegoData = negoData.filter(function(w){return ((w.Year==d.Year)&&(w.Month==d.Month))});
+			console.log(localNegoData);
 
 			if(localNegoData.length!=0){
-				console.log(localNegoData);
 				d3.select("#tooltipHeader")
-					.text(localNegoData.length+(localNegoData.length==1?" Negotation":" Negotations")+" during "+d.Date);
+					.text(localNegoData.length+(localNegoData.length==1?" Negotation":" Negotations")+" during "+d.Year);
 				for(let i=0;i<localNegoData.length;i++)
 				{
 					let negoBox = d3.select("#tooltip")
@@ -116,7 +117,7 @@ function makeStuff(error,data){
 		d3.select(this)
 		.style("stroke",null)
 		.style("stroke-width",null)
-		.style("stroke-dasharray"," 0,45,15");
+		.style("stroke-dasharray"," 0,60");
 
 		d3.select("#tooltip").style("display","none");
 		d3.selectAll(".tooltipNegotiation").remove();
@@ -127,9 +128,9 @@ function makeStuff(error,data){
 	.attr("class","box prov")
 	.attr('width','15')
 	.attr('height','15')
-	.attr('data',function(d){return d.Date;})
-	.attr("x",function(d,i){return (15+(30*i)%360)+35})
-	.attr("y",function(d,i){return (15*Math.floor(i/12))+26})
+	.attr('data',function(d){return d.Year;})
+	.attr("x",function(d,i){return (15+(30*i)%360)})
+	.attr("y",function(d,i){return (15*Math.floor(i/12))})
 	.attr("fill",function(d){if(d.Prov==0){return "white"} else return provColor(d.Prov)})
 	.text(function(d){return d.Prov;})
 
@@ -138,6 +139,12 @@ function makeStuff(error,data){
 	.range([0, 360]);
 	var xAxis = d3.axisTop(xScale)
 	.tickSizeOuter(0);
+	
+	var xGridScale = d3.scaleLinear().domain([0,12]).range([0, 360]);
+	var xGrid = d3.axisTop(xGridScale)
+	.tickSizeOuter(0)
+	.tickSize(-420)
+	.tickFormat("");
 
 	calendar.append("g")
 	.attr('height','25px')
@@ -149,7 +156,6 @@ function makeStuff(error,data){
 	.attr("transform", "rotate(-45 0,0) translate(0,0) ")
 	.style("text-anchor", "start");
 
-	d3.select("#xAxis").append("rect").style("width","100px").style("height","100px").style("background","black")
 
 	var yScale =  d3.scaleTime()
 	.domain([new Date(1989, 5, 1), new Date(2017, 5, 1)])
@@ -158,23 +164,39 @@ function makeStuff(error,data){
 	.ticks(27)
 	.tickSizeOuter(0);
 
+	var yGridScale = d3.scaleTime()
+	.domain([new Date(1990, 1, 1), new Date(2017, 10,1)])
+	.range([0, 420]);
+	var yGrid = d3.axisLeft(yGridScale)
+	.tickSizeOuter(0)
+	.ticks(27)
+	.tickSize(-360)
+	.tickFormat("");
+
 	calendar.append("g")
 	.call(yAxis)
 	.attr("transform","translate(35,25)");
 	
-	makeOpacityWaypoints();
+	calendar.append("g")
+	.attr("class","grid")
+	.attr("transform", "translate(35,25)")
+	.call(xGrid);
+
+	opacityWaypoint();
 	makeWaypoint1();
 	makeWaypoint2();
 	makeWaypoint3();
 	makeWaypoint4();
-	
 }
 
 function windowResize(){
-	d3.select("#calendar").style("top",(window.innerHeight/2)-(document.getElementById('calendar').clientHeight/2));
-	d3.select("#calendar").style("left",document.getElementById('contentWrapper').getBoundingClientRect().left);
-	d3.select("#calendar").style("width",0.35*document.getElementById("contentWrapper").getBoundingClientRect().width);
-	placeImages();
+	d3.select("#calendar").style("width",0.3*document.getElementById("contentWrapper").getBoundingClientRect().width)
+	.style("margin-left",0.1*document.getElementById("contentWrapper").getBoundingClientRect().width)
+	.style("margin-right",0.1*document.getElementById("contentWrapper").getBoundingClientRect().width)
+	.style("top",(window.innerHeight/2)-(document.getElementById('calendar').clientHeight/2))
+	.style("left",document.getElementById('contentWrapper').getBoundingClientRect().left);
+
 }
 
 window.onresize = windowResize;
+windowResize();
