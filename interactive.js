@@ -39,7 +39,7 @@ function makeStuff(error,data){
 	.enter()
 	.append("g")
 	.attr("class","row")
-	.attr("transform", "translate(35,25)");
+	.attr("transform", "translate(52.5,40)");
 
 	d3.selectAll(".row")
 	.append("rect")
@@ -148,7 +148,7 @@ function makeStuff(error,data){
 
 	calendar.append("g")
 	.attr('height','25px')
-	.attr("transform", "translate(35,25)")
+	.attr("transform", "translate(52.5,40)")
 	.attr('id','xAxis')
 	.style("background","black")
 	.call(xAxis)
@@ -156,6 +156,10 @@ function makeStuff(error,data){
 	.attr("transform", "rotate(-45 0,0) translate(0,0) ")
 	.style("text-anchor", "start");
 
+	calendar.append("g")
+	.attr("class","grid")
+	.attr("transform", "translate(52.5,40)")
+	.call(xGrid);
 
 	var yScale =  d3.scaleTime()
 	.domain([new Date(1989, 5, 1), new Date(2017, 5, 1)])
@@ -164,39 +168,27 @@ function makeStuff(error,data){
 	.ticks(27)
 	.tickSizeOuter(0);
 
-	var yGridScale = d3.scaleTime()
-	.domain([new Date(1990, 1, 1), new Date(2017, 10,1)])
-	.range([0, 420]);
-	var yGrid = d3.axisLeft(yGridScale)
-	.tickSizeOuter(0)
-	.ticks(27)
-	.tickSize(-360)
-	.tickFormat("");
 
 	calendar.append("g")
 	.call(yAxis)
-	.attr("transform","translate(35,25)");
-	
-	calendar.append("g")
-	.attr("class","grid")
-	.attr("transform", "translate(35,25)")
-	.call(xGrid);
+	.attr("transform","translate(52.5,40)");
 
 	opacityWaypoint();
 	makeWaypoint1();
 	makeWaypoint2();
 	makeWaypoint3();
 	makeWaypoint4();
+
+	windowResize();
 }
 
 function windowResize(){
-	d3.select("#calendar").style("width",0.3*document.getElementById("contentWrapper").getBoundingClientRect().width)
-	.style("margin-left",0.1*document.getElementById("contentWrapper").getBoundingClientRect().width)
-	.style("margin-right",0.1*document.getElementById("contentWrapper").getBoundingClientRect().width)
-	.style("top",(window.innerHeight/2)-(document.getElementById('calendar').clientHeight/2))
+	d3.select("#calendarContainer").style("width",0.3*document.getElementById("contentWrapper").getBoundingClientRect().width)
+	.style("margin-left",0.125*document.getElementById("contentWrapper").getBoundingClientRect().width)
+	.style("margin-right",0.125*document.getElementById("contentWrapper").getBoundingClientRect().width)
+	.style("top",(window.innerHeight/2)-(document.getElementById('calendarContainer').clientHeight/2))
 	.style("left",document.getElementById('contentWrapper').getBoundingClientRect().left);
-
+	placeImages();
 }
 
 window.onresize = windowResize;
-windowResize();

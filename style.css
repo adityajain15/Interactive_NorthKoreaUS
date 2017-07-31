@@ -11,7 +11,7 @@ del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
 b, u, i, center,
 dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
+fieldset, form, label,
 table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed, 
 figure, figcaption, footer, header, hgroup, 
@@ -84,21 +84,27 @@ p{
 	border-left:0px solid #E8336D;
 	background: white;
 	opacity: 0.3;
+	width: 80%;
 }
 
 #textWrapper{
-	margin-left: 50%;
-	margin-right: 10%;
+	margin-left: 55%;
+	margin-right: 5%;
     width: 40%;
     position: relative;
     box-sizing: border-box;
 }
 
-#calendar{
+#calendarContainer{
 	display: block;
     position: fixed;
     background: white;
     z-index: 5;
+    font-family: "Helvetica Neue";
+}
+
+.tick text{
+	shape-rendering:crispEdges;
 }
 
 .rightImage{
@@ -239,4 +245,42 @@ h2{
 
 text.title {
 	font-size: 3.2em;
+}
+
+.legendboxContainer{
+	margin-right: auto;
+	margin-left: auto;
+	width: 80%;
+}
+
+.legendText{
+	font-family: "Helvetica Neue";
+	font-size:10px;
+	display: inline-block;
+	text-align: center;
+}
+
+#legend{
+	margin-bottom: 15px;
+	margin-top: 15px;
+}
+
+#negoLegend{
+	text-align: center;
+	width: 30%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#provLegend{
+	text-align: center;
+	width: 30%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.legendBox{
+	width: 15px;
+	height: 15px;
+	display: inline-block;
 }
