@@ -234,17 +234,43 @@ h2{
 	fill: var(--annotation-color);
 }
 
+.annotation-connector path{
+	stroke-width:1px;
+}
+
+.annotation-note path{
+	stroke-width:1px;
+}
+
+.keyevents .annotation-subject{
+	stroke-dasharray:9;
+  	animation: slidein 5s infinite linear;
+}
+
+@keyframes slidein{
+	from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .annotation-note-bg {
 	fill: white;
 }
 
 .annotation-note-title, text.title {
-	font-weight: bold;
-	font-size: 3.2em;
+	font-size: 11px;
+}
+
+.annotation-note-label{
+	font-size: 12px;
 }
 
 text.title {
-	font-size: 3.2em;
+	font-size: 12px;
 }
 
 .legendboxContainer{
@@ -256,8 +282,7 @@ text.title {
 .legendText{
 	font-family: "Helvetica Neue";
 	font-size:10px;
-	display: inline-block;
-	text-align: center;
+	width: 100%;
 }
 
 #legend{
@@ -266,21 +291,29 @@ text.title {
 }
 
 #negoLegend{
-	text-align: center;
-	width: 30%;
+
+
 	margin-left: auto;
 	margin-right: auto;
 }
 
 #provLegend{
-	text-align: center;
-	width: 30%;
+
+
 	margin-left: auto;
 	margin-right: auto;
 }
 
 .legendBox{
-	width: 15px;
-	height: 15px;
+	width: 10px;
+	height: 10px;
 	display: inline-block;
+}
+
+.provocationColor{
+	color: rgb(203, 24, 29);
+}
+
+.negotiationColor{
+	color: rgb(33, 113, 181);
 }

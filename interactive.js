@@ -34,7 +34,7 @@ function makeStuff(error,data){
 	.domain([0,NegoMax])
 	.range(["#eff3ff", "#bdd7e7", "#6baed6","#2171b5"]);
 
-	calendar.append("g").attr("class","rows").selectAll('g')
+	calendar.append("g").attr("id","rows").selectAll('g')
 	.data(theData)
 	.enter()
 	.append("g")
@@ -178,7 +178,10 @@ function makeStuff(error,data){
 	makeWaypoint2();
 	makeWaypoint3();
 	makeWaypoint4();
-
+	makeWaypoint5();
+	makeWaypoint6();
+	makeWaypoint7();
+	makeWaypoint8();
 	windowResize();
 }
 
