@@ -13,6 +13,21 @@ function placeImages(){
 	});
 }
 
+function displayAll(){
+	var g = d3.transition().duration(500).ease(d3.easeQuadInOut);
+
+	d3.selectAll(".nego")
+		.style("display",null)
+		.transition(g)
+		.style("fill-opacity",1);
+
+//.filter(function(d){return d.Year>1992})
+	d3.selectAll(".prov")
+		.style("display",null)	
+		.transition(g)
+		.style("fill-opacity",1);
+}
+
 function action1on(){
 	const type = d3.annotationCalloutRect;
 	const annotations = [{
@@ -263,98 +278,74 @@ function action4off(){
 }
 
 function action5on(){
+
+	d3.selectAll(".keyevents").remove();
 	var g = d3.transition().duration(500).ease(d3.easeQuadInOut);
 
 	d3.selectAll(".nego")
-		.filter(function(d){return d.Year<1990||d.Year>1992})
-		.transition(g)
-		.style("fill-opacity",0)
-		.on("end", function(){d3.select(this).style("display","none")});
+		.select(function(d){
+			if(d.Year<1990||d.Year>1993||(d.Year==1993&&d.Month!=="Jan")){
+				d3.select(this)
+				.transition(g)
+				.style("fill-opacity",0)
+				.on("end", function(){d3.select(this).style("display","none")});
+			}else{
+				d3.select(this)
+				.style("display",null)
+				.transition(g)
+				.style("fill-opacity",1);
+			}
+		});
 
-//.filter(function(d){return d.Year>1992})
 	d3.selectAll(".prov")
-		.filter(function(d){return d.Year<1990||d.Year>1992})
-		.transition(g)
-		.style("fill-opacity",0)
-		.on("end", function(){d3.select(this).style("display","none")});
-}
-
-function action5off(){
-	var g = d3.transition().duration(500).ease(d3.easeQuadInOut);
-
-	d3.selectAll(".nego")
-		.style("display",null)
-		.transition(g)
-		.style("fill-opacity",1);
-
-//.filter(function(d){return d.Year>1992})
-	d3.selectAll(".prov")
-		.style("display",null)	
-		.transition(g)
-		.style("fill-opacity",1);
+		.select(function(d){
+			if(d.Year<1990||d.Year>1993||(d.Year==1993&&d.Month!=="Jan")){
+				d3.select(this)
+				.transition(g)
+				.style("fill-opacity",0)
+				.on("end", function(){d3.select(this).style("display","none")});
+			}else{
+				d3.select(this)
+				.style("display",null)
+				.transition(g)
+				.style("fill-opacity",1);
+			}
+		});
 }
 
 function action6on(){
-
 	d3.selectAll(".keyevents").remove();
-
 	var g = d3.transition().duration(500).ease(d3.easeQuadInOut);
 
 	d3.selectAll(".nego")
-		.filter(function(d){return d.Year<1992||d.Year>1994})
-		.transition(g)
-		.style("fill-opacity",0)
-		.on("end", function(){d3.select(this).style("display","none")});
-
-	d3.selectAll(".nego")
-		.filter(function(d){return d.Year>=1992&&d.Year<=1994})
-		.style("display",null)
-		.transition(g)
-		.style("fill-opacity",1);
-
-//.filter(function(d){return d.Year>1992})
-	d3.selectAll(".prov")
-		.filter(function(d){return d.Year<1992||d.Year>1994})
-		.transition(g)
-		.style("fill-opacity",0)
-		.on("end", function(){d3.select(this).style("display","none")});
+		.select(function(d){
+			if((d.Year==1993&&d.Month=="Jan")||d.Year<1993||d.Year>1994||(d.Year==1994&&(d.Month=="Jul"||d.Month=="Aug"||d.Month=="Sep"||d.Month=="Oct"||d.Month=="Nov"||d.Month=="Dec"))){
+				d3.select(this)
+				.transition(g)
+				.style("fill-opacity",0)
+				.on("end", function(){d3.select(this).style("display","none")});
+			}else{
+				d3.select(this)
+				.style("display",null)
+				.transition(g)
+				.style("fill-opacity",1);
+			}
+		});
 
 	d3.selectAll(".prov")
-		.filter(function(d){return d.Year>=1992&&d.Year<=1994})
-		.style("display",null)
-		.transition(g)
-		.style("fill-opacity",1);
-}
-
-function action6off(){
-	d3.selectAll(".keyevents").remove();
-
-	var g = d3.transition().duration(500).ease(d3.easeQuadInOut);
-
-	d3.selectAll(".nego")
-		.filter(function(d){return d.Year<1990||d.Year>1992})
-		.transition(g)
-		.style("fill-opacity",0)
-		.on("end", function(){d3.select(this).style("display","none")});
-
-	d3.selectAll(".nego")
-		.filter(function(d){return d.Year>=1990&&d.Year<=1992})
-		.style("display",null)
-		.transition(g)
-		.style("fill-opacity",1);
-
-//.filter(function(d){return d.Year>1992})
-	d3.selectAll(".prov")
-		.filter(function(d){return d.Year<1990||d.Year>1992})
-		.transition(g)
-		.style("fill-opacity",0)
-		.on("end", function(){d3.select(this).style("display","none")});
-
-	d3.selectAll(".prov")
-		.filter(function(d){return d.Year>=1990&&d.Year<=1992})
-		.style("display",null)
-		.transition(g)
-		.style("fill-opacity",1);
+		.select(function(d){
+			if((d.Year==1993&&d.Month=="Jan")||d.Year<1993||d.Year>1994||(d.Year==1994&&(d.Month=="Jul"||d.Month=="Aug"||d.Month=="Sep"||d.Month=="Oct"||d.Month=="Nov"||d.Month=="Dec"))){
+				d3.select(this)
+				.transition(g)
+				.style("fill-opacity",0)
+				.on("end", function(){d3.select(this).style("display","none")});
+			}else{
+				d3.select(this)
+				.style("display",null)
+				.transition(g)
+				.style("fill-opacity",1);
+			}
+		});
 }
 
 function action7on(){
@@ -368,7 +359,7 @@ function action7on(){
 
 	const annotations = [{
 	note: {
-    title: "Geneva Agreed Framework Signed"
+    title: "1. Geneva Agreed Framework Signed"
   },
   dx:-120,
   dy:-15,
@@ -382,7 +373,7 @@ function action7on(){
 	},
 	{
 	note: {
-    title: "KEDO Light Water Reactor Agreement Signed"
+    title: "2. KEDO Light Water Reactor Agreement Signed"
   },
   dx:-15,
   dy:-38,
@@ -397,10 +388,10 @@ function action7on(){
 
 	const annotations2 = [{
 	note: {
-    title: "Four Party Talks collapse"
+    title: "4. Four Party Talks collapse"
   },
-  dx:-20,
-  dy:150,
+  dx:-30,
+  dy:100,
 	data:{
 		month: "Aug", year: 1999
 	},
@@ -411,7 +402,7 @@ function action7on(){
 	},
 	{
 	note: {
-    title: "Four Party Talks begin"
+    title: "3. Four Party Talks begin"
   },
   dx:-15,
   dy:90,
@@ -462,29 +453,34 @@ const makeAnnotations2 = d3.annotation()
 	var g = d3.transition().duration(500).ease(d3.easeQuadInOut);
 
 	d3.selectAll(".nego")
-		.filter(function(d){return d.Year<1994||d.Year>=2001})
-		.transition(g)
-		.style("fill-opacity",0)
-		.on("end", function(){d3.select(this).style("display","none")});
-
-	d3.selectAll(".nego")
-		.filter(function(d){return d.Year>=1994&&d.Year<2001})
-		.style("display",null)
-		.transition(g)
-		.style("fill-opacity",1);
-
-//.filter(function(d){return d.Year>1992})
-	d3.selectAll(".prov")
-		.filter(function(d){return d.Year<1994||d.Year>=2001})
-		.transition(g)
-		.style("fill-opacity",0)
-		.on("end", function(){d3.select(this).style("display","none")});
+		.select(function(d){
+			if(d.Year<1994||d.Year>2001||(d.Year==2001&&d.Month!=="Jan")||(d.Year==1994&&(d.Month=="Jan"||d.Month=="Feb"||d.Month=="Mar"||d.Month=="Apr"||d.Month=="May"||d.Month=="Jun"))){
+				d3.select(this)
+				.transition(g)
+				.style("fill-opacity",0)
+				.on("end", function(){d3.select(this).style("display","none")});
+			}else{
+				d3.select(this)
+				.style("display",null)
+				.transition(g)
+				.style("fill-opacity",1);
+			}
+		});
 
 	d3.selectAll(".prov")
-		.filter(function(d){return d.Year>=1994&&d.Year<2001})
-		.style("display",null)
-		.transition(g)
-		.style("fill-opacity",1);
+		.select(function(d){
+			if(d.Year<1994||d.Year>2001||(d.Year==2001&&d.Month!=="Jan")||(d.Year==1994&&(d.Month=="Jan"||d.Month=="Feb"||d.Month=="Mar"||d.Month=="Apr"||d.Month=="May"||d.Month=="Jun"))){
+				d3.select(this)
+				.transition(g)
+				.style("fill-opacity",0)
+				.on("end", function(){d3.select(this).style("display","none")});
+			}else{
+				d3.select(this)
+				.style("display",null)
+				.transition(g)
+				.style("fill-opacity",1);
+			}
+		});
 }
 
 function action8on(){
@@ -498,10 +494,10 @@ function action8on(){
 
 	const annotations = [{
 	note: {
-    title: "North Korea admits HEU program"
+    title: "1. North Korea admits HEU program"
   },
   dx:-15,
-  dy:-65,
+  dy:-100,
 	data:{
 		month: "Oct", year: 2002
 	},
@@ -512,7 +508,7 @@ function action8on(){
 	},
 	{
 	note: {
-    title: "Six Party Talks Begin"
+    title: "4. Six Party Talks Begin"
   },
   dx:-15,
   dy:-50,
@@ -526,7 +522,7 @@ function action8on(){
 	},
 	{
 	note: {
-    title: "KEDO heavy fuel oil shipments suspended"
+    title: "2. KEDO heavy fuel oil shipments suspended"
   },
   dx:-15,
   dy:-140,
@@ -540,10 +536,10 @@ function action8on(){
 	},
 	{
 	note: {
-    title: "North Korea announces withdrawal from NPT"
+    title: "3. North Korea announces withdrawal from NPT"
   },
   dx:15,
-  dy:-115,
+  dy:-75,
 	data:{
 		month: "Jan", year: 2003
 	},
@@ -555,10 +551,10 @@ function action8on(){
 
 	const annotations2 = [{
 	note: {
-    title: "Six Party Talks Joint Statement Implementation"
+    title: "7. Six Party Talks Joint Statement Implementation"
   },
   nx:15,
-  ny:32,
+  ny:95,
 	data:{
 		month: "Feb", year: 2007
 	},
@@ -568,7 +564,7 @@ function action8on(){
 	 }
 	},{
 	note: {
-    title: "Six Party Talks collapse"
+    title: "8. Six Party Talks collapse"
   },
   nx:-1,
   ny:110,
@@ -582,10 +578,10 @@ function action8on(){
 	},
 	{
 	note: {
-    title: "Six Party Talks Joint Statement"
+    title: "5. Six Party Talks Joint Statement"
   },
   dx:-15,
-  dy:100,
+  dy:62,
 	data:{
 		month: "Sep", year: 2005
 	},
@@ -596,10 +592,10 @@ function action8on(){
 	},
 	{
 	note: {
-    title: "KEDO Project Terminated"
+    title: "6. KEDO Project Terminated"
   },
   dx:-1,
-  dy:125,
+  dy:100,
 	data:{
 		month: "Nov", year: 2005
 	},
@@ -656,27 +652,183 @@ const makeAnnotations2 = d3.annotation()
 	var g = d3.transition().duration(500).ease(d3.easeQuadInOut);
 
 	d3.selectAll(".nego")
-		.filter(function(d){return d.Year<2001||d.Year>2008})
-		.transition(g)
-		.style("fill-opacity",0)
-		.on("end", function(){d3.select(this).style("display","none")});
+		.select(function(d){
+			if(d.Year<2001||d.Year>2009||(d.Year==2009&&d.Month!=="Jan")){
+				d3.select(this)
+				.transition(g)
+				.style("fill-opacity",0)
+				.on("end", function(){d3.select(this).style("display","none")});
+			}else{
+				d3.select(this)
+				.style("display",null)
+				.transition(g)
+				.style("fill-opacity",1);
+			}
+		});
+
+	d3.selectAll(".prov")
+		.select(function(d){
+			if(d.Year<2001||d.Year>2009||(d.Year==2009&&d.Month!=="Jan")){
+				d3.select(this)
+				.transition(g)
+				.style("fill-opacity",0)
+				.on("end", function(){d3.select(this).style("display","none")});
+			}else{
+				d3.select(this)
+				.style("display",null)
+				.transition(g)
+				.style("fill-opacity",1);
+			}
+		});
+}
+
+function action9on(){
+	d3.selectAll(".keyevents").remove();
+
+	var g = d3.transition().duration(500).ease(d3.easeQuadInOut);
 
 	d3.selectAll(".nego")
-		.filter(function(d){return d.Year>=2001&&d.Year<=2008})
-		.style("display",null)
-		.transition(g)
-		.style("fill-opacity",1);
+		.select(function(d){
+			if(d.Year<2009||d.Year>2011||(d.Year==2009&&d.Month=="Jan")){
+				d3.select(this)
+				.transition(g)
+				.style("fill-opacity",0)
+				.on("end", function(){d3.select(this).style("display","none")});
+			}else{
+				d3.select(this)
+				.style("display",null)
+				.transition(g)
+				.style("fill-opacity",1);
+			}
+		});
 
-//.filter(function(d){return d.Year>1992})
 	d3.selectAll(".prov")
-		.filter(function(d){return d.Year<2001||d.Year>2008})
-		.transition(g)
-		.style("fill-opacity",0)
-		.on("end", function(){d3.select(this).style("display","none")});
+		.select(function(d){
+			if(d.Year<2009||d.Year>2011||(d.Year==2009&&d.Month=="Jan")){
+				d3.select(this)
+				.transition(g)
+				.style("fill-opacity",0)
+				.on("end", function(){d3.select(this).style("display","none")});
+			}else{
+				d3.select(this)
+				.style("display",null)
+				.transition(g)
+				.style("fill-opacity",1);
+			}
+		});
+}
+
+function action10on(){
+	d3.selectAll(".keyevents").remove();
+
+	const type = d3.annotationCustomType(
+  d3.annotationCalloutCircle, 
+  {"className":"custom",
+    "connector":{"type":"elbow"},
+    "note":{"lineType":"horizontal"}})
+
+	const annotations = [{
+	note: {
+    title: "Leap Day Agreement"
+  },
+  dx:15,
+  dy:-65,
+	data:{
+		month: "Feb", year: 2012
+	},
+	  subject: {
+	radius: 14,
+	radiusPadding: 1,
+	 }
+	}];
+
+	var xScale =  d3.scaleBand()
+	.domain(["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"])
+	.range([0, 360]);
+
+	var yScale =  d3.scaleLinear()
+	.domain([1990,2017])
+	.range([0, 405]);
+
+	const makeAnnotations = d3.annotation()
+	  .editMode(false)
+	  .type(type)
+	   .accessors({
+    x: d => xScale(d.month)+60,
+    y: d => yScale(d.year)+47.5
+  }).notePadding(-2).textWrap(168).annotations(annotations);
+
+	d3.select("svg")
+	  .append("g")
+	  .attr("class", "keyevents")
+	  .call(makeAnnotations)
+
+
+	var g = d3.transition().duration(500).ease(d3.easeQuadInOut);
+
+	d3.selectAll(".nego")
+		.select(function(d){
+			if(d.Year<2012||(d.Year==2017&&d.Month!=="Jan")){
+				d3.select(this)
+				.transition(g)
+				.style("fill-opacity",0)
+				.on("end", function(){d3.select(this).style("display","none")});
+			}else{
+				d3.select(this)
+				.style("display",null)
+				.transition(g)
+				.style("fill-opacity",1);
+			}
+		});
 
 	d3.selectAll(".prov")
-		.filter(function(d){return d.Year>=2001&&d.Year<=2008})
-		.style("display",null)
-		.transition(g)
-		.style("fill-opacity",1);
+		.select(function(d){
+			if(d.Year<2012||(d.Year==2017&&d.Month!=="Jan")){
+				d3.select(this)
+				.transition(g)
+				.style("fill-opacity",0)
+				.on("end", function(){d3.select(this).style("display","none")});
+			}else{
+				d3.select(this)
+				.style("display",null)
+				.transition(g)
+				.style("fill-opacity",1);
+			}
+	});
+}
+
+function action11on(){
+	d3.selectAll(".keyevents").remove();
+
+	var g = d3.transition().duration(500).ease(d3.easeQuadInOut);
+
+	d3.selectAll(".nego")
+		.select(function(d){
+			if(d.Year<2017||(d.Year==2017&&d.Month=="Jan")){
+				d3.select(this)
+				.transition(g)
+				.style("fill-opacity",0)
+				.on("end", function(){d3.select(this).style("display","none")});
+			}else{
+				d3.select(this)
+				.style("display",null)
+				.transition(g)
+				.style("fill-opacity",1);
+			}
+		});
+
+	d3.selectAll(".prov")
+		.select(function(d){
+			if(d.Year<2017||(d.Year==2017&&d.Month=="Jan")){
+				d3.select(this)
+				.transition(g)
+				.style("fill-opacity",0)
+				.on("end", function(){d3.select(this).style("display","none")});
+			}else{
+				d3.select(this)
+				.style("display",null)
+				.transition(g)
+				.style("fill-opacity",1);
+			}
+	});
 }

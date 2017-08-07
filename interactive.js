@@ -3,6 +3,7 @@
 var q = d3.queue()
     .defer(d3.csv, "USKoreaData.csv")
     .defer(d3.csv, "Negotiations.csv")
+    .defer(d3.csv, "Provocations.csv")
     .awaitAll(makeStuff);
 
 var calendar = d3.select("#calendar");
@@ -13,6 +14,7 @@ function makeStuff(error,data){
 
 	var theData = data[0];
 	var negoData = data[1];
+	var provData = data[2];
 
 	var NegoMax = 0;
 	var ProvMax = 0;
@@ -43,14 +45,13 @@ function makeStuff(error,data){
 
 	d3.selectAll(".row")
 	.append("rect")
-	.attr("class","box nego")
 	.attr("x",function(d,i){return ((30*i)%360)})
 	.attr("y",function(d,i){return (15*Math.floor(i/12))})
 	.attr('width','15')
 	.attr('height','15')
 	.attr('Year',function(d){return d.Year;})
 	.attr('Month',function(d){return d.Month;})
-	.attr("fill",function(d){if(d.Nego==0){return "white"} else return negoColor(d.Nego)})
+	.attr("fill",function(d){if(d.Nego==0){return "white"} else{d3.select(this).attr("class","nego box");return negoColor(d.Nego)}})
 	.on("mouseenter",function(d){
 		
 		if(d3.select(this).style("fill")!=="rgb(255, 255, 255)"){
@@ -93,15 +94,20 @@ function makeStuff(error,data){
 						partyBox.append("span").attr("class","leaderName").text(leaderString[j]);
 						partyBox.append("span").attr("class","nationName").text(nationString[j]);;
 					}
-
-					
-
-
 				}
 				d3.select("#tooltip")
 				.style("display","block")
-				.style("top",this.getBoundingClientRect().top+20)
-				.style("left",this.getBoundingClientRect().left+20);
+				
+				if((this.getBoundingClientRect().top+20+document.getElementById('tooltip').clientHeight)>window.innerHeight){
+					d3.select("#tooltip")
+					.style("top",window.innerHeight-document.getElementById('tooltip').clientHeight-20)
+					.style("left",this.getBoundingClientRect().left+20);
+				}
+				else{
+					d3.select("#tooltip")
+					.style("top",this.getBoundingClientRect().top+20)
+					.style("left",this.getBoundingClientRect().left+20);
+				}
 			}
 		}
 	})
@@ -125,14 +131,80 @@ function makeStuff(error,data){
 
 	d3.selectAll(".row")
 	.append("rect")
-	.attr("class","box prov")
 	.attr('width','15')
 	.attr('height','15')
 	.attr('data',function(d){return d.Year;})
 	.attr("x",function(d,i){return (15+(30*i)%360)})
 	.attr("y",function(d,i){return (15*Math.floor(i/12))})
-	.attr("fill",function(d){if(d.Prov==0){return "white"} else return provColor(d.Prov)})
-	.text(function(d){return d.Prov;})
+	.attr("fill",function(d){if(d.Prov==0){return "white"} else {d3.select(this).attr("class","prov box");return provColor(d.Prov)}})
+	.on("mouseenter",function(d){
+		
+		if(d3.select(this).style("fill")!=="rgb(255, 255, 255)"){
+			d3.select(this)
+			.style("stroke","#E8336D")
+			.style("stroke-width","2px")
+			.style("stroke-dasharray","60");
+			
+			this.parentNode.parentNode.appendChild(this.parentNode);
+			this.parentNode.appendChild(this);
+
+			var localProvData = provData.filter(function(w){return ((w.Year==d.Year)&&(w.Month==d.Month))});
+
+			if(localProvData.length!=0){
+				d3.select("#tooltipHeader")
+					.text(localProvData.length+(localProvData.length==1?" Provocations":" Provocations")+" during "+d.Year);
+				for(let i=0;i<localProvData.length;i++)
+				{
+					let provBox = d3.select("#tooltip")
+					.append("div")
+					.attr("class","tooltipNegotiation");
+
+					provBox
+					.append("span")
+					.attr("class","tooltipType")
+					.text(localProvData[i]['Event Type']);
+
+					provBox
+					.append("p")
+					.attr("class","tooltipDescription")
+					.text(localProvData[i]['Description']);
+				}
+
+				d3.select("#tooltip")
+				.style("display","block");
+
+
+
+				if((this.getBoundingClientRect().top+20+document.getElementById('tooltip').clientHeight)>window.innerHeight){
+					d3.select("#tooltip")
+					.style("top",window.innerHeight-document.getElementById('tooltip').clientHeight-20)
+					.style("left",this.getBoundingClientRect().left+20);
+				}
+				else{
+					d3.select("#tooltip")
+					.style("top",this.getBoundingClientRect().top+20)
+					.style("left",this.getBoundingClientRect().left+20);
+				}
+			}
+		}
+	})
+	.on("mouseleave",function(){
+		var firstChild = this.parentNode.parentNode.firstChild; 
+        if(firstChild){ 
+        	this.parentNode.parentNode.insertBefore(this.parentNode, firstChild); 
+		} 
+		firstChild = this.parentNode.firstChild; 
+		if(firstChild){ 
+        	this.parentNode.insertBefore(this, firstChild); 
+		} 
+		d3.select(this)
+		.style("stroke",null)
+		.style("stroke-width",null)
+		.style("stroke-dasharray"," 0,60");
+
+		d3.select("#tooltip").style("display","none");
+		d3.selectAll(".tooltipNegotiation").remove();
+	})
 
 	var xScale =  d3.scaleBand()
 	.domain(["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"])
@@ -182,6 +254,10 @@ function makeStuff(error,data){
 	makeWaypoint6();
 	makeWaypoint7();
 	makeWaypoint8();
+	makeWaypoint9();
+	makeWaypoint10();
+	makeWaypoint11();
+	makeWaypoint12();
 	windowResize();
 }
 

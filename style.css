@@ -209,15 +209,6 @@ h2{
     opacity: 0.3;
 }
 
-.nego{
-	stroke-dasharray: 0,45;
-}
-
-.prov{
-	stroke-dasharray: 0,45;
-}
-
-
 :root {
 	--annotation-color: #E8336D;
 }
@@ -257,7 +248,7 @@ h2{
   }
 }
 
-.annotation-note-bg {
+.annotation-note-content rect{
 	fill: white;
 }
 
@@ -282,7 +273,9 @@ text.title {
 .legendText{
 	font-family: "Helvetica Neue";
 	font-size:10px;
-	width: 100%;
+	display: inline-block;
+    width: 80%;
+	text-rendering: optimizeLegibility;
 }
 
 #legend{
@@ -291,17 +284,19 @@ text.title {
 }
 
 #negoLegend{
-
-
+	display: inline-block;
 	margin-left: auto;
 	margin-right: auto;
 }
 
 #provLegend{
-
-
+	display: inline-block;
 	margin-left: auto;
 	margin-right: auto;
+}
+
+.box:hover{
+	cursor: pointer;
 }
 
 .legendBox{
