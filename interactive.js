@@ -11,6 +11,8 @@ var calendar = d3.select("#calendar");
 var makeAnnotations;
 var negoData;
 function makeStuff(error,data){
+	console.log(error);
+	console.log(data);
 
 	var theData = data[0];
 	var negoData = data[1];
