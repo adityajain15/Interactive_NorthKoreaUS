@@ -28,6 +28,233 @@ function displayAll(){
 		.style("fill-opacity",1);
 }
 
+function attachNegotiationEvents(d){
+	if(d3.select(this).style("fill")!=="rgb(255, 255, 255)"){
+		d3.select(this)
+		.style("stroke","#E8336D")
+		.style("stroke-width","2px")
+		.style("stroke-dasharray","60");
+		
+		this.parentNode.parentNode.appendChild(this.parentNode);
+		this.parentNode.appendChild(this);
+
+		var localNegoData = negoData.filter(function(w){return ((w.Year==d.Year)&&(w.Month==d.Month))});
+
+		if(localNegoData.length!=0){
+			d3.select("#tooltipHeader")
+				.text(localNegoData.length+(localNegoData.length==1?" Negotation":" Negotations")+" during "+d.Year);
+			for(let i=0;i<localNegoData.length;i++)
+			{
+				let negoBox = d3.select("#tooltip")
+				.append("div")
+				.attr("class","tooltipNegotiation");
+
+				negoBox
+				.append("span")
+				.attr("class","tooltipType")
+				.text(localNegoData[i]['Event Type']);
+
+				negoBox
+				.append("p")
+				.attr("class","tooltipDescription")
+				.text(localNegoData[i]['Description']);
+
+				var partyBox = negoBox.append("div").attr("class","tooltipParties");
+
+				var nationString = localNegoData[i]['Parties Involved'].split(',');
+				var leaderString = localNegoData[i]['Leadership'].split(',');
+
+				for(var j=0;j<leaderString.length;j++){
+					partyBox.append("span").attr("class","leaderName").text(leaderString[j]);
+					partyBox.append("span").attr("class","nationName").text(nationString[j]);;
+				}
+			}
+			d3.select("#tooltip")
+			.style("display","block")
+			
+			if((this.getBoundingClientRect().top+20+document.getElementById('tooltip').clientHeight)>window.innerHeight){
+				d3.select("#tooltip")
+				.style("top",window.innerHeight-document.getElementById('tooltip').clientHeight-20)
+				.style("left",this.getBoundingClientRect().left+20);
+			}
+			else{
+				d3.select("#tooltip")
+				.style("top",this.getBoundingClientRect().top+20)
+				.style("left",this.getBoundingClientRect().left+20);
+			}
+		}
+	}
+}
+
+function removeNegotiationEvents(){
+	var firstChild = this.parentNode.parentNode.firstChild; 
+    if(firstChild){ 
+    	this.parentNode.parentNode.insertBefore(this.parentNode, firstChild); 
+	} 
+	firstChild = this.parentNode.firstChild; 
+	if(firstChild){ 
+    	this.parentNode.insertBefore(this, firstChild); 
+	} 
+	d3.select(this)
+	.style("stroke",null)
+	.style("stroke-width",null)
+	.style("stroke-dasharray"," 0,60");
+
+	d3.select("#tooltip").style("display","none");
+	d3.selectAll(".tooltipNegotiation").remove();
+}
+
+function attachProvocationEvents(d){
+	if(d3.select(this).style("fill")!=="rgb(255, 255, 255)"){
+				d3.select(this)
+				.style("stroke","#E8336D")
+				.style("stroke-width","2px")
+				.style("stroke-dasharray","60");
+				
+				this.parentNode.parentNode.appendChild(this.parentNode);
+				this.parentNode.appendChild(this);
+
+				var localProvData = provData.filter(function(w){return ((w.Year==d.Year)&&(w.Month==d.Month))});
+
+				if(localProvData.length!=0){
+					d3.select("#tooltipHeader")
+						.text(localProvData.length+(localProvData.length==1?" Provocations":" Provocations")+" during "+d.Year);
+					for(let i=0;i<localProvData.length;i++)
+					{
+						let provBox = d3.select("#tooltip")
+						.append("div")
+						.attr("class","tooltipNegotiation");
+
+						provBox
+						.append("span")
+						.attr("class","tooltipType")
+						.text(localProvData[i]['Event Type']);
+
+						provBox
+						.append("p")
+						.attr("class","tooltipDescription")
+						.text(localProvData[i]['Description']);
+					}
+
+					d3.select("#tooltip")
+					.style("display","block");
+
+
+
+					if((this.getBoundingClientRect().top+20+document.getElementById('tooltip').clientHeight)>window.innerHeight){
+						d3.select("#tooltip")
+						.style("top",window.innerHeight-document.getElementById('tooltip').clientHeight-20)
+						.style("left",this.getBoundingClientRect().left+20);
+					}
+					else{
+						d3.select("#tooltip")
+						.style("top",this.getBoundingClientRect().top+20)
+						.style("left",this.getBoundingClientRect().left+20);
+					}
+				}
+			}
+}
+
+function removeProvocationEvents(){
+	var firstChild = this.parentNode.parentNode.firstChild; 
+	        if(firstChild){ 
+	        	this.parentNode.parentNode.insertBefore(this.parentNode, firstChild); 
+			} 
+			firstChild = this.parentNode.firstChild; 
+			if(firstChild){ 
+	        	this.parentNode.insertBefore(this, firstChild); 
+			} 
+			d3.select(this)
+			.style("stroke",null)
+			.style("stroke-width",null)
+			.style("stroke-dasharray"," 0,60");
+
+			d3.select("#tooltip").style("display","none");
+			d3.selectAll(".tooltipNegotiation").remove();
+}
+/*
+d3.selectAll(".nego")
+		.on("mouseenter",null)
+		.on("mouseleave",null)
+		.on("touchstart",function(d){
+			
+		})
+		.on("touchend",function(){
+			
+		});
+
+		d3.selectAll(".prov")
+		.on("mouseenter",null)
+		.on("mouseleave",null)
+		.on("touchstart",function(d){
+			if(d3.select(this).style("fill")!=="rgb(255, 255, 255)"){
+				d3.select(this)
+				.style("stroke","#E8336D")
+				.style("stroke-width","2px")
+				.style("stroke-dasharray","60");
+				
+				this.parentNode.parentNode.appendChild(this.parentNode);
+				this.parentNode.appendChild(this);
+
+				var localProvData = provData.filter(function(w){return ((w.Year==d.Year)&&(w.Month==d.Month))});
+
+				if(localProvData.length!=0){
+					d3.select("#tooltipHeader")
+						.text(localProvData.length+(localProvData.length==1?" Provocations":" Provocations")+" during "+d.Year);
+					for(let i=0;i<localProvData.length;i++)
+					{
+						let provBox = d3.select("#tooltip")
+						.append("div")
+						.attr("class","tooltipNegotiation");
+
+						provBox
+						.append("span")
+						.attr("class","tooltipType")
+						.text(localProvData[i]['Event Type']);
+
+						provBox
+						.append("p")
+						.attr("class","tooltipDescription")
+						.text(localProvData[i]['Description']);
+					}
+
+					d3.select("#tooltip")
+					.style("display","block");
+
+
+
+					if((this.getBoundingClientRect().top+20+document.getElementById('tooltip').clientHeight)>window.innerHeight){
+						d3.select("#tooltip")
+						.style("top",window.innerHeight-document.getElementById('tooltip').clientHeight-20)
+						.style("left",this.getBoundingClientRect().left+20);
+					}
+					else{
+						d3.select("#tooltip")
+						.style("top",this.getBoundingClientRect().top+20)
+						.style("left",this.getBoundingClientRect().left+20);
+					}
+				}
+			}
+		})
+		.on("touchend",function(){
+			var firstChild = this.parentNode.parentNode.firstChild; 
+	        if(firstChild){ 
+	        	this.parentNode.parentNode.insertBefore(this.parentNode, firstChild); 
+			} 
+			firstChild = this.parentNode.firstChild; 
+			if(firstChild){ 
+	        	this.parentNode.insertBefore(this, firstChild); 
+			} 
+			d3.select(this)
+			.style("stroke",null)
+			.style("stroke-width",null)
+			.style("stroke-dasharray"," 0,60");
+
+			d3.select("#tooltip").style("display","none");
+			d3.selectAll(".tooltipNegotiation").remove();
+		});
+*/
+
 function action1on(){
 	const type = d3.annotationCalloutRect;
 	const annotations = [{
@@ -832,3 +1059,5 @@ function action11on(){
 			}
 	});
 }
+
+

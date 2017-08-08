@@ -1,50 +1,63 @@
-function opacityWaypoint(){
-	var elements = document.getElementsByClassName("textpara");
-	Array.prototype.filter.call(elements, function(testElement){
-	    new Waypoint({
-			element: testElement,
-			handler: function(direction) {
-				if(direction==="down")
-				{
-					d3.select(testElement)
-					.transition()
-					.ease(d3.easeLinear)
-					.duration(150)
-					.style("opacity","0.3");
-				}
-				else{
-					d3.select(testElement)
-					.transition()
-					.ease(d3.easeLinear)
-					.duration(150)
-					.style("opacity","1");
-				}
-	
-			},
-			offset: (window.innerHeight/2)-testElement.clientHeight
-		});
-	});
+function opacityWaypoint(theOffset){
 
-	Array.prototype.filter.call(elements, function(testElement){
+	var elements = document.getElementsByClassName("textpara");
+	
+	Array.prototype.filter.call(elements, function(testElement,i){
+	    
 	    new Waypoint({
 			element: testElement,
 			handler: function(direction) {
-				if(direction==="down"){
-					d3.select(testElement)
-					.transition()
-					.ease(d3.easeLinear)
-					.duration(150)
-					.style("opacity","1");
+
+				if(i!==0){
+					if(direction==="down"){
+						d3.select(testElement)
+						.transition()
+						.duration(400)
+						.ease(d3.easeQuadInOut)
+						.style("opacity","1");
+
+						d3.select(elements[i-1])
+						.transition()
+						.duration(400)
+						.ease(d3.easeQuadInOut)
+						.style("opacity","0.3");
+					}
+					else{
+						d3.select(testElement)
+						.transition()
+						.duration(400)
+						.ease(d3.easeQuadInOut)
+						.style("opacity","0.3");
+
+						d3.select(elements[i-1])
+						.transition()
+						.duration(400)
+						.ease(d3.easeQuadInOut)
+						.style("opacity","1");
+					}
 				}
 				else{
-					d3.select(testElement)
-					.transition()
-					.ease(d3.easeLinear)
-					.duration(150)
-					.style("opacity","0.3");
+					if(direction==="down"){
+						d3.select(testElement)
+						.transition()
+						.duration(400)
+						.ease(d3.easeQuadInOut)
+						.style("opacity","1");
+					}
+					else{
+						d3.select(testElement)
+						.transition()
+						.duration(400)
+						.ease(d3.easeQuadInOut)
+						.style("opacity","0.3");
+					}
 				}
+
+
+
+				
 			},
-			offset: (window.innerHeight/2)
+			offset: theOffset
 		});
 	});
 

@@ -9,12 +9,14 @@ var q = d3.queue()
 var calendar = d3.select("#calendar");
 
 var makeAnnotations;
+var theData;
 var negoData;
+var provData;
 function makeStuff(error,data){
 
-	var theData = data[0];
-	var negoData = data[1];
-	var provData = data[2];
+	theData = data[0];
+	negoData = data[1];
+	provData = data[2];
 
 	var NegoMax = 0;
 	var ProvMax = 0;
@@ -51,83 +53,8 @@ function makeStuff(error,data){
 	.attr('height','15')
 	.attr('Year',function(d){return d.Year;})
 	.attr('Month',function(d){return d.Month;})
-	.attr("fill",function(d){if(d.Nego==0){return "white"} else{d3.select(this).attr("class","nego box");return negoColor(d.Nego)}})
-	.on("mouseenter",function(d){
-		
-		if(d3.select(this).style("fill")!=="rgb(255, 255, 255)"){
-			d3.select(this)
-			.style("stroke","#E8336D")
-			.style("stroke-width","2px")
-			.style("stroke-dasharray","60");
-			
-			this.parentNode.parentNode.appendChild(this.parentNode);
-			this.parentNode.appendChild(this);
-
-			var localNegoData = negoData.filter(function(w){return ((w.Year==d.Year)&&(w.Month==d.Month))});
-			console.log(localNegoData);
-
-			if(localNegoData.length!=0){
-				d3.select("#tooltipHeader")
-					.text(localNegoData.length+(localNegoData.length==1?" Negotation":" Negotations")+" during "+d.Year);
-				for(let i=0;i<localNegoData.length;i++)
-				{
-					let negoBox = d3.select("#tooltip")
-					.append("div")
-					.attr("class","tooltipNegotiation");
-
-					negoBox
-					.append("span")
-					.attr("class","tooltipType")
-					.text(localNegoData[i]['Event Type']);
-
-					negoBox
-					.append("p")
-					.attr("class","tooltipDescription")
-					.text(localNegoData[i]['Description']);
-
-					var partyBox = negoBox.append("div").attr("class","tooltipParties");
-
-					var nationString = localNegoData[i]['Parties Involved'].split(',');
-					var leaderString = localNegoData[i]['Leadership'].split(',');
-
-					for(var j=0;j<leaderString.length;j++){
-						partyBox.append("span").attr("class","leaderName").text(leaderString[j]);
-						partyBox.append("span").attr("class","nationName").text(nationString[j]);;
-					}
-				}
-				d3.select("#tooltip")
-				.style("display","block")
-				
-				if((this.getBoundingClientRect().top+20+document.getElementById('tooltip').clientHeight)>window.innerHeight){
-					d3.select("#tooltip")
-					.style("top",window.innerHeight-document.getElementById('tooltip').clientHeight-20)
-					.style("left",this.getBoundingClientRect().left+20);
-				}
-				else{
-					d3.select("#tooltip")
-					.style("top",this.getBoundingClientRect().top+20)
-					.style("left",this.getBoundingClientRect().left+20);
-				}
-			}
-		}
-	})
-	.on("mouseleave",function(){
-		var firstChild = this.parentNode.parentNode.firstChild; 
-        if(firstChild){ 
-        	this.parentNode.parentNode.insertBefore(this.parentNode, firstChild); 
-		} 
-		firstChild = this.parentNode.firstChild; 
-		if(firstChild){ 
-        	this.parentNode.insertBefore(this, firstChild); 
-		} 
-		d3.select(this)
-		.style("stroke",null)
-		.style("stroke-width",null)
-		.style("stroke-dasharray"," 0,60");
-
-		d3.select("#tooltip").style("display","none");
-		d3.selectAll(".tooltipNegotiation").remove();
-	})
+	.attr("fill",function(d){if(d.Nego==0){return "white"} else{d3.select(this).attr("class","nego box");return negoColor(d.Nego)}});
+	
 
 	d3.selectAll(".row")
 	.append("rect")
@@ -136,75 +63,19 @@ function makeStuff(error,data){
 	.attr('data',function(d){return d.Year;})
 	.attr("x",function(d,i){return (15+(30*i)%360)})
 	.attr("y",function(d,i){return (15*Math.floor(i/12))})
-	.attr("fill",function(d){if(d.Prov==0){return "white"} else {d3.select(this).attr("class","prov box");return provColor(d.Prov)}})
-	.on("mouseenter",function(d){
-		
-		if(d3.select(this).style("fill")!=="rgb(255, 255, 255)"){
-			d3.select(this)
-			.style("stroke","#E8336D")
-			.style("stroke-width","2px")
-			.style("stroke-dasharray","60");
-			
-			this.parentNode.parentNode.appendChild(this.parentNode);
-			this.parentNode.appendChild(this);
+	.attr("fill",function(d){if(d.Prov==0){return "white"} else {d3.select(this).attr("class","prov box");return provColor(d.Prov)}});
 
-			var localProvData = provData.filter(function(w){return ((w.Year==d.Year)&&(w.Month==d.Month))});
+	d3.selectAll(".nego")
+		.on("touchstart",function(d){attachNegotiationEvents.call(this,d)})
+		.on("touchend",function(d){removeNegotiationEvents.call(this)})
+		.on("mouseenter",function(d){attachNegotiationEvents.call(this,d)})
+		.on("mouseleave",function(d){removeNegotiationEvents.call(this)});
 
-			if(localProvData.length!=0){
-				d3.select("#tooltipHeader")
-					.text(localProvData.length+(localProvData.length==1?" Provocations":" Provocations")+" during "+d.Year);
-				for(let i=0;i<localProvData.length;i++)
-				{
-					let provBox = d3.select("#tooltip")
-					.append("div")
-					.attr("class","tooltipNegotiation");
-
-					provBox
-					.append("span")
-					.attr("class","tooltipType")
-					.text(localProvData[i]['Event Type']);
-
-					provBox
-					.append("p")
-					.attr("class","tooltipDescription")
-					.text(localProvData[i]['Description']);
-				}
-
-				d3.select("#tooltip")
-				.style("display","block");
-
-
-
-				if((this.getBoundingClientRect().top+20+document.getElementById('tooltip').clientHeight)>window.innerHeight){
-					d3.select("#tooltip")
-					.style("top",window.innerHeight-document.getElementById('tooltip').clientHeight-20)
-					.style("left",this.getBoundingClientRect().left+20);
-				}
-				else{
-					d3.select("#tooltip")
-					.style("top",this.getBoundingClientRect().top+20)
-					.style("left",this.getBoundingClientRect().left+20);
-				}
-			}
-		}
-	})
-	.on("mouseleave",function(){
-		var firstChild = this.parentNode.parentNode.firstChild; 
-        if(firstChild){ 
-        	this.parentNode.parentNode.insertBefore(this.parentNode, firstChild); 
-		} 
-		firstChild = this.parentNode.firstChild; 
-		if(firstChild){ 
-        	this.parentNode.insertBefore(this, firstChild); 
-		} 
-		d3.select(this)
-		.style("stroke",null)
-		.style("stroke-width",null)
-		.style("stroke-dasharray"," 0,60");
-
-		d3.select("#tooltip").style("display","none");
-		d3.selectAll(".tooltipNegotiation").remove();
-	})
+	d3.selectAll(".prov")
+		.on("touchstart",function(d){attachProvocationEvents.call(this,d)})
+		.on("touchend",function(d){removeProvocationEvents.call(this)})
+		.on("mouseenter",function(d){attachProvocationEvents.call(this,d)})
+		.on("mouseleave",function(d){removeProvocationEvents.call(this)});
 
 	var xScale =  d3.scaleBand()
 	.domain(["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"])
@@ -240,16 +111,17 @@ function makeStuff(error,data){
 	.ticks(27)
 	.tickSizeOuter(0);
 
-
 	calendar.append("g")
 	.call(yAxis)
 	.attr("transform","translate(52.5,40)");
-
+	
 	windowResize();
 }
 
 function windowResize(){
 	if(window.innerWidth>=1024){
+		Waypoint.destroyAll();
+
 		d3.select("#calendar")
 		.style("width",0.3*document.getElementById("contentWrapper").getBoundingClientRect().width)
 		.style("height",null);
@@ -270,7 +142,7 @@ function windowResize(){
 
 		d3.select("#legend").style("display",null);
 
-		opacityWaypoint();
+		opacityWaypoint(window.innerHeight/2);
 		makeWaypoint1();
 		makeWaypoint2();
 		makeWaypoint3();
@@ -284,9 +156,11 @@ function windowResize(){
 		makeWaypoint11();
 		makeWaypoint12();
 
-		placeImages();
+		//placeImages();
 	}
 	else{
+		Waypoint.destroyAll();
+
 		d3.select("#calendar")
 		.style("height","50%")
 		.style("width",null);
@@ -306,7 +180,7 @@ function windowResize(){
 		.style("margin-left","5%")
 		.style("margin-right","5%");
 
-		
+		opacityWaypoint(window.innerHeight*0.7);		
 	}
 }
 
