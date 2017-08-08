@@ -114,7 +114,7 @@ function makeStuff(error,data){
 	calendar.append("g")
 	.call(yAxis)
 	.attr("transform","translate(52.5,40)");
-	
+
 	windowResize();
 }
 
@@ -175,12 +175,24 @@ function windowResize(){
 		d3.select("#legend").style("display","none");
 
 		d3.select("#textWrapper")
-		.style("width","90%")
+		.style("width","100%")
 		.style("margin-top",document.getElementById('calendar').clientHeight)
-		.style("margin-left","5%")
-		.style("margin-right","5%");
+		.style("margin-left",0)
+		.style("margin-right",0);
 
-		opacityWaypoint(window.innerHeight*0.7);		
+		opacityWaypoint(window.innerHeight*0.7);
+		makeWaypoint1();
+		makeWaypoint2();
+		makeWaypoint3();
+		makeWaypoint4();
+		makeWaypoint5();
+		makeWaypoint6();
+		makeWaypoint7();
+		makeWaypoint8();
+		makeWaypoint9();
+		makeWaypoint10();
+		makeWaypoint11();
+		makeWaypoint12();		
 	}
 }
 
