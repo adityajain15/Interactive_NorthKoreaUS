@@ -245,19 +245,6 @@ function makeStuff(error,data){
 	.call(yAxis)
 	.attr("transform","translate(52.5,40)");
 
-	opacityWaypoint();
-	makeWaypoint1();
-	makeWaypoint2();
-	makeWaypoint3();
-	makeWaypoint4();
-	makeWaypoint5();
-	makeWaypoint6();
-	makeWaypoint7();
-	makeWaypoint8();
-	makeWaypoint9();
-	makeWaypoint10();
-	makeWaypoint11();
-	makeWaypoint12();
 	windowResize();
 }
 
@@ -282,6 +269,20 @@ function windowResize(){
 		.style("margin-right",null);
 
 		d3.select("#legend").style("display",null);
+
+		opacityWaypoint();
+		makeWaypoint1();
+		makeWaypoint2();
+		makeWaypoint3();
+		makeWaypoint4();
+		makeWaypoint5();
+		makeWaypoint6();
+		makeWaypoint7();
+		makeWaypoint8();
+		makeWaypoint9();
+		makeWaypoint10();
+		makeWaypoint11();
+		makeWaypoint12();
 
 		placeImages();
 	}
