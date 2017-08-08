@@ -262,12 +262,51 @@ function makeStuff(error,data){
 }
 
 function windowResize(){
-	d3.select("#calendarContainer").style("width",0.3*document.getElementById("contentWrapper").getBoundingClientRect().width)
-	.style("margin-left",0.125*document.getElementById("contentWrapper").getBoundingClientRect().width)
-	.style("margin-right",0.125*document.getElementById("contentWrapper").getBoundingClientRect().width)
-	.style("top",(window.innerHeight/2)-(document.getElementById('calendarContainer').clientHeight/2))
-	.style("left",document.getElementById('contentWrapper').getBoundingClientRect().left);
-	placeImages();
+	if(window.innerWidth>=1024){
+		d3.select("#calendar")
+		.style("width",0.3*document.getElementById("contentWrapper").getBoundingClientRect().width)
+		.style("height",null);
+
+		d3.select("#calendarContainer")
+		.style("width",d3.select("#calendar").style("width"))
+		.style("height",null)
+		.style("margin-left",0.125*document.getElementById("contentWrapper").getBoundingClientRect().width)
+		.style("margin-right",0.125*document.getElementById("contentWrapper").getBoundingClientRect().width)
+		.style("top",(window.innerHeight/2)-(document.getElementById('calendarContainer').clientHeight/2))
+		.style("left",document.getElementById('contentWrapper').getBoundingClientRect().left);
+
+		d3.select("#textWrapper")
+		.style("width",null)
+		.style("margin-top",null)
+		.style("margin-left",null)
+		.style("margin-right",null);
+
+		d3.select("#legend").style("display",null);
+
+		placeImages();
+	}
+	else{
+		d3.select("#calendar")
+		.style("height","50%")
+		.style("width",null);
+
+		d3.select("#calendarContainer")
+		.style("width",document.getElementById('calendar').clientWidth)
+		.style("margin-left",0.5*(window.innerWidth-document.getElementById('calendar').clientWidth))
+		.style("margin-right",0.5*(window.innerWidth-document.getElementById('calendar').clientWidth))
+		.style("top",0)
+		.style("left",0);
+
+		d3.select("#legend").style("display","none");
+
+		d3.select("#textWrapper")
+		.style("width","90%")
+		.style("margin-top",document.getElementById('calendar').clientHeight)
+		.style("margin-left","5%")
+		.style("margin-right","5%");
+
+		
+	}
 }
 
 window.onresize = windowResize;

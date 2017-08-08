@@ -280,7 +280,6 @@ text.title {
 
 #legend{
 	margin-bottom: 15px;
-	margin-top: 15px;
 }
 
 #negoLegend{
@@ -312,3 +311,5 @@ text.title {
 .negotiationColor{
 	color: rgb(33, 113, 181);
 }
+
+
