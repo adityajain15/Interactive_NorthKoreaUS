@@ -156,6 +156,9 @@ function windowResize(){
 		makeWaypoint11();
 		makeWaypoint12();
 
+		if(window.navigator.userAgent.includes("mobi")){
+			d3.select("body").style("background","green")
+		}
 		//placeImages();
 	}
 	else{
