@@ -115,11 +115,11 @@ function makeStuff(error,data){
 	.call(yAxis)
 	.attr("transform","translate(52.5,40)");
 
-	windowResize();
-
 	if(window.navigator.userAgent.includes("mobi")){
-			d3.select("body").style("background","green")
+			d3.select("body").style("background","green");
 	}
+
+	windowResize();
 }
 
 function windowResize(){
