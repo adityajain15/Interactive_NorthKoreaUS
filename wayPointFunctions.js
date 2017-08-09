@@ -83,11 +83,11 @@ waypointAction2 = new Waypoint({
 		element: document.getElementById('para2'),
 		handler: function(direction) {
 			if(direction==="down"){
-				action1off();
+				//action1off();
 				action2on();
 			}
 			else{
-				action1on();
+				//action1on();
 				action2off();
 			}
 		},

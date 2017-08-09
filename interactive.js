@@ -143,7 +143,7 @@ function windowResize(){
 		d3.select("#legend").style("display",null);
 
 		opacityWaypoint(window.innerHeight/2);
-		makeWaypoint1();
+		//makeWaypoint1();
 		makeWaypoint2();
 		makeWaypoint3();
 		makeWaypoint4();
@@ -181,7 +181,7 @@ function windowResize(){
 		.style("margin-right",0);
 
 		opacityWaypoint(window.innerHeight*0.7);
-		makeWaypoint1();
+		//makeWaypoint1();
 		makeWaypoint2();
 		makeWaypoint3();
 		makeWaypoint4();
