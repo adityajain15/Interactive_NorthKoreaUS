@@ -51,7 +51,8 @@ table {
 body{
 	background: #16222a; /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #16222a, #323232); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #16222a, #323232); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+     background: linear-gradient(to right, #feac5e, #c779d0, #4bc0c8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 #contentWrapper{
@@ -113,6 +114,7 @@ p{
 	object-position: 50% 50%;
 	object-fit: cover;
 	background-color: white;
+	left: -115px;
 }
 .leftImage{
 	position: absolute;
