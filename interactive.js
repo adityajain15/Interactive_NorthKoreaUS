@@ -115,10 +115,6 @@ function makeStuff(error,data){
 	.call(yAxis)
 	.attr("transform","translate(52.5,40)");
 
-	if(window.navigator.userAgent.includes("mobi")||window.navigator.userAgent.includes("Mobi")){
-			d3.select("body").style("background","green");
-	}
-
 	windowResize();
 }
 
@@ -198,5 +194,6 @@ function windowResize(){
 		makeWaypoint12();		
 	}
 }
-
-window.addEventListener('resize', _.debounce(windowResize, 150));
+if(!(window.navigator.userAgent.includes("mobi")||window.navigator.userAgent.includes("Mobi"))){
+	window.addEventListener('resize', _.debounce(windowResize, 150));
+}
