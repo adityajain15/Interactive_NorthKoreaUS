@@ -65,18 +65,6 @@ function makeStuff(error,data){
 	.attr("y",function(d,i){return (15*Math.floor(i/12))})
 	.attr("fill",function(d){if(d.Prov==0){return "white"} else {d3.select(this).attr("class","prov box");return provColor(d.Prov)}});
 
-	d3.selectAll(".nego")
-		.on("touchstart",function(d){attachNegotiationEvents.call(this,d)})
-		.on("touchend",function(d){removeNegotiationEvents.call(this)})
-		.on("mouseenter",function(d){attachNegotiationEvents.call(this,d)})
-		.on("mouseleave",function(d){removeNegotiationEvents.call(this)});
-
-	d3.selectAll(".prov")
-		.on("touchstart",function(d){attachProvocationEvents.call(this,d)})
-		.on("touchend",function(d){removeProvocationEvents.call(this)})
-		.on("mouseenter",function(d){attachProvocationEvents.call(this,d)})
-		.on("mouseleave",function(d){removeProvocationEvents.call(this)});
-
 	var xScale =  d3.scaleBand()
 	.domain(["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"])
 	.range([0, 360]);
@@ -115,6 +103,17 @@ function makeStuff(error,data){
 	.call(yAxis)
 	.attr("transform","translate(52.5,40)");
 
+	if(!(window.navigator.userAgent.includes("mobi")||window.navigator.userAgent.includes("Mobi"))){
+	window.addEventListener('resize', _.debounce(windowResize, 150));
+	d3.selectAll(".nego")
+		.on("mouseenter",function(d){attachNegotiationEvents.call(this,d)})
+		.on("mouseleave",function(d){removeNegotiationEvents.call(this)});
+
+	d3.selectAll(".prov")
+		.on("mouseenter",function(d){attachProvocationEvents.call(this,d)})
+		.on("mouseleave",function(d){removeProvocationEvents.call(this)});
+	}
+
 	windowResize();
 }
 
@@ -141,6 +140,14 @@ function windowResize(){
 		.style("margin-right",null);
 
 		d3.select("#legend").style("display",null);
+
+		d3.selectAll(".nego")
+			.on("touchstart",function(d){attachNegotiationEvents.call(this,d)})
+			.on("touchend",function(d){removeNegotiationEvents.call(this)})
+
+		d3.selectAll(".prov")
+			.on("touchstart",function(d){attachProvocationEvents.call(this,d)})
+			.on("touchend",function(d){removeProvocationEvents.call(this)})
 
 		opacityWaypoint(window.innerHeight/2);
 		//makeWaypoint1();
@@ -194,6 +201,4 @@ function windowResize(){
 		makeWaypoint12();		
 	}
 }
-if(!(window.navigator.userAgent.includes("mobi")||window.navigator.userAgent.includes("Mobi"))){
-	window.addEventListener('resize', _.debounce(windowResize, 150));
-}
+
