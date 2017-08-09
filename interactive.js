@@ -196,4 +196,4 @@ function windowResize(){
 	}
 }
 
-window.onresize = windowResize;
+window.addEventListener('resize', _.debounce(windowResize, 150));
