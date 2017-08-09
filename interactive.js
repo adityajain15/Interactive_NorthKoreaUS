@@ -161,7 +161,7 @@ function windowResize(){
 		Waypoint.destroyAll();
 
 		d3.select("#calendar")
-		.style("height",0.5*(window.innerWidth)) //important lesson here to not use 50% because it gives problems when mobile address bar is scrolled
+		.style("height",0.5*(window.innerHeight)) //important lesson here to not use 50% because it gives problems when mobile address bar is scrolled
 		.style("width",null);
 
 		d3.select("#calendarContainer")
