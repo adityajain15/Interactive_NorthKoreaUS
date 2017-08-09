@@ -115,7 +115,7 @@ function makeStuff(error,data){
 	.call(yAxis)
 	.attr("transform","translate(52.5,40)");
 
-	if(window.navigator.userAgent.includes("mobi")){
+	if(window.navigator.userAgent.includes("mobi")||window.navigator.userAgent.includes("Mobi")){
 			d3.select("body").style("background","green");
 	}
 
