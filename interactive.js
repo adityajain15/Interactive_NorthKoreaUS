@@ -177,7 +177,7 @@ function windowResize(){
 		.style("width","100%")
 		.style("margin-top",document.getElementById('calendar').clientHeight)
 		.style("margin-left",0)
-		.style("margin-right",0);g
+		.style("margin-right",0);
 
 		opacityWaypoint(window.innerHeight*0.7);
 		//makeWaypoint1();
