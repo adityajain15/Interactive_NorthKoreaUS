@@ -115,7 +115,25 @@ function makeStuff(error,data){
 	.call(yAxis)
 	.attr("transform","translate(52.5,40)");
 
+	makeWaypoint1();
+	makeWaypoint2();
+	makeWaypoint3();
+	makeWaypoint4();
+	makeWaypoint5();
+	makeWaypoint6();
+	makeWaypoint7();
+	makeWaypoint8();
+	makeWaypoint9();
+	makeWaypoint10();
+	makeWaypoint11();
+	makeWaypoint12();
+	opacityWaypoint(window.innerHeight*0.7);
+
 	windowResize();
+
+	if(window.navigator.userAgent.includes("mobi")){
+			d3.select("body").style("background","green")
+	}
 }
 
 function windowResize(){
@@ -142,23 +160,9 @@ function windowResize(){
 
 		d3.select("#legend").style("display",null);
 
-		opacityWaypoint(window.innerHeight/2);
-		//makeWaypoint1();
-		makeWaypoint2();
-		makeWaypoint3();
-		makeWaypoint4();
-		makeWaypoint5();
-		makeWaypoint6();
-		makeWaypoint7();
-		makeWaypoint8();
-		makeWaypoint9();
-		makeWaypoint10();
-		makeWaypoint11();
-		makeWaypoint12();
+		//opacityWaypoint(window.innerHeight/2);
+		
 
-		if(window.navigator.userAgent.includes("mobi")){
-			d3.select("body").style("background","green")
-		}
 		//placeImages();
 	}
 	else{
@@ -183,19 +187,7 @@ function windowResize(){
 		.style("margin-left",0)
 		.style("margin-right",0);
 
-		opacityWaypoint(window.innerHeight*0.7);
-		//makeWaypoint1();
-		makeWaypoint2();
-		makeWaypoint3();
-		makeWaypoint4();
-		makeWaypoint5();
-		makeWaypoint6();
-		makeWaypoint7();
-		makeWaypoint8();
-		makeWaypoint9();
-		makeWaypoint10();
-		makeWaypoint11();
-		makeWaypoint12();		
+		//opacityWaypoint(window.innerHeight*0.7);	
 	}
 }
 
