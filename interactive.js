@@ -161,7 +161,7 @@ function windowResize(){
 		Waypoint.destroyAll();
 
 		d3.select("#calendar")
-		.style("height","50%")
+		.style("height",0.5*(window.innerWidth)) //important lesson here to not use 50% because it gives problems when mobile address bar is scrolled
 		.style("width",null);
 
 		d3.select("#calendarContainer")
@@ -177,7 +177,7 @@ function windowResize(){
 		.style("width","100%")
 		.style("margin-top",document.getElementById('calendar').clientHeight)
 		.style("margin-left",0)
-		.style("margin-right",0);
+		.style("margin-right",0);g
 
 		opacityWaypoint(window.innerHeight*0.7);
 		//makeWaypoint1();
