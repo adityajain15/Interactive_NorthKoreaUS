@@ -285,7 +285,7 @@ function image1up(){
 	    	else{
 	    		d3.select("#dum1")
 	    		.style("top",(window.innerHeight/2)-(document.getElementById('calendarContainer').clientHeight/2))
-	    		.style("right",window.innerWidth-document.getElementById('dum1').getBoundingClientRect().right)
+	    		.style("right",(0.05*parseFloat(d3.select("#textWrapper").style("padding-right")))+(parseFloat(d3.select("#textWrapper").style("margin-right"))))
 	    		.style("position","fixed");
 	    	}
 	    },
@@ -299,7 +299,7 @@ function image2down(){
 	    handler: function(direction) {
 	    	if(direction==="down"){
     			d3.select("#dum2")
-    			.style("right",window.innerWidth-document.getElementById('dum2').getBoundingClientRect().right)
+    			.style("right",(0.05*parseFloat(d3.select("#textWrapper").style("padding-right")))+(parseFloat(d3.select("#textWrapper").style("margin-right"))))
     			.style("top",(window.innerHeight/2)-(document.getElementById('calendarContainer').clientHeight/2))
     			.style("position","fixed");
 
@@ -328,7 +328,7 @@ function image2up(){
 	    	else{
 	    		d3.select("#dum2")
 	    		.style("top",(window.innerHeight/2)-(document.getElementById('calendarContainer').clientHeight/2))
-	    		.style("right",window.innerWidth-document.getElementById('dum2').getBoundingClientRect().right)
+	    		.style("right",(0.05*parseFloat(d3.select("#textWrapper").style("padding-right")))+(parseFloat(d3.select("#textWrapper").style("margin-right"))))
 	    		.style("position","fixed");
 	    	}
 	    },
