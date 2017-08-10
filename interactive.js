@@ -104,18 +104,25 @@ function makeStuff(error,data){
 	.attr("transform","translate(52.5,40)");
 
 	if(!(window.navigator.userAgent.includes("mobi")||window.navigator.userAgent.includes("Mobi"))){
+		placeImages();
+		windowResize();
 
-	placeImages();
-	windowResize();
+		window.addEventListener('resize', _.debounce(windowResize, 150));
+		d3.selectAll(".nego")
+			.on("mouseenter",function(d){attachNegotiationEvents.call(this,d)})
+			.on("mouseleave",function(d){removeNegotiationEvents.call(this)});
 
-	window.addEventListener('resize', _.debounce(windowResize, 150));
-	d3.selectAll(".nego")
-		.on("mouseenter",function(d){attachNegotiationEvents.call(this,d)})
-		.on("mouseleave",function(d){removeNegotiationEvents.call(this)});
+		d3.selectAll(".prov")
+			.on("mouseenter",function(d){attachProvocationEvents.call(this,d)})
+			.on("mouseleave",function(d){removeProvocationEvents.call(this)});
 
-	d3.selectAll(".prov")
-		.on("mouseenter",function(d){attachProvocationEvents.call(this,d)})
-		.on("mouseleave",function(d){removeProvocationEvents.call(this)});
+		image1down();
+		image1up();
+		image2down();
+		image2up();
+	}
+	else{
+		d3.selectAll(".image").style("display","none");
 	}
 }
 
@@ -166,10 +173,6 @@ function windowResize(){
 		makeWaypoint10();
 		makeWaypoint11();
 		makeWaypoint12();
-		image1down();
-		image1up();
-		image2down();
-		image2up();
 	}
 	else{
 		Waypoint.destroyAll();
