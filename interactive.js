@@ -114,11 +114,6 @@ function makeStuff(error,data){
 		d3.selectAll(".prov")
 			.on("mouseenter",function(d){attachProvocationEvents.call(this,d)})
 			.on("mouseleave",function(d){removeProvocationEvents.call(this)});
-
-		image1down();
-		image1up();
-		image2down();
-		image2up();
 	}
 	else{
 		d3.selectAll(".image").style("display","none");
@@ -160,6 +155,11 @@ function windowResize(){
 			.on("touchstart",function(d){attachProvocationEvents.call(this,d)})
 			.on("touchend",function(d){removeProvocationEvents.call(this)})
 
+
+		image1down();
+		image1up();
+		image2down();
+		image2up();
 		opacityWaypoint(window.innerHeight/2);
 		makeWaypoint1();
 		makeWaypoint2();
