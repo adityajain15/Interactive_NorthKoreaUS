@@ -1,17 +1,17 @@
 function placeImages(){
-
+	var padding = parseFloat(d3.select("#textWrapper").style("padding-right"));
 	d3.selectAll(".image").select(function(){
-		d3.select(this).style("height",0.85*parseFloat(d3.select("#calendarContainer").style("margin-left")));
-		d3.select(this).style("width",0.85*parseFloat(d3.select("#calendarContainer").style("margin-left")));
+		d3.select(this).style("height",0.9*padding);
+		d3.select(this).style("width",0.9*padding);
 	});
-/*
+
 	d3.selectAll(".rightImage").select(function(){
-		d3.select(this).style("right",0);
+		d3.select(this).style("right",0.05*padding);
 	});
 
 	d3.selectAll(".leftImage").select(function(){
-		d3.select(this).style("left",0);
-	});*/
+		d3.select(this).style("left",0.05*padding);
+	});
 }
 
 function displayAll(){
@@ -173,89 +173,6 @@ function removeProvocationEvents(){
 			d3.select("#tooltip").style("display","none");
 			d3.selectAll(".tooltipNegotiation").remove();
 }
-/*
-d3.selectAll(".nego")
-		.on("mouseenter",null)
-		.on("mouseleave",null)
-		.on("touchstart",function(d){
-			
-		})
-		.on("touchend",function(){
-			
-		});
-
-		d3.selectAll(".prov")
-		.on("mouseenter",null)
-		.on("mouseleave",null)
-		.on("touchstart",function(d){
-			if(d3.select(this).style("fill")!=="rgb(255, 255, 255)"){
-				d3.select(this)
-				.style("stroke","#E8336D")
-				.style("stroke-width","2px")
-				.style("stroke-dasharray","60");
-				
-				this.parentNode.parentNode.appendChild(this.parentNode);
-				this.parentNode.appendChild(this);
-
-				var localProvData = provData.filter(function(w){return ((w.Year==d.Year)&&(w.Month==d.Month))});
-
-				if(localProvData.length!=0){
-					d3.select("#tooltipHeader")
-						.text(localProvData.length+(localProvData.length==1?" Provocations":" Provocations")+" during "+d.Year);
-					for(let i=0;i<localProvData.length;i++)
-					{
-						let provBox = d3.select("#tooltip")
-						.append("div")
-						.attr("class","tooltipNegotiation");
-
-						provBox
-						.append("span")
-						.attr("class","tooltipType")
-						.text(localProvData[i]['Event Type']);
-
-						provBox
-						.append("p")
-						.attr("class","tooltipDescription")
-						.text(localProvData[i]['Description']);
-					}
-
-					d3.select("#tooltip")
-					.style("display","block");
-
-
-
-					if((this.getBoundingClientRect().top+20+document.getElementById('tooltip').clientHeight)>window.innerHeight){
-						d3.select("#tooltip")
-						.style("top",window.innerHeight-document.getElementById('tooltip').clientHeight-20)
-						.style("left",this.getBoundingClientRect().left+20);
-					}
-					else{
-						d3.select("#tooltip")
-						.style("top",this.getBoundingClientRect().top+20)
-						.style("left",this.getBoundingClientRect().left+20);
-					}
-				}
-			}
-		})
-		.on("touchend",function(){
-			var firstChild = this.parentNode.parentNode.firstChild; 
-	        if(firstChild){ 
-	        	this.parentNode.parentNode.insertBefore(this.parentNode, firstChild); 
-			} 
-			firstChild = this.parentNode.firstChild; 
-			if(firstChild){ 
-	        	this.parentNode.insertBefore(this, firstChild); 
-			} 
-			d3.select(this)
-			.style("stroke",null)
-			.style("stroke-width",null)
-			.style("stroke-dasharray"," 0,60");
-
-			d3.select("#tooltip").style("display","none");
-			d3.selectAll(".tooltipNegotiation").remove();
-		});
-*/
-
 function action1on(){
 	const type = d3.annotationCalloutRect;
 	const annotations = [{

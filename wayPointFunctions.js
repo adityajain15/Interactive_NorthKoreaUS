@@ -83,11 +83,11 @@ waypointAction2 = new Waypoint({
 		element: document.getElementById('para2'),
 		handler: function(direction) {
 			if(direction==="down"){
-				//action1off();
+				action1off();
 				action2on();
 			}
 			else{
-				//action1on();
+				action1on();
 				action2off();
 			}
 		},
@@ -247,5 +247,91 @@ function makeWaypoint12(){
 	    	}
 	    },
 	    offset: window.innerHeight/2
+	});
+}
+
+function image1down(){
+	imageWaypoint = new Waypoint({
+	    element: document.getElementById('para5'),
+	    handler: function(direction) {
+	    	if(direction==="down"){
+    			d3.select("#dum1")
+    			.style("right",window.innerWidth-document.getElementById('dum1').getBoundingClientRect().right)
+    			.style("top",(window.innerHeight/2)-(document.getElementById('calendarContainer').clientHeight/2))
+    			.style("position","fixed");
+
+	    	}
+	    	else{
+	    		d3.select("#dum1")
+	    		.style("top",null)
+	    		.style("right",0.05*parseFloat(d3.select("#textWrapper").style("padding-right")))
+	    		.style("position","absolute");
+	    	}
+	    },
+	    offset: (window.innerHeight/2)-(document.getElementById('calendarContainer').clientHeight/2)
+	});
+}
+
+function image1up(){
+	imageWaypoint = new Waypoint({
+	    element: document.getElementById('regime1end'),
+	    handler: function(direction) {
+	    	if(direction==="down"){
+    			d3.select("#dum1")
+    			.style("right",0.05*parseFloat(d3.select("#textWrapper").style("padding-right")))
+    			.style("top",document.getElementById('regime1end').offsetTop+document.getElementById('regime1end').clientHeight-document.getElementById('dum1').clientHeight)
+    			.style("position","absolute");
+	    	}
+	    	else{
+	    		d3.select("#dum1")
+	    		.style("top",(window.innerHeight/2)-(document.getElementById('calendarContainer').clientHeight/2))
+	    		.style("right",window.innerWidth-document.getElementById('dum1').getBoundingClientRect().right)
+	    		.style("position","fixed");
+	    	}
+	    },
+	    offset: -document.getElementById('regime1end').clientHeight+((window.innerHeight/2)-(document.getElementById('calendarContainer').clientHeight/2))+document.getElementById('dum1').clientHeight
+	});
+}
+
+function image2down(){
+	imageWaypoint = new Waypoint({
+	    element: document.getElementById('para7'),
+	    handler: function(direction) {
+	    	if(direction==="down"){
+    			d3.select("#dum2")
+    			.style("right",window.innerWidth-document.getElementById('dum2').getBoundingClientRect().right)
+    			.style("top",(window.innerHeight/2)-(document.getElementById('calendarContainer').clientHeight/2))
+    			.style("position","fixed");
+
+	    	}
+	    	else{
+	    		d3.select("#dum2")
+	    		.style("top",null)
+	    		.style("right",0.05*parseFloat(d3.select("#textWrapper").style("padding-right")))
+	    		.style("position","absolute");
+	    	}
+	    },
+	    offset: (window.innerHeight/2)-(document.getElementById('calendarContainer').clientHeight/2)
+	});
+}
+
+function image2up(){
+	imageWaypoint = new Waypoint({
+	    element: document.getElementById('regime2end'),
+	    handler: function(direction) {
+	    	if(direction==="down"){
+    			d3.select("#dum2")
+    			.style("right",0.05*parseFloat(d3.select("#textWrapper").style("padding-right")))
+    			.style("top",document.getElementById('regime2end').offsetTop+document.getElementById('regime2end').clientHeight-document.getElementById('dum2').clientHeight)
+    			.style("position","absolute");
+	    	}
+	    	else{
+	    		d3.select("#dum2")
+	    		.style("top",(window.innerHeight/2)-(document.getElementById('calendarContainer').clientHeight/2))
+	    		.style("right",window.innerWidth-document.getElementById('dum2').getBoundingClientRect().right)
+	    		.style("position","fixed");
+	    	}
+	    },
+	    offset: -document.getElementById('regime2end').clientHeight+((window.innerHeight/2)-(document.getElementById('calendarContainer').clientHeight/2))+document.getElementById('dum2').clientHeight
 	});
 }

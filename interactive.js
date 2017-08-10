@@ -104,6 +104,10 @@ function makeStuff(error,data){
 	.attr("transform","translate(52.5,40)");
 
 	if(!(window.navigator.userAgent.includes("mobi")||window.navigator.userAgent.includes("Mobi"))){
+
+	placeImages();
+	windowResize();
+
 	window.addEventListener('resize', _.debounce(windowResize, 150));
 	d3.selectAll(".nego")
 		.on("mouseenter",function(d){attachNegotiationEvents.call(this,d)})
@@ -113,8 +117,6 @@ function makeStuff(error,data){
 		.on("mouseenter",function(d){attachProvocationEvents.call(this,d)})
 		.on("mouseleave",function(d){removeProvocationEvents.call(this)});
 	}
-
-	windowResize();
 }
 
 function windowResize(){
@@ -128,8 +130,8 @@ function windowResize(){
 		d3.select("#calendarContainer")
 		.style("width",d3.select("#calendar").style("width"))
 		.style("height",null)
-		.style("margin-left",0.125*document.getElementById("contentWrapper").getBoundingClientRect().width)
-		.style("margin-right",0.125*document.getElementById("contentWrapper").getBoundingClientRect().width)
+		.style("margin-left",0.05*document.getElementById("contentWrapper").getBoundingClientRect().width)
+		.style("margin-right",0.025*document.getElementById("contentWrapper").getBoundingClientRect().width)
 		.style("top",(window.innerHeight/2)-(document.getElementById('calendarContainer').clientHeight/2))
 		.style("left",document.getElementById('contentWrapper').getBoundingClientRect().left);
 
@@ -137,7 +139,9 @@ function windowResize(){
 		.style("width",null)
 		.style("margin-top",null)
 		.style("margin-left",null)
-		.style("margin-right",null);
+		.style("margin-left",null)
+		.style("padding-right",null)
+		.style("padding-left",null);
 
 		d3.select("#legend").style("display",null);
 
@@ -150,7 +154,7 @@ function windowResize(){
 			.on("touchend",function(d){removeProvocationEvents.call(this)})
 
 		opacityWaypoint(window.innerHeight/2);
-		//makeWaypoint1();
+		makeWaypoint1();
 		makeWaypoint2();
 		makeWaypoint3();
 		makeWaypoint4();
@@ -162,7 +166,10 @@ function windowResize(){
 		makeWaypoint10();
 		makeWaypoint11();
 		makeWaypoint12();
-		placeImages();
+		image1down();
+		image1up();
+		image2down();
+		image2up();
 	}
 	else{
 		Waypoint.destroyAll();
@@ -183,11 +190,13 @@ function windowResize(){
 		d3.select("#textWrapper")
 		.style("width","100%")
 		.style("margin-top",document.getElementById('calendar').clientHeight)
+		.style("margin-right",0)
 		.style("margin-left",0)
-		.style("margin-right",0);
+		.style("padding-left",0)
+		.style("padding-right",0);
 
 		opacityWaypoint(window.innerHeight*0.7);
-		//makeWaypoint1();
+		makeWaypoint1();
 		makeWaypoint2();
 		makeWaypoint3();
 		makeWaypoint4();
