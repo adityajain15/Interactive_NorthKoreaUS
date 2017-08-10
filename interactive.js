@@ -105,7 +105,6 @@ function makeStuff(error,data){
 
 	if(!(window.navigator.userAgent.includes("mobi")||window.navigator.userAgent.includes("Mobi"))){
 		placeImages();
-		windowResize();
 
 		window.addEventListener('resize', _.debounce(windowResize, 150));
 		d3.selectAll(".nego")
@@ -124,6 +123,7 @@ function makeStuff(error,data){
 	else{
 		d3.selectAll(".image").style("display","none");
 	}
+	windowResize();
 }
 
 function windowResize(){
