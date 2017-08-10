@@ -250,6 +250,7 @@ function makeWaypoint12(){
 	});
 }
 
+/*
 function image1down(){
 	imageWaypoint = new Waypoint({
 	    element: document.getElementById('para5'),
@@ -292,20 +293,21 @@ function image1up(){
 	    offset: -document.getElementById('regime1end').clientHeight+((window.innerHeight/2)-(document.getElementById('calendarContainer').clientHeight/2))+document.getElementById('dum1').clientHeight
 	});
 }
+*/
 
-function image2down(){
-	imageWaypoint = new Waypoint({
-	    element: document.getElementById('para7'),
+function rightImageDown(element,name,para){
+	rightImage = new Waypoint({
+	    element: para,
 	    handler: function(direction) {
 	    	if(direction==="down"){
-    			d3.select("#dum2")
+    			element
     			.style("right",(0.05*parseFloat(d3.select("#textWrapper").style("padding-right")))+(parseFloat(d3.select("#textWrapper").style("margin-right"))))
     			.style("top",(window.innerHeight/2)-(document.getElementById('calendarContainer').clientHeight/2))
     			.style("position","fixed");
 
 	    	}
 	    	else{
-	    		d3.select("#dum2")
+	    		element
 	    		.style("top",null)
 	    		.style("right",0.05*parseFloat(d3.select("#textWrapper").style("padding-right")))
 	    		.style("position","absolute");
@@ -315,23 +317,68 @@ function image2down(){
 	});
 }
 
-function image2up(){
-	imageWaypoint = new Waypoint({
-	    element: document.getElementById('regime2end'),
+function rightImageUp(element,name,para){
+	//para = document.getElementById('regime1end')
+	rotImage = new Waypoint({
+	    element: para,
 	    handler: function(direction) {
 	    	if(direction==="down"){
-    			d3.select("#dum2")
+    			element
     			.style("right",0.05*parseFloat(d3.select("#textWrapper").style("padding-right")))
-    			.style("top",document.getElementById('regime2end').offsetTop+document.getElementById('regime2end').clientHeight-document.getElementById('dum2').clientHeight)
+    			.style("top",para.offsetTop+para.clientHeight-document.getElementById(name).clientHeight)
     			.style("position","absolute");
 	    	}
 	    	else{
-	    		d3.select("#dum2")
+	    		element
 	    		.style("top",(window.innerHeight/2)-(document.getElementById('calendarContainer').clientHeight/2))
 	    		.style("right",(0.05*parseFloat(d3.select("#textWrapper").style("padding-right")))+(parseFloat(d3.select("#textWrapper").style("margin-right"))))
 	    		.style("position","fixed");
 	    	}
 	    },
-	    offset: -document.getElementById('regime2end').clientHeight+((window.innerHeight/2)-(document.getElementById('calendarContainer').clientHeight/2))+document.getElementById('dum2').clientHeight
+	    offset: -para.clientHeight+((window.innerHeight/2)-(document.getElementById('calendarContainer').clientHeight/2))+document.getElementById(name).clientHeight
+	});
+}
+
+function leftImageDown(element,name,para){
+	imageWaypoint = new Waypoint({
+	    element: para,
+	    handler: function(direction) {
+	    	if(direction==="down"){
+    			element
+    			.style("left",(0.05*parseFloat(d3.select("#textWrapper").style("padding-left")))+(parseFloat(d3.select("#textWrapper").style("margin-left"))))
+    			.style("top",(window.innerHeight/2)-(document.getElementById('calendarContainer').clientHeight/2))
+    			.style("position","fixed");
+
+	    	}
+	    	else{
+	    		element
+	    		.style("top",null)
+	    		.style("left",0.05*parseFloat(d3.select("#textWrapper").style("padding-left")))
+	    		.style("position","absolute");
+	    	}
+	    },
+	    offset: (window.innerHeight/2)-(document.getElementById('calendarContainer').clientHeight/2)
+	});
+}
+
+function leftImageUp(element,name,para){
+	//para = document.getElementById('regime1end')
+	imageWaypoint = new Waypoint({
+	    element: para,
+	    handler: function(direction) {
+	    	if(direction==="down"){
+    			element
+    			.style("left",0.05*parseFloat(d3.select("#textWrapper").style("padding-left")))
+    			.style("top",para.offsetTop+para.clientHeight-document.getElementById(name).clientHeight)
+    			.style("position","absolute");
+	    	}
+	    	else{
+	    		element
+	    		.style("top",(window.innerHeight/2)-(document.getElementById('calendarContainer').clientHeight/2))
+	    		.style("left",(0.05*parseFloat(d3.select("#textWrapper").style("padding-left")))+(parseFloat(d3.select("#textWrapper").style("margin-left"))))
+	    		.style("position","fixed");
+	    	}
+	    },
+	    offset: -para.clientHeight+((window.innerHeight/2)-(document.getElementById('calendarContainer').clientHeight/2))+document.getElementById(name).clientHeight
 	});
 }
