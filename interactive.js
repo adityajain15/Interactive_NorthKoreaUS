@@ -155,7 +155,7 @@ function windowResize(){
 			.on("touchstart",function(d){attachProvocationEvents.call(this,d)})
 			.on("touchend",function(d){removeProvocationEvents.call(this)})
 
-
+		placeImages();
 		image1down();
 		image1up();
 		image2down();
