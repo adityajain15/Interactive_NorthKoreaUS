@@ -100,6 +100,7 @@ function makeStuff(error,data){
 	.tickSizeOuter(0);
 
 	calendar.append("g")
+	.attr('id','yAxis')
 	.call(yAxis)
 	.attr("transform","translate(52.5,40)");
 

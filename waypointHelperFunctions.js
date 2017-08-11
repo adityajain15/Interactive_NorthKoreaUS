@@ -42,8 +42,8 @@ function attachNegotiationEvents(d){
 		var localNegoData = negoData.filter(function(w){return ((w.Year==d.Year)&&(w.Month==d.Month))});
 
 		if(localNegoData.length!=0){
-			d3.select("#tooltipHeader")
-				.text(localNegoData.length+(localNegoData.length==1?" Negotation":" Negotations")+" during "+d.Year);
+			
+				
 			for(let i=0;i<localNegoData.length;i++)
 			{
 				let negoBox = d3.select("#tooltip")
@@ -52,13 +52,15 @@ function attachNegotiationEvents(d){
 
 				negoBox
 				.append("span")
-				.attr("class","tooltipType")
-				.text(localNegoData[i]['Event Type']);
+				.attr("class","tooltipType negotiationColor")
+				.text((i+1)+". "+localNegoData[i]['Event Type']);
+				
 
 				negoBox
 				.append("p")
 				.attr("class","tooltipDescription")
 				.text(localNegoData[i]['Description']);
+				
 
 				var partyBox = negoBox.append("div").attr("class","tooltipParties");
 
@@ -66,8 +68,10 @@ function attachNegotiationEvents(d){
 				var leaderString = localNegoData[i]['Leadership'].split(',');
 
 				for(var j=0;j<leaderString.length;j++){
-					partyBox.append("span").attr("class","leaderName").text(leaderString[j]);
-					partyBox.append("span").attr("class","nationName").text(nationString[j]);;
+					var theParty = partyBox.append("div").attr("class","party");
+					theParty.append("img").attr("class","countryFlags").attr("src","flags/"+nationString[j].trim()+".png");
+					theParty.append("span").attr("class","leaderName").text(leaderString[j]);
+					//partyBox.append("span").attr("class","nationName").text(nationString[j]);;
 				}
 			}
 			d3.select("#tooltip")
@@ -118,18 +122,16 @@ function attachProvocationEvents(d){
 				var localProvData = provData.filter(function(w){return ((w.Year==d.Year)&&(w.Month==d.Month))});
 
 				if(localProvData.length!=0){
-					d3.select("#tooltipHeader")
-						.text(localProvData.length+(localProvData.length==1?" Provocations":" Provocations")+" during "+d.Year);
 					for(let i=0;i<localProvData.length;i++)
 					{
 						let provBox = d3.select("#tooltip")
 						.append("div")
 						.attr("class","tooltipNegotiation");
-
+						
 						provBox
 						.append("span")
-						.attr("class","tooltipType")
-						.text(localProvData[i]['Event Type']);
+						.attr("class","tooltipType provocationColor")
+						.text((i+1)+". "+localProvData[i]['Event']);
 
 						provBox
 						.append("p")

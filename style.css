@@ -59,14 +59,6 @@ body{
 	margin-left: auto;
 }
 
-div{
-	font-family: 'EB Garamond', serif;
-	font-size: 20px;
-	margin-left: auto;
-	margin-right: auto;
-	line-height: 1.2;
-}
-
 p{
 	font-family: 'EB Garamond', serif;
 	font-size: 20px;
@@ -83,6 +75,11 @@ p{
 	background: white;
 	opacity: 0.3;
 	width: 80%;
+	font-family: 'EB Garamond', serif;
+	font-size: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	line-height: 1.2;
 }
 
 #textWrapper{
@@ -100,12 +97,15 @@ p{
     position: fixed;
     background: white;
     z-index: 5;
-    font-family: "Helvetica Neue";
 }
 
 .tick text{
 	shape-rendering:crispEdges;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: 500;
 }
+
+
 
 
 .image{
@@ -124,39 +124,57 @@ p{
 	display: none;
 	position: fixed;
 	z-index: 6;
-	background: white;
+	background: #16222a;
 	height: auto;
-	width: 30vw;
+	width: 35vw;
 	min-width: 250px;
 	max-width: 500px;
-	padding-left:10px;
-	padding-right: 10px;
-	padding-top: 5px;
-	padding-bottom: 5px;
-	border:3px solid black;
+	padding:10px;
+	border:3px solid #ffcc00;
 	font-size: 12px;
-	font-family: 'EB Garamond', serif;
-}
-
-#tooltipHeader{
-	display: block;
-	margin-bottom: 15px;
-	font-size: 15px;
+	color:white;
 }
 
 .tooltipNegotiation{
-	margin-top: 10px;
+	margin-top: 13px;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight:500;
 }
 .tooltipNegotiation:first-of-type{
 	margin-top: 0px;
 }
 
 .tooltipType{
+	font-size: 18px;
+}
 
+.tooltipParties{
+	text-align: center;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.countryFlags{
+	width: auto;
+	height: 20px;
+}
+
+.party{
+	display: inline-block;
+	width: 15%;
+}
+
+.leaderName{
+	font-size: 10px;
+	font-weight:200;
+	margin-top: 5px;
+	display: block;
 }
 
 .tooltipDescription{
 	font-size: 15px;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight:300;
 }
 
 h1{
@@ -164,7 +182,7 @@ h1{
 	text-align: center;
 	font-family: 'Biryani', sans-serif;
 	font-weight:800;
-	color: white;
+	color: #ffcc00;
 }
 
 h2{
@@ -201,6 +219,7 @@ h2{
 .grid .tick {
     stroke: lightgrey;
     opacity: 0.3;
+    stroke-width: 0.5px;
 }
 
 :root {
@@ -248,10 +267,22 @@ h2{
 
 .annotation-note-title, text.title {
 	font-size: 11px;
+
 }
 
-.annotation-note-label{
-	font-size: 12px;
+.annotation-note-title{
+	font-size: 13px;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: 400;
+	background-color: white;
+	
+
+    paint-order: stroke;
+    stroke: white;
+    stroke-width: 1px;
+    stroke-linecap: butt;
+    stroke-linejoin: miter;
+
 }
 
 text.title {
@@ -265,7 +296,8 @@ text.title {
 }
 
 .legendText{
-	font-family: "Helvetica Neue";
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: 400;
 	font-size:10px;
 	display: inline-block;
     width: 80%;
