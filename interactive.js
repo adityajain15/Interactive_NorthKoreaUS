@@ -234,6 +234,8 @@ function windowResize(){
 		makeWaypoint10();
 		makeWaypoint11();
 		makeWaypoint12();		
+
+		placeImages();
 	}
 }
 
