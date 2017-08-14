@@ -117,7 +117,7 @@ function makeStuff(error,data){
 			.on("mouseleave",function(d){removeProvocationEvents.call(this)});
 	}
 	else{
-		d3.selectAll(".image").style("display","none");
+		//d3.selectAll(".image").style("display","none");
 	}
 	windowResize();
 }
