@@ -508,8 +508,8 @@ function action7on(){
 	note: {
     title: "1. Geneva Agreed Framework Signed"
   },
-  dx:-120,
-  dy:-15,
+  dx:-115,
+  dy:-13,
 	data:{
 		month: "Oct", year: 1994
 	},
@@ -537,7 +537,7 @@ function action7on(){
 	note: {
     title: "4. Four Party Talks collapse"
   },
-  dx:-30,
+  dx:-50,
   dy:100,
 	data:{
 		month: "Aug", year: 1999
