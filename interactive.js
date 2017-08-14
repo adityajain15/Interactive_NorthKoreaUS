@@ -142,9 +142,13 @@ function windowResize(){
 		.style("width",null)
 		.style("margin-top",null)
 		.style("margin-left",null)
-		.style("margin-left",null)
+		.style("margin-right",null)
 		.style("padding-right",null)
 		.style("padding-left",null);
+
+		d3.selectAll(".textpara")
+		.style("width",null)
+		.style("padding",null);
 
 		d3.select("#legend").style("display",null);
 
@@ -206,12 +210,16 @@ function windowResize(){
 		d3.select("#legend").style("display","none");
 
 		d3.select("#textWrapper")
-		.style("width","100%")
+		.style("width","75%")
 		.style("margin-top",document.getElementById('calendar').clientHeight)
 		.style("margin-right",0)
 		.style("margin-left",0)
-		.style("padding-left",0)
-		.style("padding-right",0);
+		.style("padding-left","12.5%")
+		.style("padding-right","12.5%");
+
+		d3.selectAll(".textpara")
+		.style("width","90%")
+		.style("padding","5%");
 
 		opacityWaypoint(window.innerHeight*0.7);
 		makeWaypoint1();
