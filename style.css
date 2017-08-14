@@ -54,7 +54,7 @@ body{
 
 #contentWrapper{
 	position: relative;
-	max-width: 1750px;
+	max-width: 1500px;
 	margin-right: auto;
 	margin-left: auto;
 }
@@ -182,7 +182,7 @@ h1{
 	text-align: center;
 	font-family: 'Biryani', sans-serif;
 	font-weight:800;
-	color: #ffcc00;
+	color: white;
 }
 
 h2{
@@ -338,4 +338,7 @@ text.title {
 	color: rgb(33, 113, 181);
 }
 
+#weird{
+
+}
 
