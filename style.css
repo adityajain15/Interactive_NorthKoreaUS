@@ -191,8 +191,6 @@ h2{
 	font-family: 'Biryani', sans-serif;
 	font-weight:800;
 	color: white;
-	margin-top: 25%;
-	margin-bottom: 25%;
 }
 
 #section1{
@@ -338,7 +336,16 @@ text.title {
 	color: rgb(33, 113, 181);
 }
 
-#weird{
-
+.headlineBox{
+	height: auto;
+	width: 100%;
+	margin-top: 100px;
+	display: block;
 }
 
+.temph2{
+	background-color: #ffcc00;
+	margin-bottom: 25%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
