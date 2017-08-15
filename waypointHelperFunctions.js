@@ -1,17 +1,35 @@
-function placeImages(){
-	var padding = parseFloat(d3.select("#textWrapper").style("padding-right"));
-	d3.selectAll(".image").select(function(){
-		d3.select(this).style("height",0.9*padding);
-		d3.select(this).style("width",0.9*padding);
-	});
+function placeImages(largeScreen){
+	
+	if(largeScreen){
+		var padding = parseFloat(d3.select("#textWrapper").style("padding-right"));
+		d3.selectAll(".image").select(function(){
+			d3.select(this).style("height",0.9*padding);
+			d3.select(this).style("width",0.9*padding);
+		});
 
-	d3.selectAll(".rightImage").select(function(){
-		d3.select(this).style("right",0.05*padding);
-	});
+		d3.selectAll(".rightImage").select(function(){
+			d3.select(this).style("right",0.05*padding);
+		});
 
-	d3.selectAll(".leftImage").select(function(){
-		d3.select(this).style("left",0.05*padding);
-	});
+		d3.selectAll(".leftImage").select(function(){
+			d3.select(this).style("left",0.05*padding);
+		});
+	}
+	else{
+		var padding = window.innerWidth*0.125;
+		d3.selectAll(".image").select(function(){
+			d3.select(this).style("height",padding);
+			d3.select(this).style("width",padding);
+		});
+
+		d3.selectAll(".rightImage").select(function(){
+			d3.select(this).style("right",0);
+		});
+
+		d3.selectAll(".leftImage").select(function(){
+			d3.select(this).style("left",0);
+		});
+	}	
 }
 
 function displayAll(){

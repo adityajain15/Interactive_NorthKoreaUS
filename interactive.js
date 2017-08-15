@@ -105,7 +105,6 @@ function makeStuff(error,data){
 	.attr("transform","translate(52.5,40)");
 
 	if(!(window.navigator.userAgent.includes("mobi")||window.navigator.userAgent.includes("Mobi"))){
-		placeImages();
 
 		window.addEventListener('resize', _.debounce(windowResize, 150));
 		d3.selectAll(".nego")
@@ -116,9 +115,7 @@ function makeStuff(error,data){
 			.on("mouseenter",function(d){attachProvocationEvents.call(this,d)})
 			.on("mouseleave",function(d){removeProvocationEvents.call(this)});
 	}
-	else{
-		//d3.selectAll(".image").style("display","none");
-	}
+	
 	windowResize();
 }
 
@@ -160,7 +157,7 @@ function windowResize(){
 			.on("touchstart",function(d){attachProvocationEvents.call(this,d)})
 			.on("touchend",function(d){removeProvocationEvents.call(this)})
 
-		placeImages();
+		placeImages(true);
 		rightImageDown(d3.select("#dun1"),'dun1',document.getElementById('para5'));
 		rightImageUp(d3.select("#dun1"),'dun1',document.getElementById('para5'));
 		rightImageDown(d3.select("#dun2"),'dun2',document.getElementById('para6'));
@@ -235,7 +232,7 @@ function windowResize(){
 		makeWaypoint11();
 		makeWaypoint12();		
 
-		placeImages();
+		placeImages(false);
 	}
 }
 
