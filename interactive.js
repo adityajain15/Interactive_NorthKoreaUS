@@ -157,7 +157,7 @@ function windowResize(){
 			.on("touchstart",function(d){attachProvocationEvents.call(this,d)})
 			.on("touchend",function(d){removeProvocationEvents.call(this)})
 
-		placeImages(true);
+		placeImages(parseFloat(d3.select("#textWrapper").style("padding-right")));
 		rightImageDown(d3.select("#dun1"),'dun1',document.getElementById('para5'));
 		rightImageUp(d3.select("#dun1"),'dun1',document.getElementById('para5'));
 		rightImageDown(d3.select("#dun2"),'dun2',document.getElementById('para6'));
@@ -233,7 +233,7 @@ function windowResize(){
 			makeWaypoint11();
 			makeWaypoint12();		
 
-			placeImages(false);
+			placeImages(window.innerWidth*0.125);
 		}
 		else{
 			d3.select("#calendar")
@@ -273,16 +273,8 @@ function windowResize(){
 			makeWaypoint11();
 			makeWaypoint12();		
 
-			placeImages(false);
-		}
-
-
-
-		
-
-		
-
-		
+			placeImages(window.innerWidth*0.20);
+		}	
 	}
 }
 
