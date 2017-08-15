@@ -192,47 +192,97 @@ function windowResize(){
 	}
 	else{
 		Waypoint.destroyAll();
+		if(window.innerWidth<480)
+		{
+			d3.select("#calendar")
+			.style("height",null) 
+			.style("width",0.75*(window.innerWidth));
 
-		d3.select("#calendar")
-		.style("height",null) //important lesson here to not use 50% because it gives problems when mobile address bar is scrolled
-		.style("width",0.75*(window.innerWidth));
+			d3.select("#calendarContainer")
+			.style("width",document.getElementById('calendar').clientWidth)
+			.style("margin-left",0.5*(window.innerWidth-document.getElementById('calendar').clientWidth))
+			.style("margin-right",0.5*(window.innerWidth-document.getElementById('calendar').clientWidth))
+			.style("top",0)
+			.style("left",0);
 
-		d3.select("#calendarContainer")
-		.style("width",document.getElementById('calendar').clientWidth)
-		.style("margin-left",0.5*(window.innerWidth-document.getElementById('calendar').clientWidth))
-		.style("margin-right",0.5*(window.innerWidth-document.getElementById('calendar').clientWidth))
-		.style("top",0)
-		.style("left",0);
+			d3.select("#legend").style("display","none");
 
-		d3.select("#legend").style("display","none");
+			d3.select("#textWrapper")
+			.style("width","75%")
+			.style("margin-top",document.getElementById('calendar').clientHeight)
+			.style("margin-right",0)
+			.style("margin-left",0)
+			.style("padding-left","12.5%")
+			.style("padding-right","12.5%");
 
-		d3.select("#textWrapper")
-		.style("width","75%")
-		.style("margin-top",document.getElementById('calendar').clientHeight)
-		.style("margin-right",0)
-		.style("margin-left",0)
-		.style("padding-left","12.5%")
-		.style("padding-right","12.5%");
+			d3.selectAll(".textpara")
+			.style("width","90%")
+			.style("padding","5%");
 
-		d3.selectAll(".textpara")
-		.style("width","90%")
-		.style("padding","5%");
+			opacityWaypoint(window.innerHeight*0.7);
+			makeWaypoint1();
+			makeWaypoint2();
+			makeWaypoint3();
+			makeWaypoint4();
+			makeWaypoint5();
+			makeWaypoint6();
+			makeWaypoint7();
+			makeWaypoint8();
+			makeWaypoint9();
+			makeWaypoint10();
+			makeWaypoint11();
+			makeWaypoint12();		
 
-		opacityWaypoint(window.innerHeight*0.7);
-		makeWaypoint1();
-		makeWaypoint2();
-		makeWaypoint3();
-		makeWaypoint4();
-		makeWaypoint5();
-		makeWaypoint6();
-		makeWaypoint7();
-		makeWaypoint8();
-		makeWaypoint9();
-		makeWaypoint10();
-		makeWaypoint11();
-		makeWaypoint12();		
+			placeImages(false);
+		}
+		else{
+			d3.select("#calendar")
+			.style("height",0.45*(window.innerHeight)) 
+			.style("width",null);
 
-		placeImages(false);
+			d3.select("#calendarContainer")
+			.style("width",document.getElementById('calendar').clientWidth)
+			.style("margin-left",0.5*(window.innerWidth-document.getElementById('calendar').clientWidth))
+			.style("margin-right",0.5*(window.innerWidth-document.getElementById('calendar').clientWidth))
+			.style("top",0)
+			.style("left",0);
+
+			d3.select("#textWrapper")
+			.style("width","50%")
+			.style("margin-top",document.getElementById('calendar').clientHeight)
+			.style("margin-right",0)
+			.style("margin-left",0)
+			.style("padding-left","25%")
+			.style("padding-right","25%");
+
+			d3.selectAll(".textpara")
+			.style("width","90%")
+			.style("padding","5%");
+
+			opacityWaypoint(window.innerHeight*0.7);
+			makeWaypoint1();
+			makeWaypoint2();
+			makeWaypoint3();
+			makeWaypoint4();
+			makeWaypoint5();
+			makeWaypoint6();
+			makeWaypoint7();
+			makeWaypoint8();
+			makeWaypoint9();
+			makeWaypoint10();
+			makeWaypoint11();
+			makeWaypoint12();		
+
+			placeImages(false);
+		}
+
+
+
+		
+
+		
+
+		
 	}
 }
 
