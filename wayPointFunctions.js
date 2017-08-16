@@ -19,14 +19,14 @@ function opacityWaypoint(theOffset){
 						.transition()
 						.duration(400)
 						.ease(d3.easeQuadInOut)
-						.style("opacity","0.3");
+						.style("opacity","0.1");
 					}
 					else{
 						d3.select(testElement)
 						.transition()
 						.duration(400)
 						.ease(d3.easeQuadInOut)
-						.style("opacity","0.3");
+						.style("opacity","0.1");
 
 						d3.select(elements[i-1])
 						.transition()
@@ -48,7 +48,7 @@ function opacityWaypoint(theOffset){
 						.transition()
 						.duration(400)
 						.ease(d3.easeQuadInOut)
-						.style("opacity","0.3");
+						.style("opacity","0.1");
 					}
 				}
 			},

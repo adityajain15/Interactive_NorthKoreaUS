@@ -115,7 +115,6 @@ function makeStuff(error,data){
 			.on("mouseenter",function(d){attachProvocationEvents.call(this,d)})
 			.on("mouseleave",function(d){removeProvocationEvents.call(this)});
 	}
-	
 	windowResize();
 }
 
@@ -210,22 +209,24 @@ function windowResize(){
 			.style("width",document.getElementById('calendar').clientWidth)
 			.style("margin-left",0.5*(window.innerWidth-document.getElementById('calendar').clientWidth))
 			.style("margin-right",0.5*(window.innerWidth-document.getElementById('calendar').clientWidth))
-			.style("top",0)
+			.style("top",(window.innerHeight/2)-(document.getElementById('calendarContainer').clientHeight/2))
 			.style("left",0);
 
 			d3.select("#legend").style("display","none");
 
 			d3.select("#textWrapper")
-			.style("width","75%")
+			.style("width","95%")
 			.style("margin-top",document.getElementById('calendar').clientHeight)
 			.style("margin-right",0)
 			.style("margin-left",0)
-			.style("padding-left","12.5%")
-			.style("padding-right","12.5%");
+			.style("padding-left","2.5%")
+			.style("padding-right","2.5%");
 
 			d3.selectAll(".textpara")
 			.style("width","90%")
-			.style("padding","5%");
+			.style("padding","5%")
+			.style("background","#16222a")
+			.style("color","white");
 
 			opacityWaypoint(window.innerHeight*0.7);
 			makeWaypoint1();
@@ -265,7 +266,11 @@ function windowResize(){
 
 			d3.selectAll(".textpara")
 			.style("width","90%")
-			.style("padding","5%");
+			.style("padding","5%")
+			.style("background","#16222a")
+			.style("color","white")
+			.style("margin-top","200px")
+			.style("margin-bottom","200px");
 
 			opacityWaypoint(window.innerHeight*0.7);
 			makeWaypoint1();

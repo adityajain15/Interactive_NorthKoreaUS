@@ -88,6 +88,7 @@ p{
 	padding-right: 5%;
     width: 40%;
     position: relative;
+    z-index: 4;
     
 }
 
@@ -95,7 +96,7 @@ p{
 	display: block;
     position: fixed;
     background: white;
-    z-index: 5;
+    z-index: 3;
 }
 
 .tick text{
