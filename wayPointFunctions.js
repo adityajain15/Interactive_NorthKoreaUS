@@ -1,10 +1,9 @@
 function opacityWaypoint(theOffset){
 
 	var elements = document.getElementsByClassName("textpara");
-	
 	Array.prototype.filter.call(elements, function(testElement,i){
 	    
-	    new Waypoint({
+		new Waypoint({
 			element: testElement,
 			handler: function(direction) {
 
@@ -52,15 +51,10 @@ function opacityWaypoint(theOffset){
 						.style("opacity","0.3");
 					}
 				}
-
-
-
-				
 			},
 			offset: theOffset
 		});
 	});
-
 }
 
 function makeWaypoint1(){

@@ -120,11 +120,13 @@ function makeStuff(error,data){
 }
 
 function windowResize(){
+
+
 	if(window.innerWidth>=1024){
 		Waypoint.destroyAll();
 
 		d3.select("#calendar")
-		.style("width",0.3*document.getElementById("contentWrapper").getBoundingClientRect().width)
+		.style("width",0.4*document.getElementById("contentWrapper").getBoundingClientRect().width)
 		.style("height",null);
 
 		d3.select("#calendarContainer")
@@ -137,7 +139,7 @@ function windowResize(){
 
 		d3.select("#textWrapper")
 		.style("width",null)
-		.style("margin-top",null)
+		.style("margin-top",d3.select("#calendarContainer").style("top"))
 		.style("margin-left",null)
 		.style("margin-right",null)
 		.style("padding-right",null)
@@ -157,7 +159,12 @@ function windowResize(){
 			.on("touchstart",function(d){attachProvocationEvents.call(this,d)})
 			.on("touchend",function(d){removeProvocationEvents.call(this)})
 
+		
 		placeImages(parseFloat(d3.select("#textWrapper").style("padding-right")));
+		
+		opacityWaypoint(window.innerHeight*0.5);
+
+		
 		rightImageDown(d3.select("#dun1"),'dun1',document.getElementById('para5'));
 		rightImageUp(d3.select("#dun1"),'dun1',document.getElementById('para5'));
 		rightImageDown(d3.select("#dun2"),'dun2',document.getElementById('para6'));
@@ -176,7 +183,7 @@ function windowResize(){
 		leftImageDown(d3.select("#dum3"),'dum3',document.getElementById('para10'));
 		leftImageUp(d3.select("#dum3"),'dum3',document.getElementById('para11'));
 
-		opacityWaypoint(window.innerHeight/2);
+		
 		makeWaypoint1();
 		makeWaypoint2();
 		makeWaypoint3();
@@ -189,14 +196,15 @@ function windowResize(){
 		makeWaypoint10();
 		makeWaypoint11();
 		makeWaypoint12();
+	
+
 	}
 	else{
 		Waypoint.destroyAll();
-		if(window.innerWidth<480)
-		{
+		if(window.innerWidth<480){
 			d3.select("#calendar")
 			.style("height",null) 
-			.style("width",0.75*(window.innerWidth));
+			.style("width",window.innerWidth);
 
 			d3.select("#calendarContainer")
 			.style("width",document.getElementById('calendar').clientWidth)
@@ -277,4 +285,5 @@ function windowResize(){
 		}	
 	}
 }
+
 
