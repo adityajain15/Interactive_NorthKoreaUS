@@ -82,11 +82,11 @@ p{
 }
 
 #textWrapper{
-	margin-left: 47.5%;
+	margin-left: 40%;
 	margin-right: 2.5%;
-	padding-left: 5%;
-	padding-right: 5%;
-    width: 40%;
+	padding-left: 7.5%;
+	padding-right: 7.5%;
+    width: 42.5%;
     position: relative;
     z-index: 4;
     
@@ -103,6 +103,8 @@ p{
 	shape-rendering:crispEdges;
 	font-family: 'Source Sans Pro', sans-serif;
 	font-weight: 500;
+	font-size: 12px;
+
 }
 
 
@@ -227,15 +229,29 @@ h2{
 }
 
 .annotation path {
-	stroke: var(--annotation-color);
 	fill: none;
 	stroke-width:3px;
 }
 
-.annotation path.connector-arrow, 
-.annotation path.connector-dot, 
-.title text, .annotation text{ 
-	fill: var(--annotation-color);
+.negoKeyEvent .annotation path.connector-arrow, 
+.negoKeyEvent .annotation path.connector-dot, 
+.negoKeyEvent .annotation path,
+.negoKeyEvent .title text, .negoKeyEvent .annotation text{ 
+	stroke: rgb(33, 113, 181);
+}
+
+.miscKeyEvent .annotation path.connector-arrow, 
+.miscKeyEvent .annotation path.connector-dot, 
+.miscKeyEvent .annotation path,
+.miscKeyEvent .title text, .miscKeyEvent .annotation text{ 
+	stroke: #ffcc00;
+}
+
+.provKeyEvent .annotation path.connector-arrow, 
+.provKeyEvent .annotation path.connector-dot, 
+.provKeyEvent .annotation path,
+.provKeyEvent .title text, .provKeyEvent .annotation text{ 
+	stroke: rgb(203, 24, 29);
 }
 
 .annotation-connector path{
@@ -298,7 +314,7 @@ text.title {
 .legendText{
 	font-family: 'Source Sans Pro', sans-serif;
 	font-weight: 400;
-	font-size:10px;
+	font-size:16px;
 	display: inline-block;
     width: 80%;
 	text-rendering: optimizeLegibility;

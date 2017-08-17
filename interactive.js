@@ -43,7 +43,7 @@ function makeStuff(error,data){
 	.enter()
 	.append("g")
 	.attr("class","row")
-	.attr("transform", "translate(52.5,40)");
+	.attr("transform", "translate(45,30)");
 
 	d3.selectAll(".row")
 	.append("rect")
@@ -79,7 +79,7 @@ function makeStuff(error,data){
 
 	calendar.append("g")
 	.attr('height','25px')
-	.attr("transform", "translate(52.5,40)")
+	.attr("transform", "translate(45,30)")
 	.attr('id','xAxis')
 	.style("background","black")
 	.call(xAxis)
@@ -89,20 +89,20 @@ function makeStuff(error,data){
 
 	calendar.append("g")
 	.attr("class","grid")
-	.attr("transform", "translate(52.5,40)")
+	.attr("transform", "translate(45,30)")
 	.call(xGrid);
 
 	var yScale =  d3.scaleTime()
 	.domain([new Date(1989, 5, 1), new Date(2017, 5, 1)])
 	.range([0, 420]);
 	var yAxis = d3.axisLeft(yScale)
-	.ticks(27)
+	.ticks(5)
 	.tickSizeOuter(0);
 
 	calendar.append("g")
 	.attr('id','Axis')
 	.call(yAxis)
-	.attr("transform","translate(52.5,40)");
+	.attr("transform","translate(45,30)");
 
 	if(!(window.navigator.userAgent.includes("mobi")||window.navigator.userAgent.includes("Mobi"))){
 
@@ -119,19 +119,17 @@ function makeStuff(error,data){
 }
 
 function windowResize(){
-
-
 	if(window.innerWidth>=1024){
 		Waypoint.destroyAll();
 
 		d3.select("#calendar")
-		.style("width",0.4*document.getElementById("contentWrapper").getBoundingClientRect().width)
+		.style("width",0.35*document.getElementById("contentWrapper").getBoundingClientRect().width)
 		.style("height",null);
 
 		d3.select("#calendarContainer")
 		.style("width",d3.select("#calendar").style("width"))
 		.style("height",null)
-		.style("margin-left",0.05*document.getElementById("contentWrapper").getBoundingClientRect().width)
+		.style("margin-left",0.025*document.getElementById("contentWrapper").getBoundingClientRect().width)
 		.style("margin-right",0.025*document.getElementById("contentWrapper").getBoundingClientRect().width)
 		.style("top",(window.innerHeight/2)-(document.getElementById('calendarContainer').clientHeight/2))
 		.style("left",document.getElementById('contentWrapper').getBoundingClientRect().left);
@@ -195,99 +193,53 @@ function windowResize(){
 		makeWaypoint10();
 		makeWaypoint11();
 		makeWaypoint12();
-	
-
 	}
 	else{
+		d3.selectAll(".image").style("display","none");
 		Waypoint.destroyAll();
-		if(window.innerWidth<480){
-			d3.select("#calendar")
-			.style("height",null) 
-			.style("width",window.innerWidth);
+		d3.select("#calendar")
+		.style("height",null) 
+		.style("width",window.innerWidth);
 
-			d3.select("#calendarContainer")
-			.style("width",document.getElementById('calendar').clientWidth)
-			.style("margin-left",0.5*(window.innerWidth-document.getElementById('calendar').clientWidth))
-			.style("margin-right",0.5*(window.innerWidth-document.getElementById('calendar').clientWidth))
-			.style("top",(window.innerHeight/2)-(document.getElementById('calendarContainer').clientHeight/2))
-			.style("left",0);
+		d3.select("#calendarContainer")
+		.style("width",document.getElementById('calendar').clientWidth)
+		.style("margin-left",0.5*(window.innerWidth-document.getElementById('calendar').clientWidth))
+		.style("margin-right",0.5*(window.innerWidth-document.getElementById('calendar').clientWidth))
+		.style("top",(window.innerHeight/2)-(document.getElementById('calendarContainer').clientHeight/2))
+		.style("left",0);
 
-			d3.select("#legend").style("display","none");
+		d3.select("#legend").style("display","none");
 
-			d3.select("#textWrapper")
-			.style("width","95%")
-			.style("margin-top",document.getElementById('calendar').clientHeight)
-			.style("margin-right",0)
-			.style("margin-left",0)
-			.style("padding-left","2.5%")
-			.style("padding-right","2.5%");
+		d3.select("#textWrapper")
+		.style("width","95%")
+		.style("margin-top",document.getElementById('calendar').clientHeight)
+		.style("margin-right",0)
+		.style("margin-left",0)
+		.style("padding-left","2.5%")
+		.style("padding-right","2.5%");
 
-			d3.selectAll(".textpara")
-			.style("width","90%")
-			.style("padding","5%")
-			.style("background","#16222a")
-			.style("color","white");
+		d3.selectAll(".textpara")
+		.style("width","90%")
+		.style("padding","5%")
+		.style("background","#16222a")
+		.style("color","white")
+		.style("margin-top",window.innerHeight*0.75)
+		.style("margin-bottom",window.innerHeight*0.75)
+		.style("opacity",0.5);
 
-			opacityWaypoint(window.innerHeight*0.7);
-			makeWaypoint1();
-			makeWaypoint2();
-			makeWaypoint3();
-			makeWaypoint4();
-			makeWaypoint5();
-			makeWaypoint6();
-			makeWaypoint7();
-			makeWaypoint8();
-			makeWaypoint9();
-			makeWaypoint10();
-			makeWaypoint11();
-			makeWaypoint12();		
-
-			placeImages(window.innerWidth*0.125);
-		}
-		else{
-			d3.select("#calendar")
-			.style("height",0.45*(window.innerHeight)) 
-			.style("width",null);
-
-			d3.select("#calendarContainer")
-			.style("width",document.getElementById('calendar').clientWidth)
-			.style("margin-left",0.5*(window.innerWidth-document.getElementById('calendar').clientWidth))
-			.style("margin-right",0.5*(window.innerWidth-document.getElementById('calendar').clientWidth))
-			.style("top",0)
-			.style("left",0);
-
-			d3.select("#textWrapper")
-			.style("width","50%")
-			.style("margin-top",document.getElementById('calendar').clientHeight)
-			.style("margin-right",0)
-			.style("margin-left",0)
-			.style("padding-left","25%")
-			.style("padding-right","25%");
-
-			d3.selectAll(".textpara")
-			.style("width","90%")
-			.style("padding","5%")
-			.style("background","#16222a")
-			.style("color","white")
-			.style("margin-top","200px")
-			.style("margin-bottom","200px");
-
-			opacityWaypoint(window.innerHeight*0.7);
-			makeWaypoint1();
-			makeWaypoint2();
-			makeWaypoint3();
-			makeWaypoint4();
-			makeWaypoint5();
-			makeWaypoint6();
-			makeWaypoint7();
-			makeWaypoint8();
-			makeWaypoint9();
-			makeWaypoint10();
-			makeWaypoint11();
-			makeWaypoint12();		
-
-			placeImages(window.innerWidth*0.20);
-		}	
+		opacityWaypoint(window.innerHeight*0.7);
+		makeWaypoint1();
+		makeWaypoint2();
+		makeWaypoint3();
+		makeWaypoint4();
+		makeWaypoint5();
+		makeWaypoint6();
+		makeWaypoint7();
+		makeWaypoint8();
+		makeWaypoint9();
+		makeWaypoint10();
+		makeWaypoint11();
+		makeWaypoint12();		
 	}
 }
 

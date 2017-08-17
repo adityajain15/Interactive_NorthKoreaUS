@@ -27,7 +27,7 @@ function displayAll(){
 		.transition(g)
 		.style("fill-opacity",1);
 }
-
+ 
 function attachNegotiationEvents(d){
 	if(d3.select(this).style("fill")!=="rgb(255, 255, 255)"){
 		d3.select(this)
@@ -177,8 +177,8 @@ function removeProvocationEvents(){
 function action1on(){
 	const type = d3.annotationCalloutRect;
 	const annotations = [{
-		x: 52.5,
-		y: 40,
+		x: 45,
+		y: 30,
 		subject: {
 		width: 30,
 		height: 15
@@ -205,8 +205,8 @@ function action1on(){
     	if(i>=317){
     		i=0;
     	}
-    	xPos = ((30*i)%360)+52.5;
-    	yPos = (15*Math.floor(i/12))+40;
+    	xPos = ((30*i)%360)+45;
+    	yPos = (15*Math.floor(i/12))+30;
         d3.active(this)
             .attr("transform","translate("+xPos+","+yPos+")")
             .transition(g)
@@ -286,7 +286,7 @@ function action4on(){
 
 	const annotations = [{
 	data:{
-		month: "Oct", year: 1994
+		month: "Oct", year: 1994, type:"Misc"
 	},
 	  subject: {
 	radius: 14,
@@ -295,7 +295,7 @@ function action4on(){
 	},
 	{
 	data:{
-		month: "Dec", year: 1995
+		month: "Dec", year: 1995, type:"Nego"
 	},
 	  subject: {
 	radius: 14,
@@ -304,7 +304,7 @@ function action4on(){
 	},
 	{
 	data:{
-		month: "Dec", year: 1997
+		month: "Dec", year: 1997, type:"Nego"
 	},
 	  subject: {
 	radius: 14,
@@ -313,7 +313,7 @@ function action4on(){
 	},
 	{
 	data:{
-		month: "Aug", year: 1999
+		month: "Aug", year: 1999, type:"Nego"
 	},
 	  subject: {
 	radius: 14,
@@ -322,7 +322,7 @@ function action4on(){
 	},
 	{
 	data:{
-		month: "Oct", year: 2002
+		month: "Oct", year: 2002, type:"Nego"
 	},
 	  subject: {
 	radius: 14,
@@ -331,7 +331,7 @@ function action4on(){
 	},
 	{
 	data:{
-		month: "Nov", year: 2002
+		month: "Nov", year: 2002, type:"Misc"
 	},
 	  subject: {
 	radius: 14,
@@ -340,7 +340,7 @@ function action4on(){
 	},
 	{
 	data:{
-		month: "Jan", year: 2003
+		month: "Jan", year: 2003, type:"Misc"
 	},
 	  subject: {
 	radius: 14,
@@ -349,7 +349,7 @@ function action4on(){
 	},
 	{
 	data:{
-		month: "Aug", year: 2003
+		month: "Aug", year: 2003, type:"Nego"
 	},
 	  subject: {
 	radius: 14,
@@ -358,7 +358,7 @@ function action4on(){
 	},
 	{
 	data:{
-		month: "Sep", year: 2005
+		month: "Sep", year: 2005, type:"Nego"
 	},
 	  subject: {
 	radius: 14,
@@ -367,7 +367,7 @@ function action4on(){
 	},
 	{
 	data:{
-		month: "Nov", year: 2005
+		month: "Nov", year: 2005, type:"Nego"
 	},
 	  subject: {
 	radius: 14,
@@ -376,7 +376,7 @@ function action4on(){
 	},
 	{
 	data:{
-		month: "Feb", year: 2007
+		month: "Feb", year: 2007, type:"Nego"
 	},
 	  subject: {
 	radius: 14,
@@ -385,7 +385,7 @@ function action4on(){
 	},
 	{
 	data:{
-		month: "Dec", year: 2008
+		month: "Dec", year: 2008, type:"Nego"
 	},
 	  subject: {
 	radius: 14,
@@ -394,7 +394,134 @@ function action4on(){
 	},
 	{
 	data:{
-		month: "Feb", year: 2012
+		month: "Feb", year: 2012, type:"Nego"
+	},
+	  subject: {
+	radius: 14,
+	radiusPadding: 0,
+	 }
+	},
+	{
+	data:{
+		month: "Sep", year: 1990, type:"Misc"
+	},
+	  subject: {
+	radius: 14,
+	radiusPadding: 0,
+	 }
+	},
+	{
+	data:{
+		month: "Dec", year: 1991, type:"Misc"
+	},
+	  subject: {
+	radius: 14,
+	radiusPadding: 0,
+	 }
+	},
+	{
+	data:{
+		month: "Jan", year: 1992, type:"Nego"
+	},
+	  subject: {
+	radius: 14,
+	radiusPadding: 0,
+	 }
+	},
+	{
+	data:{
+		month: "Aug", year: 1992, type:"Misc"
+	},
+	  subject: {
+	radius: 14,
+	radiusPadding: 0,
+	 }
+	},
+	{
+	data:{
+		month: "Mar", year: 1993, type:"Misc"
+	},
+	  subject: {
+	radius: 14,
+	radiusPadding: 0,
+	 }
+	}
+	,
+	{
+	data:{
+		month: "Jul", year: 1994, type:"Misc"
+	},
+	  subject: {
+	radius: 14,
+	radiusPadding: 0,
+	 }
+	},
+	{
+	data:{
+		month: "Oct", year: 2006, type:"Prov"
+	},
+	  subject: {
+	radius: 14,
+	radiusPadding: 0,
+	 }
+	},
+	{
+	data:{
+		month: "May", year: 2009, type:"Prov"
+	},
+	  subject: {
+	radius: 14,
+	radiusPadding: 0,
+	 }
+	},
+	{
+	data:{
+		month: "Dec", year: 2011, type:"Misc"
+	},
+	  subject: {
+	radius: 14,
+	radiusPadding: 0,
+	 }
+	},
+	{
+	data:{
+		month: "Apr", year: 2012, type:"Prov"
+	},
+	  subject: {
+	radius: 14,
+	radiusPadding: 0,
+	 }
+	},
+	{
+	data:{
+		month: "Feb", year: 2013, type:"Prov"
+	},
+	  subject: {
+	radius: 14,
+	radiusPadding: 0,
+	 }
+	},
+	{
+	data:{
+		month: "Jan", year: 2016, type:"Prov"
+	},
+	  subject: {
+	radius: 14,
+	radiusPadding: 0,
+	 }
+	},
+	{
+	data:{
+		month: "Sep", year: 2016, type:"Prov"
+	},
+	  subject: {
+	radius: 14,
+	radiusPadding: 0,
+	 }
+	},
+	{
+	data:{
+		month: "Jul", year: 2017, type:"Prov"
 	},
 	  subject: {
 	radius: 14,
@@ -403,20 +530,53 @@ function action4on(){
 	}
 	]
 
-	const makeAnnotations = d3.annotation()
+	console.log();
+
+	const makeNegoAnnotations = d3.annotation()
+	  .editMode(false)
+	  .disable(["connector","note"])
+	  .type(type)
+	   .accessors({
+    x: d => xScale(d.month)+52.5,
+    y: d => yScale(d.year)+37.5
+  })
+	  .annotations(annotations.filter(function(d){return d.data.type=="Nego";}))
+
+	const makeMiscAnnotations = d3.annotation()
 	  .editMode(false)
 	  .disable(["connector","note"])
 	  .type(type)
 	   .accessors({
     x: d => xScale(d.month)+60,
-    y: d => yScale(d.year)+47.5
+    y: d => yScale(d.year)+37.5
   })
-	  .annotations(annotations)
+	  .annotations(annotations.filter(function(d){return d.data.type=="Misc";}))
+
+	const makeProvAnnotations = d3.annotation()
+	  .editMode(false)
+	  .disable(["connector","note"])
+	  .type(type)
+	   .accessors({
+    x: d => xScale(d.month)+68.5,
+    y: d => yScale(d.year)+37.5
+  })
+	  .annotations(annotations.filter(function(d){return d.data.type=="Prov";}))
 
 	d3.select("svg")
 	  .append("g")
-	  .attr("class", "keyevents")
-	  .call(makeAnnotations)
+	  .attr("class", "keyevents negoKeyEvent")
+	  .call(makeNegoAnnotations)
+
+	d3.select("svg")
+	  .append("g")
+	  .attr("class", "keyevents miscKeyEvent")
+	  .call(makeMiscAnnotations)
+
+	d3.select("svg")
+	  .append("g")
+	  .attr("class", "keyevents provKeyEvent")
+	  .call(makeProvAnnotations)
+
 }
 
 function action4off(){
@@ -573,16 +733,16 @@ function action7on(){
 	  .editMode(false)
 	  .type(type)
 	   .accessors({
-    x: d => xScale(d.month)+60,
-    y: d => yScale(d.year)+47.5
+    x: d => xScale(d.month)+52.5,
+    y: d => yScale(d.year)+37.5
   }).notePadding(-4).textWrap(168).annotations(annotations)
 
 const makeAnnotations2 = d3.annotation()
 	  .editMode(false)
 	  .type(type)
 	   .accessors({
-    x: d => xScale(d.month)+60,
-    y: d => yScale(d.year)+47.5
+    x: d => xScale(d.month)+52.5,
+    y: d => yScale(d.year)+37.5
   }).notePadding(4).textWrap(168).annotations(annotations2)
 
 	d3.select("svg")
@@ -763,16 +923,16 @@ function action8on(){
 	  .editMode(false)
 	  .type(type)
 	   .accessors({
-    x: d => xScale(d.month)+60,
-    y: d => yScale(d.year)+47.5
+    x: d => xScale(d.month)+52.5,
+    y: d => yScale(d.year)+37.5
   }).notePadding(-2).textWrap(168).annotations(annotations)
 
 	const makeAnnotations2 = d3.annotation()
 	  .editMode(false)
 	  .type(type)
 	   .accessors({
-    x: d => xScale(d.month)+60,
-    y: d => yScale(d.year)+47.5
+    x: d => xScale(d.month)+52.5,
+    y: d => yScale(d.year)+37.5
   }).notePadding(2).textWrap(168).annotations(annotations2)
 
 /*
@@ -900,8 +1060,8 @@ function action10on(){
 	  .editMode(false)
 	  .type(type)
 	   .accessors({
-    x: d => xScale(d.month)+60,
-    y: d => yScale(d.year)+47.5
+    x: d => xScale(d.month)+52.5,
+    y: d => yScale(d.year)+37.5
   }).notePadding(-2).textWrap(168).annotations(annotations);
 
 	d3.select("svg")

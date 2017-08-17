@@ -13,26 +13,26 @@ function opacityWaypoint(theOffset){
 						.transition()
 						.duration(400)
 						.ease(d3.easeQuadInOut)
-						.style("opacity","1");
+						.style("opacity",0.9);
 
 						d3.select(elements[i-1])
 						.transition()
 						.duration(400)
 						.ease(d3.easeQuadInOut)
-						.style("opacity","0.1");
+						.style("opacity",0.1);
 					}
 					else{
 						d3.select(testElement)
 						.transition()
 						.duration(400)
 						.ease(d3.easeQuadInOut)
-						.style("opacity","0.1");
+						.style("opacity",0.1);
 
 						d3.select(elements[i-1])
 						.transition()
 						.duration(400)
 						.ease(d3.easeQuadInOut)
-						.style("opacity","1");
+						.style("opacity",0.9);
 					}
 				}
 				else{
@@ -41,14 +41,14 @@ function opacityWaypoint(theOffset){
 						.transition()
 						.duration(400)
 						.ease(d3.easeQuadInOut)
-						.style("opacity","1");
+						.style("opacity",0.9);
 					}
 					else{
 						d3.select(testElement)
 						.transition()
 						.duration(400)
 						.ease(d3.easeQuadInOut)
-						.style("opacity","0.1");
+						.style("opacity",0.1);
 					}
 				}
 			},
