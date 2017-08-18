@@ -201,14 +201,16 @@ function windowResize(){
 		.style("height",null) 
 		.style("width",window.innerWidth);
 
+		d3.select("#legend").style("display","none");
+
 		d3.select("#calendarContainer")
 		.style("width",document.getElementById('calendar').clientWidth)
 		.style("margin-left",0.5*(window.innerWidth-document.getElementById('calendar').clientWidth))
 		.style("margin-right",0.5*(window.innerWidth-document.getElementById('calendar').clientWidth))
-		.style("top",0)
+		.style("top",(window.innerHeight/2)-(document.getElementById('calendarContainer').clientHeight/2))
 		.style("left",0);
 
-		d3.select("#legend").style("display","none");
+		
 
 		d3.select("#textWrapper")
 		.style("width","95%")
