@@ -205,7 +205,7 @@ function windowResize(){
 		.style("width",document.getElementById('calendar').clientWidth)
 		.style("margin-left",0.5*(window.innerWidth-document.getElementById('calendar').clientWidth))
 		.style("margin-right",0.5*(window.innerWidth-document.getElementById('calendar').clientWidth))
-		.style("top",(window.innerHeight/2)-(document.getElementById('calendarContainer').clientHeight/2))
+		.style("top",(window.innerHeight/2)-(document.getElementById('calendar').clientHeight/2))
 		.style("left",0);
 
 		d3.select("#legend").style("display","none");

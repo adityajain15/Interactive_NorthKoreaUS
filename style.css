@@ -229,42 +229,25 @@ h2{
 }
 
 .annotation path {
+	stroke: var(--annotation-color);
 	fill: none;
 	stroke-width:3px;
 }
 
-.negoKeyEvent .annotation path.connector-arrow, 
-.negoKeyEvent .annotation path.connector-dot, 
-.negoKeyEvent .annotation path,
-.negoKeyEvent .title text, .negoKeyEvent .annotation text{ 
-	stroke: rgb(33, 113, 181);
+.annotation path.connector-arrow, 
+.annotation path.connector-dot, 
+.title text, .annotation text{ 
+	fill: var(--annotation-color);
 }
 
-.miscKeyEvent .annotation path.connector-arrow, 
-.miscKeyEvent .annotation path.connector-dot, 
-.miscKeyEvent .annotation path,
-.miscKeyEvent .title text, .miscKeyEvent .annotation text{ 
-	stroke: #ffcc00;
-}
-
-.provKeyEvent .annotation path.connector-arrow, 
-.provKeyEvent .annotation path.connector-dot, 
-.provKeyEvent .annotation path,
-.provKeyEvent .title text, .provKeyEvent .annotation text{ 
-	stroke: rgb(203, 24, 29);
-}
-
-.annotation-connector path{
-	stroke-width:1px;
-}
-
+.annotation-connector path,
 .annotation-note path{
 	stroke-width:1px;
 }
 
 .keyevents .annotation-subject{
 	stroke-dasharray:9;
-  	animation: slidein 5s infinite linear;
+  	animation: slidein 3s infinite linear;
 }
 
 @keyframes slidein{

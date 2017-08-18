@@ -274,6 +274,7 @@ function action3off(){
 }
 
 function action4on(){
+	d3.selectAll(".keyevents").remove();
 	const type = d3.annotationCalloutCircle
 
 	var xScale =  d3.scaleBand()
@@ -530,8 +531,6 @@ function action4on(){
 	}
 	]
 
-	console.log();
-
 	const makeNegoAnnotations = d3.annotation()
 	  .editMode(false)
 	  .disable(["connector","note"])
@@ -547,7 +546,7 @@ function action4on(){
 	  .disable(["connector","note"])
 	  .type(type)
 	   .accessors({
-    x: d => xScale(d.month)+60,
+    x: d => xScale(d.month)+60.5,
     y: d => yScale(d.year)+37.5
   })
 	  .annotations(annotations.filter(function(d){return d.data.type=="Misc";}))
@@ -564,17 +563,17 @@ function action4on(){
 
 	d3.select("svg")
 	  .append("g")
-	  .attr("class", "keyevents negoKeyEvent")
+	  .attr("class", "keyevents")
 	  .call(makeNegoAnnotations)
 
 	d3.select("svg")
 	  .append("g")
-	  .attr("class", "keyevents miscKeyEvent")
+	  .attr("class", "keyevents")
 	  .call(makeMiscAnnotations)
 
 	d3.select("svg")
 	  .append("g")
-	  .attr("class", "keyevents provKeyEvent")
+	  .attr("class", "keyevents")
 	  .call(makeProvAnnotations)
 
 }
@@ -584,8 +583,51 @@ function action4off(){
 }
 
 function action5on(){
-
 	d3.selectAll(".keyevents").remove();
+	const type = d3.annotationCustomType(
+  d3.annotationCalloutCircle, 
+  {"className":"custom",
+    "connector":{"type":"elbow"},
+    "note":{"lineType":"horizontal"}})
+
+	const annotations = [{
+	note: {
+    title: "1. North Korea signs Joint Declaration of Denuclearization of Korean Peninsula"
+  },
+  dx:15,
+  dy:50,
+	data:{
+		month: "Jan", year: 1992
+	},
+	  subject: {
+	radius: 14,
+	radiusPadding: 1,
+	 }
+	}]
+
+
+	var xScale =  d3.scaleBand()
+	.domain(["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"])
+	.range([0, 360]);
+
+	var yScale =  d3.scaleLinear()
+	.domain([1990,2017])
+	.range([0, 405]);
+
+	const makeAnnotations = d3.annotation()
+	  .editMode(false)
+	  .type(type)
+	   .accessors({
+    x: d => xScale(d.month)+52.5,
+    y: d => yScale(d.year)+37.5
+  }).notePadding(2).textWrap(168).annotations(annotations)
+
+	d3.select("svg")
+	  .append("g")
+	  .attr("class", "keyevents")
+	  .call(makeAnnotations)
+
+	
 	var g = d3.transition().duration(500).ease(d3.easeQuadInOut);
 
 	d3.selectAll(".nego")
@@ -621,6 +663,63 @@ function action5on(){
 
 function action6on(){
 	d3.selectAll(".keyevents").remove();
+	
+	const type = d3.annotationCustomType(
+  d3.annotationCalloutCircle, 
+  {"className":"custom",
+    "connector":{"type":"elbow"},
+    "note":{"lineType":"horizontal"}})
+
+	const annotations = [{
+	note: {
+    title: "1. North Korea declares intent to withdraw from NPT"
+  },
+  dx:15,
+  dy:120,
+	data:{
+		month: "Mar", year: 1993
+	},
+	  subject: {
+	radius: 14,
+	radiusPadding: 1,
+	 }
+	},{
+	note: {
+    title: "2. Former U.S. President Carter visits North Korea"
+  },
+  dx:15,
+  dy:50,
+	data:{
+		month: "Jun", year: 1994
+	},
+	  subject: {
+	radius: 14,
+	radiusPadding: 1,
+	 }
+	}]
+
+
+	var xScale =  d3.scaleBand()
+	.domain(["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"])
+	.range([0, 360]);
+
+	var yScale =  d3.scaleLinear()
+	.domain([1990,2017])
+	.range([0, 405]);
+
+	const makeAnnotations = d3.annotation()
+	  .editMode(false)
+	  .type(type)
+	   .accessors({
+    x: d => xScale(d.month)+52.5,
+    y: d => yScale(d.year)+37.5
+  }).notePadding(2).textWrap(168).annotations(annotations)
+
+	d3.select("svg")
+	  .append("g")
+	  .attr("class", "keyevents")
+	  .call(makeAnnotations)
+
 	var g = d3.transition().duration(500).ease(d3.easeQuadInOut);
 
 	d3.selectAll(".nego")
@@ -991,6 +1090,75 @@ const makeAnnotations2 = d3.annotation()
 function action9on(){
 	d3.selectAll(".keyevents").remove();
 
+	const type = d3.annotationCustomType(
+  d3.annotationCalloutCircle, 
+  {"className":"custom",
+    "connector":{"type":"elbow"},
+    "note":{"lineType":"horizontal"}})
+
+	const annotations = [{
+	note: {
+    title: "1. North Korea's second Nuclear test"
+  },
+  dx:15,
+  dy:-30,
+	data:{
+		month: "May", year: 2009
+	},
+	  subject: {
+	radius: 14,
+	radiusPadding: 1,
+	 }
+	},{
+	note: {
+    title: "3. Shelling of Yeonpyeong Island by North Korea"
+  },
+  dx:-15,
+  dy:60,
+	data:{
+		month: "Nov", year: 2010
+	},
+	  subject: {
+	radius: 14,
+	radiusPadding: 1,
+	 }
+	},{
+	note: {
+    title: "2. Sinking of ROKS Cheonan"
+  },
+  dx:15,
+  dy:30,
+	data:{
+		month: "Mar", year: 2010
+	},
+	  subject: {
+	radius: 14,
+	radiusPadding: 1,
+	 }
+	}]
+
+
+	var xScale =  d3.scaleBand()
+	.domain(["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"])
+	.range([0, 360]);
+
+	var yScale =  d3.scaleLinear()
+	.domain([1990,2017])
+	.range([0, 405]);
+
+	const makeAnnotations = d3.annotation()
+	  .editMode(false)
+	  .type(type)
+	   .accessors({
+    x: d => xScale(d.month)+67.5,
+    y: d => yScale(d.year)+37.5
+  }).notePadding(2).textWrap(168).annotations(annotations)
+
+	d3.select("svg")
+	  .append("g")
+	  .attr("class", "keyevents")
+	  .call(makeAnnotations)
+
 	var g = d3.transition().duration(500).ease(d3.easeQuadInOut);
 
 	d3.selectAll(".nego")
@@ -1035,12 +1203,51 @@ function action10on(){
 
 	const annotations = [{
 	note: {
-    title: "Leap Day Agreement"
+    title: "1. Leap Day Agreement"
+  },
+  dx:15,
+  dy:-105,
+	data:{
+		month: "Feb", year: 2012, type: "Nego"
+	},
+	  subject: {
+	radius: 14,
+	radiusPadding: 1,
+	 }
+	},{
+	note: {
+    title: "2. North Korea's third Nuclear test"
   },
   dx:15,
   dy:-65,
 	data:{
-		month: "Feb", year: 2012
+		month: "Feb", year: 2013, type: "Prov"
+	},
+	  subject: {
+	radius: 14,
+	radiusPadding: 1,
+	 }
+	},{
+	note: {
+    title: "3. North Korea's fourth Nuclear test"
+  },
+  dx:0,
+  dy:-200,
+	data:{
+		month: "Jan", year: 2016, type: "Prov"
+	},
+	  subject: {
+	radius: 14,
+	radiusPadding: 1,
+	 }
+	},{
+	note: {
+    title: "4. North Korea's fifth Nuclear test"
+  },
+  dx:-10,
+  dy:-85,
+	data:{
+		month: "Sep", year: 2016, type: "Prov"
 	},
 	  subject: {
 	radius: 14,
@@ -1062,12 +1269,25 @@ function action10on(){
 	   .accessors({
     x: d => xScale(d.month)+52.5,
     y: d => yScale(d.year)+37.5
-  }).notePadding(-2).textWrap(168).annotations(annotations);
+  }).notePadding(-2).textWrap(200).annotations(annotations.filter(function(d){return d.data.type=="Nego"}));
+
+	const makeAnnotations2 = d3.annotation()
+	  .editMode(false)
+	  .type(type)
+	   .accessors({
+    x: d => xScale(d.month)+67.5,
+    y: d => yScale(d.year)+37.5
+  }).notePadding(-2).textWrap(200).annotations(annotations.filter(function(d){return d.data.type=="Prov"}));
 
 	d3.select("svg")
 	  .append("g")
 	  .attr("class", "keyevents")
 	  .call(makeAnnotations)
+
+	d3.select("svg")
+	  .append("g")
+	  .attr("class", "keyevents")
+	  .call(makeAnnotations2)
 
 
 	var g = d3.transition().duration(500).ease(d3.easeQuadInOut);
@@ -1105,6 +1325,48 @@ function action10on(){
 
 function action11on(){
 	d3.selectAll(".keyevents").remove();
+
+	const type = d3.annotationCustomType(
+  d3.annotationCalloutCircle, 
+  {"className":"custom",
+    "connector":{"type":"elbow"},
+    "note":{"lineType":"horizontal"}})
+
+	const annotations = [{
+	note: {
+    title: "1. North Korea successfully tests ICBM Hwasong-14 twice"
+  },
+  dx:15,
+  dy:-30,
+	data:{
+		month: "Jul", year: 2017
+	},
+	  subject: {
+	radius: 14,
+	radiusPadding: 1,
+	 }
+	}]
+
+	var xScale =  d3.scaleBand()
+	.domain(["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"])
+	.range([0, 360]);
+
+	var yScale =  d3.scaleLinear()
+	.domain([1990,2017])
+	.range([0, 405]);
+
+	const makeAnnotations = d3.annotation()
+	  .editMode(false)
+	  .type(type)
+	   .accessors({
+    x: d => xScale(d.month)+67.5,
+    y: d => yScale(d.year)+37.5
+  }).notePadding(-5).textWrap(140).annotations(annotations)
+
+	d3.select("svg")
+	  .append("g")
+	  .attr("class", "keyevents")
+	  .call(makeAnnotations)
 
 	var g = d3.transition().duration(500).ease(d3.easeQuadInOut);
 

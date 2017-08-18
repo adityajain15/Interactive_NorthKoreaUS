@@ -234,6 +234,7 @@ function makeWaypoint12(){
 	    element: document.getElementById('para12'),
 	    handler: function(direction) {
 	    	if(direction==="down"){
+    			action4off();
     			displayAll();
 	    	}
 	    	else{
