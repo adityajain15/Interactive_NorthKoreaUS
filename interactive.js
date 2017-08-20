@@ -107,7 +107,7 @@ function makeStuff(error,data){
 
 	if(!(window.navigator.userAgent.includes("mobi")||window.navigator.userAgent.includes("Mobi"))){
 
-		window.addEventListener('resize', _.debounce(windowResize, 150));
+		
 		d3.selectAll(".nego")
 			.on("mouseenter",function(d){attachNegotiationEvents.call(this,d)})
 			.on("mouseleave",function(d){removeNegotiationEvents.call(this)});
@@ -116,6 +116,7 @@ function makeStuff(error,data){
 			.on("mouseenter",function(d){attachProvocationEvents.call(this,d)})
 			.on("mouseleave",function(d){removeProvocationEvents.call(this)});
 	}
+	window.addEventListener('resize', _.debounce(windowResize, 150));
 	windowResize();
 }
 
