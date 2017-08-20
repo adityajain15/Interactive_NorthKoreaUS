@@ -257,6 +257,9 @@ function mobileWindowResize(){
 
 function mobileSetup(){
 	Waypoint.destroyAll();
+
+	d3.selectAll(".image").remove();
+
 	d3.select("#calendar")
 		.style("height",null) 
 		.style("width",window.innerWidth);
