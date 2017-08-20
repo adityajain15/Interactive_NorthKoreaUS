@@ -301,19 +301,19 @@ function mobileSetup(){
 		.style("margin-bottom",window.innerHeight*0.7)
 		.style("opacity",0.5);
 
-	opacityWaypoint(window.innerHeight*0.7);
+	opacityWaypoint(window.innerHeight*0.9);
 	//makeWaypoint1();
-	makeWaypoint2(window.innerHeight*0.7);
-	makeWaypoint3(window.innerHeight*0.7);
-	makeWaypoint4(window.innerHeight*0.7);
-	makeWaypoint5(window.innerHeight*0.7);
-	makeWaypoint6(window.innerHeight*0.7);
-	makeWaypoint7(window.innerHeight*0.7);
-	makeWaypoint8(window.innerHeight*0.7);
-	makeWaypoint9(window.innerHeight*0.7);
-	makeWaypoint10(window.innerHeight*0.7);
-	makeWaypoint11(window.innerHeight*0.7);
-	makeWaypoint12(window.innerHeight*0.7);	
+	makeWaypoint2(window.innerHeight*0.9);
+	makeWaypoint3(window.innerHeight*0.9);
+	makeWaypoint4(window.innerHeight*0.9);
+	makeWaypoint5(window.innerHeight*0.9);
+	makeWaypoint6(window.innerHeight*0.9);
+	makeWaypoint7(window.innerHeight*0.9);
+	makeWaypoint8(window.innerHeight*0.9);
+	makeWaypoint9(window.innerHeight*0.9);
+	makeWaypoint10(window.innerHeight*0.9);
+	makeWaypoint11(window.innerHeight*0.9);
+	makeWaypoint12(window.innerHeight*0.9);	
 }
 
 
