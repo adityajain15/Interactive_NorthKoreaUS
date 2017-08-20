@@ -188,17 +188,17 @@ function windowResize(){
 
 		
 		//makeWaypoint1();
-		makeWaypoint2();
-		makeWaypoint3();
-		makeWaypoint4();
-		makeWaypoint5();
-		makeWaypoint6();
-		makeWaypoint7();
-		makeWaypoint8();
-		makeWaypoint9();
-		makeWaypoint10();
-		makeWaypoint11();
-		makeWaypoint12();
+		makeWaypoint2(window.innerHeight*0.5);
+		makeWaypoint3(window.innerHeight*0.5);
+		makeWaypoint4(window.innerHeight*0.5);
+		makeWaypoint5(window.innerHeight*0.5);
+		makeWaypoint6(window.innerHeight*0.5);
+		makeWaypoint7(window.innerHeight*0.5);
+		makeWaypoint8(window.innerHeight*0.5);
+		makeWaypoint9(window.innerHeight*0.5);
+		makeWaypoint10(window.innerHeight*0.5);
+		makeWaypoint11(window.innerHeight*0.5);
+		makeWaypoint12(window.innerHeight*0.5);
 	}
 	else{
 
@@ -233,24 +233,24 @@ function windowResize(){
 
 		opacityWaypoint(window.innerHeight*0.7);
 		//makeWaypoint1();
-		makeWaypoint2();
-		makeWaypoint3();
-		makeWaypoint4();
-		makeWaypoint5();
-		makeWaypoint6();
-		makeWaypoint7();
-		makeWaypoint8();
-		makeWaypoint9();
-		makeWaypoint10();
-		makeWaypoint11();
-		makeWaypoint12();		
+		makeWaypoint2(window.innerHeight*0.7);
+		makeWaypoint3(window.innerHeight*0.7);
+		makeWaypoint4(window.innerHeight*0.7);
+		makeWaypoint5(window.innerHeight*0.7);
+		makeWaypoint6(window.innerHeight*0.7);
+		makeWaypoint7(window.innerHeight*0.7);
+		makeWaypoint8(window.innerHeight*0.7);
+		makeWaypoint9(window.innerHeight*0.7);
+		makeWaypoint10(window.innerHeight*0.7);
+		makeWaypoint11(window.innerHeight*0.7);
+		makeWaypoint12(window.innerHeight*0.7);		
 	}
 }
 
 function mobileWindowResize(){
 	d3.select("#calendarContainer")
 		.transition()
-		.duration(150)
+		.duration(300)
 		.ease(d3.easeQuadInOut)
 		.style("top",(window.innerHeight/2)-(document.getElementById('calendarContainer').clientHeight/2));
 }
@@ -289,17 +289,17 @@ function mobileSetup(){
 
 	opacityWaypoint(window.innerHeight*0.7);
 	//makeWaypoint1();
-	makeWaypoint2();
-	makeWaypoint3();
-	makeWaypoint4();
-	makeWaypoint5();
-	makeWaypoint6();
-	makeWaypoint7();
-	makeWaypoint8();
-	makeWaypoint9();
-	makeWaypoint10();
-	makeWaypoint11();
-	makeWaypoint12();	
+	makeWaypoint2(window.innerHeight*0.7);
+	makeWaypoint3(window.innerHeight*0.7);
+	makeWaypoint4(window.innerHeight*0.7);
+	makeWaypoint5(window.innerHeight*0.7);
+	makeWaypoint6(window.innerHeight*0.7);
+	makeWaypoint7(window.innerHeight*0.7);
+	makeWaypoint8(window.innerHeight*0.7);
+	makeWaypoint9(window.innerHeight*0.7);
+	makeWaypoint10(window.innerHeight*0.7);
+	makeWaypoint11(window.innerHeight*0.7);
+	makeWaypoint12(window.innerHeight*0.7);	
 }
 
 

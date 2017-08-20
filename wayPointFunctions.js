@@ -57,7 +57,7 @@ function opacityWaypoint(theOffset){
 	});
 }
 
-function makeWaypoint1(){
+function makeWaypoint1(theOffset){
 waypointAction1 = new Waypoint({
 		element: document.getElementById('para1'),
 		handler: function(direction) {
@@ -68,11 +68,11 @@ waypointAction1 = new Waypoint({
 				action1off();
 			}
 		},
-		offset: 0
+		offset: theOffset
 	});
 }
 
-function makeWaypoint2(){
+function makeWaypoint2(theOffset){
 waypointAction2 = new Waypoint({
 		element: document.getElementById('para2'),
 		handler: function(direction) {
@@ -85,11 +85,11 @@ waypointAction2 = new Waypoint({
 				action2off();
 			}
 		},
-		offset: window.innerHeight/2
+		offset: theOffset
 	});
 }
 
-function makeWaypoint3(){
+function makeWaypoint3(theOffset){
 	waypointAction3 = new Waypoint({
 		element: document.getElementById('para3'),
 		handler: function(direction) {
@@ -102,11 +102,11 @@ function makeWaypoint3(){
 				action2on();
 			}
 		},
-		offset: window.innerHeight/2
+		offset: theOffset
 	});
 }
 
-function makeWaypoint4(){
+function makeWaypoint4(theOffset){
 	waypointAction4 = new Waypoint({
 	    element: document.getElementById('para4'),
 	    handler: function(direction) {
@@ -119,11 +119,11 @@ function makeWaypoint4(){
     			action3on();
 	    	}
 	    },
-	    offset: window.innerHeight/2
+	    offset: theOffset
 	});
 }
 
-function makeWaypoint5(){
+function makeWaypoint5(theOffset){
 	waypointAction5 = new Waypoint({
 	    element: document.getElementById('para5'),
 	    handler: function(direction) {
@@ -135,11 +135,11 @@ function makeWaypoint5(){
 	    		action4on();
 	    	}
 	    },
-	    offset: window.innerHeight/2
+	    offset: theOffset
 	});
 }
 
-function makeWaypoint6(){
+function makeWaypoint6(theOffset){
 	waypointAction6 = new Waypoint({
 	    element: document.getElementById('para6'),
 	    handler: function(direction) {
@@ -150,11 +150,11 @@ function makeWaypoint6(){
 	    		action5on();
 	    	}
 	    },
-	    offset: window.innerHeight/2
+	    offset: theOffset
 	});
 }
 
-function makeWaypoint7(){
+function makeWaypoint7(theOffset){
 	waypointAction7 = new Waypoint({
 	    element: document.getElementById('para7'),
 	    handler: function(direction) {
@@ -165,11 +165,11 @@ function makeWaypoint7(){
 	    		action6on();
 	    	}
 	    },
-	    offset: window.innerHeight/2
+	    offset: theOffset
 	});
 }
 
-function makeWaypoint8(){
+function makeWaypoint8(theOffset){
 	waypointAction8 = new Waypoint({
 	    element: document.getElementById('para8'),
 	    handler: function(direction) {
@@ -180,7 +180,7 @@ function makeWaypoint8(){
 	    		action7on();
 	    	}
 	    },
-	    offset: window.innerHeight/2
+	    offset: theOffset
 	});
 }
 
@@ -199,7 +199,7 @@ function makeWaypoint9(){
 	});
 }
 
-function makeWaypoint10(){
+function makeWaypoint10(theOffset){
 	waypointAction10 = new Waypoint({
 	    element: document.getElementById('para10'),
 	    handler: function(direction) {
@@ -210,11 +210,11 @@ function makeWaypoint10(){
 	    		action9on();
 	    	}
 	    },
-	    offset: window.innerHeight/2
+	    offset: theOffset
 	});
 }
 
-function makeWaypoint11(){
+function makeWaypoint11(theOffset){
 	waypointAction11 = new Waypoint({
 	    element: document.getElementById('para11'),
 	    handler: function(direction) {
@@ -225,11 +225,11 @@ function makeWaypoint11(){
 	    		action10on();
 	    	}
 	    },
-	    offset: window.innerHeight/2
+	    offset: theOffset
 	});
 }
 
-function makeWaypoint12(){
+function makeWaypoint12(theOffset){
 	waypointAction12 = new Waypoint({
 	    element: document.getElementById('para12'),
 	    handler: function(direction) {
@@ -241,7 +241,7 @@ function makeWaypoint12(){
 	    		action11on();
 	    	}
 	    },
-	    offset: window.innerHeight/2
+	    offset: theOffset
 	});
 }
 
