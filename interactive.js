@@ -106,8 +106,7 @@ function makeStuff(error,data){
 	.attr("transform","translate(45,30)");
 
 	if(!(window.navigator.userAgent.includes("mobi")||window.navigator.userAgent.includes("Mobi"))){
-
-		
+		window.addEventListener('resize', _.debounce(windowResize, 150));
 		d3.selectAll(".nego")
 			.on("mouseenter",function(d){attachNegotiationEvents.call(this,d)})
 			.on("mouseleave",function(d){removeNegotiationEvents.call(this)});
@@ -115,9 +114,13 @@ function makeStuff(error,data){
 		d3.selectAll(".prov")
 			.on("mouseenter",function(d){attachProvocationEvents.call(this,d)})
 			.on("mouseleave",function(d){removeProvocationEvents.call(this)});
+		windowResize();
 	}
-	window.addEventListener('resize', _.debounce(windowResize, 150));
-	windowResize();
+	else{
+		mobileSetup();
+		window.addEventListener('resize', _.debounce(mobileWindowResize, 150));
+	}
+	
 }
 
 function windowResize(){
@@ -198,13 +201,11 @@ function windowResize(){
 		makeWaypoint12();
 	}
 	else{
-		d3.selectAll(".image").style("display","none");
+
 		Waypoint.destroyAll();
 		d3.select("#calendar")
 		.style("height",null) 
 		.style("width",window.innerWidth);
-
-		d3.select("#legend").style("display","none");
 
 		d3.select("#calendarContainer")
 		.style("width",document.getElementById('calendar').clientWidth)
@@ -231,7 +232,7 @@ function windowResize(){
 		.style("opacity",0.5);
 
 		opacityWaypoint(window.innerHeight*0.7);
-		makeWaypoint1();
+		//makeWaypoint1();
 		makeWaypoint2();
 		makeWaypoint3();
 		makeWaypoint4();
@@ -244,6 +245,59 @@ function windowResize(){
 		makeWaypoint11();
 		makeWaypoint12();		
 	}
+}
+
+function mobileWindowResize(){
+	d3.select("#calendarContainer")
+		.transition()
+		.duration(150)
+		.ease(d3.easeQuadInOut)
+		.style("top",(window.innerHeight/2)-(document.getElementById('calendarContainer').clientHeight/2));
+}
+
+function mobileSetup(){
+	Waypoint.destroyAll();
+	d3.select("#calendar")
+		.style("height",null) 
+		.style("width",window.innerWidth);
+
+	d3.select("#calendarContainer")
+		.style("width",document.getElementById('calendar').clientWidth)
+		.style("margin-left",0.5*(window.innerWidth-document.getElementById('calendar').clientWidth))
+		.style("margin-right",0.5*(window.innerWidth-document.getElementById('calendar').clientWidth))
+		.style("top",(window.innerHeight/2)-(document.getElementById('calendarContainer').clientHeight/2))
+		.style("left",0);
+
+	d3.select("#textWrapper")
+		.style("width","95%")
+		.style("margin-top",document.getElementById('calendarContainer').clientHeight+window.innerHeight*0.1)
+		.style("margin-right",0)
+		.style("margin-left",0)
+		.style("padding-left","2.5%")
+		.style("padding-right","2.5%");
+
+	d3.selectAll(".textpara")
+		.style("width","90%")
+		.style("padding","5%")
+		.style("background","#16222a")
+		.style("color","white")
+		.style("margin-top",window.innerHeight*0.7)
+		.style("margin-bottom",window.innerHeight*0.7)
+		.style("opacity",0.5);
+
+	opacityWaypoint(window.innerHeight*0.7);
+	//makeWaypoint1();
+	makeWaypoint2();
+	makeWaypoint3();
+	makeWaypoint4();
+	makeWaypoint5();
+	makeWaypoint6();
+	makeWaypoint7();
+	makeWaypoint8();
+	makeWaypoint9();
+	makeWaypoint10();
+	makeWaypoint11();
+	makeWaypoint12();	
 }
 
 
