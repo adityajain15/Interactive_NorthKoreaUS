@@ -86,6 +86,7 @@ p{
 	margin-right: 2.5%;
 	padding-left: 7.5%;
 	padding-right: 7.5%;
+	margin-top: 500px;
     width: 42.5%;
     position: relative;
     z-index: 4;
@@ -195,26 +196,6 @@ h2{
 	color: white;
 	margin-bottom: 100px;
 	margin-top: 100px;
-}
-
-#section1{
-	margin-top: 55vh;
-}
-
-#section2{
-
-}
-
-.contentParagraph{
-	margin-top: 3%;
-	margin-bottom: 3%;
-	
-}
-
-.instructionsParagraph{
-	margin-top: 25%;
-	border-left:0px solid #E8336D;
-	padding-left: 21px;
 }
 
 

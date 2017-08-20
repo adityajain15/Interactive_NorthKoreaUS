@@ -12,6 +12,7 @@ var makeAnnotations;
 var theData;
 var negoData;
 var provData;
+
 function makeStuff(error,data){
 
 	theData = data[0];
@@ -105,6 +106,8 @@ function makeStuff(error,data){
 	.attr("transform","translate(45,30)");
 
 	if(!(window.navigator.userAgent.includes("mobi")||window.navigator.userAgent.includes("Mobi"))){
+
+		window.addEventListener('resize', _.debounce(windowResize, 150));
 		d3.selectAll(".nego")
 			.on("mouseenter",function(d){attachNegotiationEvents.call(this,d)})
 			.on("mouseleave",function(d){removeNegotiationEvents.call(this)});
@@ -117,8 +120,9 @@ function makeStuff(error,data){
 }
 
 function windowResize(){
+	
 	if(window.innerWidth>=1024){
-		Waypoint.destroyAll();
+		
 
 		d3.select("#calendar")
 		.style("width",0.35*document.getElementById("contentWrapper").getBoundingClientRect().width)
@@ -179,7 +183,7 @@ function windowResize(){
 		leftImageUp(d3.select("#dum3"),'dum3',document.getElementById('para11'));
 
 		
-		makeWaypoint1();
+		//makeWaypoint1();
 		makeWaypoint2();
 		makeWaypoint3();
 		makeWaypoint4();
@@ -210,7 +214,7 @@ function windowResize(){
 
 		d3.select("#textWrapper")
 		.style("width","95%")
-		.style("margin-top",document.getElementById('calendar').clientHeight)
+		.style("margin-top",500)
 		.style("margin-right",0)
 		.style("margin-left",0)
 		.style("padding-left","2.5%")
@@ -221,8 +225,8 @@ function windowResize(){
 		.style("padding","5%")
 		.style("background","#16222a")
 		.style("color","white")
-		.style("margin-top",window.innerHeight*0.75)
-		.style("margin-bottom",window.innerHeight*0.75)
+		.style("margin-top",200)
+		.style("margin-bottom",200)
 		.style("opacity",0.5);
 
 		opacityWaypoint(window.innerHeight*0.7);
@@ -241,5 +245,4 @@ function windowResize(){
 	}
 }
 
-window.addEventListener('resize', _.debounce(windowResize, 150));
 

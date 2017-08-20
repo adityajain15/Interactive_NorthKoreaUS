@@ -174,7 +174,7 @@ function removeProvocationEvents(){
 			d3.select("#tooltip").style("display","none");
 			d3.selectAll(".tooltipNegotiation").remove();
 }
-function action1on(){
+/*function action1on(){
 	const type = d3.annotationCalloutRect;
 	const annotations = [{
 		x: 45,
@@ -219,7 +219,7 @@ function action1off(){
 	d3.selectAll(".annotation.callout.rect").transition();
 	d3.select(".annotation-group").remove();
 
-}
+}*/
 
 function action2on(){
 	var g = d3.transition().duration(500).ease(d3.easeQuadInOut);
