@@ -248,11 +248,25 @@ function windowResize(){
 }
 
 function mobileWindowResize(){
+	Waypoint.destroyAll();
 	d3.select("#calendarContainer")
 		.transition()
 		.duration(300)
 		.ease(d3.easeQuadInOut)
 		.style("top",(window.innerHeight/2)-(document.getElementById('calendarContainer').clientHeight/2));
+	opacityWaypoint(window.innerHeight*0.7);
+	//makeWaypoint1();
+	makeWaypoint2(window.innerHeight*0.7);
+	makeWaypoint3(window.innerHeight*0.7);
+	makeWaypoint4(window.innerHeight*0.7);
+	makeWaypoint5(window.innerHeight*0.7);
+	makeWaypoint6(window.innerHeight*0.7);
+	makeWaypoint7(window.innerHeight*0.7);
+	makeWaypoint8(window.innerHeight*0.7);
+	makeWaypoint9(window.innerHeight*0.7);
+	makeWaypoint10(window.innerHeight*0.7);
+	makeWaypoint11(window.innerHeight*0.7);
+	makeWaypoint12(window.innerHeight*0.7);	
 }
 
 function mobileSetup(){
