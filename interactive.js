@@ -1,4 +1,10 @@
-
+if(!(window.navigator.userAgent.includes("mobi")||window.navigator.userAgent.includes("Mobi"))){
+	resize();
+	setup();
+}
+else{
+	mobileSetup();
+}
 
 var q = d3.queue()
     .defer(d3.csv, "USKoreaData.csv")
@@ -105,29 +111,77 @@ function makeStuff(error,data){
 	.call(yAxis)
 	.attr("transform","translate(45,30)");
 
-	if(!(window.navigator.userAgent.includes("mobi")||window.navigator.userAgent.includes("Mobi"))){
-		window.addEventListener('resize', _.debounce(windowResize, 150));
+	
+
+	if(window.navigator.userAgent.includes("mobi")||window.navigator.userAgent.includes("Mobi")){
+		window.addEventListener('resize', _.debounce(mobileWindowResize, 150));
+	}
+	else{
+		window.addEventListener('resize', _.debounce(resize, 150));
+		
 		d3.selectAll(".nego")
 			.on("mouseenter",function(d){attachNegotiationEvents.call(this,d)})
 			.on("mouseleave",function(d){removeNegotiationEvents.call(this)});
 
 		d3.selectAll(".prov")
 			.on("mouseenter",function(d){attachProvocationEvents.call(this,d)})
-			.on("mouseleave",function(d){removeProvocationEvents.call(this)});
-		windowResize();
+			.on("mouseleave",function(d){removeProvocationEvents.call(this)});	
 	}
-	else{
-		mobileSetup();
-		window.addEventListener('resize', _.debounce(mobileWindowResize, 150));
-	}
-	
 }
 
-function windowResize(){
-	
-	if(window.innerWidth>=1024){
-		
+function setup(){
+	rightImageDown(d3.select("#dun1"),'dun1',document.getElementById('para5'));
+	rightImageUp(d3.select("#dun1"),'dun1',document.getElementById('para5'));
+	rightImageDown(d3.select("#dun2"),'dun2',document.getElementById('para6'));
+	rightImageUp(d3.select("#dun2"),'dun2',document.getElementById('clintonend'));
+	rightImageDown(d3.select("#dun3"),'dun3',document.getElementById('para8'));
+	rightImageUp(d3.select("#dun3"),'dun3',document.getElementById('bushend'));
+	rightImageDown(d3.select("#dun4"),'dun4',document.getElementById('para9'));
+	rightImageUp(d3.select("#dun4"),'dun4',document.getElementById('obamaend'));
+	rightImageDown(d3.select("#dun5"),'dun5',document.getElementById('para11'));
+	rightImageUp(d3.select("#dun5"),'dun5',document.getElementById('para11'));
 
+	leftImageDown(d3.select("#dum1"),'dum1',document.getElementById('para5'));
+	leftImageUp(d3.select("#dum1"),'dum1',document.getElementById('regime1end'));
+	leftImageDown(d3.select("#dum2"),'dum2',document.getElementById('para7'));
+	leftImageUp(d3.select("#dum2"),'dum2',document.getElementById('regime2end'));
+	leftImageDown(d3.select("#dum3"),'dum3',document.getElementById('para10'));
+	leftImageUp(d3.select("#dum3"),'dum3',document.getElementById('para11'));
+
+	if(window.innerWidth>=1024){
+		opacityWaypoint(window.innerHeight*0.5);
+		makeWaypoint1(window.innerHeight*0.5);
+		makeWaypoint2(window.innerHeight*0.5);
+		makeWaypoint3(window.innerHeight*0.5);
+		makeWaypoint4(window.innerHeight*0.5);
+		makeWaypoint5(window.innerHeight*0.5);
+		makeWaypoint6(window.innerHeight*0.5);
+		makeWaypoint7(window.innerHeight*0.5);
+		makeWaypoint8(window.innerHeight*0.5);
+		makeWaypoint9(window.innerHeight*0.5);
+		makeWaypoint10(window.innerHeight*0.5);
+		makeWaypoint11(window.innerHeight*0.5);
+		makeWaypoint12(window.innerHeight*0.5);
+	}
+	else{
+		opacityWaypoint(window.innerHeight*0.7);
+		makeWaypoint1(window.innerHeight*0.7);
+		makeWaypoint2(window.innerHeight*0.7);
+		makeWaypoint3(window.innerHeight*0.7);
+		makeWaypoint4(window.innerHeight*0.7);
+		makeWaypoint5(window.innerHeight*0.7);
+		makeWaypoint6(window.innerHeight*0.7);
+		makeWaypoint7(window.innerHeight*0.7);
+		makeWaypoint8(window.innerHeight*0.7);
+		makeWaypoint9(window.innerHeight*0.7);
+		makeWaypoint10(window.innerHeight*0.7);
+		makeWaypoint11(window.innerHeight*0.7);
+		makeWaypoint12(window.innerHeight*0.7);
+	}
+}
+
+function resize(){
+	if(window.innerWidth>=1024){
 		d3.select("#calendar")
 		.style("width",0.35*document.getElementById("contentWrapper").getBoundingClientRect().width)
 		.style("height",null);
@@ -161,48 +215,10 @@ function windowResize(){
 		d3.selectAll(".prov")
 			.on("touchstart",function(d){attachProvocationEvents.call(this,d)})
 			.on("touchend",function(d){removeProvocationEvents.call(this)})
-
 		
 		placeImages(parseFloat(d3.select("#textWrapper").style("padding-right")));
-		
-		opacityWaypoint(window.innerHeight*0.5);
-
-		
-		rightImageDown(d3.select("#dun1"),'dun1',document.getElementById('para5'));
-		rightImageUp(d3.select("#dun1"),'dun1',document.getElementById('para5'));
-		rightImageDown(d3.select("#dun2"),'dun2',document.getElementById('para6'));
-		rightImageUp(d3.select("#dun2"),'dun2',document.getElementById('clintonend'));
-		rightImageDown(d3.select("#dun3"),'dun3',document.getElementById('para8'));
-		rightImageUp(d3.select("#dun3"),'dun3',document.getElementById('bushend'));
-		rightImageDown(d3.select("#dun4"),'dun4',document.getElementById('para9'));
-		rightImageUp(d3.select("#dun4"),'dun4',document.getElementById('obamaend'));
-		rightImageDown(d3.select("#dun5"),'dun5',document.getElementById('para11'));
-		rightImageUp(d3.select("#dun5"),'dun5',document.getElementById('para11'));
-
-		leftImageDown(d3.select("#dum1"),'dum1',document.getElementById('para5'));
-		leftImageUp(d3.select("#dum1"),'dum1',document.getElementById('regime1end'));
-		leftImageDown(d3.select("#dum2"),'dum2',document.getElementById('para7'));
-		leftImageUp(d3.select("#dum2"),'dum2',document.getElementById('regime2end'));
-		leftImageDown(d3.select("#dum3"),'dum3',document.getElementById('para10'));
-		leftImageUp(d3.select("#dum3"),'dum3',document.getElementById('para11'));
-
-		
-		//makeWaypoint1();
-		makeWaypoint2(window.innerHeight*0.5);
-		makeWaypoint3(window.innerHeight*0.5);
-		makeWaypoint4(window.innerHeight*0.5);
-		makeWaypoint5(window.innerHeight*0.5);
-		makeWaypoint6(window.innerHeight*0.5);
-		makeWaypoint7(window.innerHeight*0.5);
-		makeWaypoint8(window.innerHeight*0.5);
-		makeWaypoint9(window.innerHeight*0.5);
-		makeWaypoint10(window.innerHeight*0.5);
-		makeWaypoint11(window.innerHeight*0.5);
-		makeWaypoint12(window.innerHeight*0.5);
 	}
 	else{
-
-		Waypoint.destroyAll();
 		d3.select("#calendar")
 		.style("height",null) 
 		.style("width",window.innerWidth);
@@ -230,43 +246,15 @@ function windowResize(){
 		.style("margin-top",200)
 		.style("margin-bottom",200)
 		.style("opacity",0.5);
-
-		opacityWaypoint(window.innerHeight*0.7);
-		//makeWaypoint1();
-		makeWaypoint2(window.innerHeight*0.7);
-		makeWaypoint3(window.innerHeight*0.7);
-		makeWaypoint4(window.innerHeight*0.7);
-		makeWaypoint5(window.innerHeight*0.7);
-		makeWaypoint6(window.innerHeight*0.7);
-		makeWaypoint7(window.innerHeight*0.7);
-		makeWaypoint8(window.innerHeight*0.7);
-		makeWaypoint9(window.innerHeight*0.7);
-		makeWaypoint10(window.innerHeight*0.7);
-		makeWaypoint11(window.innerHeight*0.7);
-		makeWaypoint12(window.innerHeight*0.7);		
 	}
 }
 
 function mobileWindowResize(){
-	Waypoint.destroyAll();
 	d3.select("#calendarContainer")
 		.transition()
 		.duration(300)
 		.ease(d3.easeQuadInOut)
 		.style("top",(window.innerHeight/2)-(document.getElementById('calendarContainer').clientHeight/2));
-	opacityWaypoint(window.innerHeight*0.7);
-	//makeWaypoint1();
-	makeWaypoint2(window.innerHeight*0.7);
-	makeWaypoint3(window.innerHeight*0.7);
-	makeWaypoint4(window.innerHeight*0.7);
-	makeWaypoint5(window.innerHeight*0.7);
-	makeWaypoint6(window.innerHeight*0.7);
-	makeWaypoint7(window.innerHeight*0.7);
-	makeWaypoint8(window.innerHeight*0.7);
-	makeWaypoint9(window.innerHeight*0.7);
-	makeWaypoint10(window.innerHeight*0.7);
-	makeWaypoint11(window.innerHeight*0.7);
-	makeWaypoint12(window.innerHeight*0.7);	
 }
 
 function mobileSetup(){
@@ -302,7 +290,7 @@ function mobileSetup(){
 		.style("opacity",0.5);
 
 	opacityWaypoint(window.innerHeight*0.9);
-	//makeWaypoint1();
+	makeWaypoint1(window.innerHeight*0.9);
 	makeWaypoint2(window.innerHeight*0.9);
 	makeWaypoint3(window.innerHeight*0.9);
 	makeWaypoint4(window.innerHeight*0.9);
@@ -313,7 +301,7 @@ function mobileSetup(){
 	makeWaypoint9(window.innerHeight*0.9);
 	makeWaypoint10(window.innerHeight*0.9);
 	makeWaypoint11(window.innerHeight*0.9);
-	makeWaypoint12(window.innerHeight*0.9);	
+	makeWaypoint12(window.innerHeight*0.9);
 }
 
 
