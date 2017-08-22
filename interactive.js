@@ -1,16 +1,22 @@
-if(!(window.navigator.userAgent.includes("mobi")||window.navigator.userAgent.includes("Mobi"))){
+window.onload = function(){
+	if(!(window.navigator.userAgent.includes("mobi")||window.navigator.userAgent.includes("Mobi"))){
 	resize();
 	setup();
-}
-else{
-	mobileSetup();
-}
-
-var q = d3.queue()
+	var q = d3.queue()
     .defer(d3.csv, "USKoreaData.csv")
     .defer(d3.csv, "Negotiations.csv")
     .defer(d3.csv, "Provocations.csv")
     .awaitAll(makeStuff);
+	}
+	else{
+		mobileSetup();
+		var q = d3.queue()
+	    .defer(d3.csv, "USKoreaData.csv")
+	    .defer(d3.csv, "Negotiations.csv")
+	    .defer(d3.csv, "Provocations.csv")
+	    .awaitAll(makeStuff);
+	}
+}
 
 var calendar = d3.select("#calendar");
 
@@ -130,6 +136,7 @@ function makeStuff(error,data){
 }
 
 function setup(){
+
 	rightImageDown(d3.select("#dun1"),'dun1',document.getElementById('para5'));
 	rightImageUp(d3.select("#dun1"),'dun1',document.getElementById('para5'));
 	rightImageDown(d3.select("#dun2"),'dun2',document.getElementById('para6'));

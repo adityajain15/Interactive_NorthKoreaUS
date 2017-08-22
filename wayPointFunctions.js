@@ -245,51 +245,6 @@ function makeWaypoint12(theOffset){
 	});
 }
 
-/*
-function image1down(){
-	imageWaypoint = new Waypoint({
-	    element: document.getElementById('para5'),
-	    handler: function(direction) {
-	    	if(direction==="down"){
-    			d3.select("#dum1")
-    			.style("right",(0.05*parseFloat(d3.select("#textWrapper").style("padding-right")))+(parseFloat(d3.select("#textWrapper").style("margin-right"))))
-    			.style("top",(window.innerHeight/2)-(document.getElementById('calendarContainer').clientHeight/2))
-    			.style("position","fixed");
-
-	    	}
-	    	else{
-	    		d3.select("#dum1")
-	    		.style("top",null)
-	    		.style("right",0.05*parseFloat(d3.select("#textWrapper").style("padding-right")))
-	    		.style("position","absolute");
-	    	}
-	    },
-	    offset: (window.innerHeight/2)-(document.getElementById('calendarContainer').clientHeight/2)
-	});
-}
-
-function image1up(){
-	imageWaypoint = new Waypoint({
-	    element: document.getElementById('regime1end'),
-	    handler: function(direction) {
-	    	if(direction==="down"){
-    			d3.select("#dum1")
-    			.style("right",0.05*parseFloat(d3.select("#textWrapper").style("padding-right")))
-    			.style("top",document.getElementById('regime1end').offsetTop+document.getElementById('regime1end').clientHeight-document.getElementById('dum1').clientHeight)
-    			.style("position","absolute");
-	    	}
-	    	else{
-	    		d3.select("#dum1")
-	    		.style("top",(window.innerHeight/2)-(document.getElementById('calendarContainer').clientHeight/2))
-	    		.style("right",(0.05*parseFloat(d3.select("#textWrapper").style("padding-right")))+(parseFloat(d3.select("#textWrapper").style("margin-right"))))
-	    		.style("position","fixed");
-	    	}
-	    },
-	    offset: -document.getElementById('regime1end').clientHeight+((window.innerHeight/2)-(document.getElementById('calendarContainer').clientHeight/2))+document.getElementById('dum1').clientHeight
-	});
-}
-*/
-
 function rightImageDown(element,name,para){
 	rightImage = new Waypoint({
 	    element: para,
@@ -307,14 +262,14 @@ function rightImageDown(element,name,para){
 	    		.style("right",0.05*parseFloat(d3.select("#textWrapper").style("padding-right")))
 	    		.style("position","absolute");
 	    	}
+
 	    },
 	    offset: (window.innerHeight/2)-(document.getElementById('calendarContainer').clientHeight/2)
 	});
 }
 
 function rightImageUp(element,name,para){
-	//para = document.getElementById('regime1end')
-	rotImage = new Waypoint({
+	strange = new Waypoint({
 	    element: para,
 	    handler: function(direction) {
 	    	if(direction==="down"){
@@ -329,6 +284,7 @@ function rightImageUp(element,name,para){
 	    		.style("top",(window.innerHeight/2)-(document.getElementById('calendarContainer').clientHeight/2))	
 	    		.style("position","fixed");
 	    	}
+	    
 	    },
 	    offset: -para.clientHeight+((window.innerHeight/2)-(document.getElementById('calendarContainer').clientHeight/2))+document.getElementById(name).clientHeight
 	});
