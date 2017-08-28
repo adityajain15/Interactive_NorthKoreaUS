@@ -14,23 +14,31 @@
 <body>
 	<div id="contentWrapper">
 		<div id="calendarContainer">
-			<svg id="calendar" viewBox="0 0 420 465"></svg>
+			<svg id="calendar" viewBox="0 0 420 460"></svg>
 			<div id="legend">
-				<div class="legendboxContainer">
+				<div class="legendText">
 					<div id="negoLegend">
 						<span class="legendBox" style="background: rgb(239, 243, 255);"></span><span class="legendBox" style="background: rgb(189, 215, 231);"></span><span class="legendBox" style="background: rgb(107, 174, 214);"></span><span class="legendBox" style="background: rgb(33, 113, 181);"></span>
 					</div>
-					<span class="legendText">Negotiations between North Korea and the United States. A darker shade represents more negotiations</span>
+					<div>A darker shade of blue represents a greater number of negotiations between North Korea and the United States.</div>
 				</div>
-				<div class="legendboxContainer">
+				<div class="legendText">
 					<div id="provLegend">
 						<span class="legendBox" style="background: rgb(254, 229, 217);"></span><span class="legendBox" style="background: rgb(252, 174, 145);"></span><span class="legendBox" style="background: rgb(251, 106, 74);"></span><span class="legendBox" style="background: rgb(203, 24, 29);"></span>
 					</div>
-					<span class="legendText">Provocations by North Korea. A darker shade represents more provocations</span>
+					<div>A darker shade of red represents a greater number of provocations by North Korea</div>
 				</div>
+				
+				<div class="legendText" id="annIcon"><svg viewBox="-1 -1 32 32" height="25px" width="25px"><g class="annotation-subject"><path class="subject" transform="translate(15 15)" d="M8.572527594031472e-16,-14A14,14,0,1,1,-8.572527594031472e-16,14A14,14,0,1,1,8.572527594031472e-16,-14Z" fill-opacity="0" stroke="#E8336D" stroke-width="3px" stroke-dasharray="9"></path></g></svg></div>
+				<div class="legendText">Key events are marked with a dashed circle</div>
+
+				<div class="legendText">Hover over boxes for more information</div>
 			</div>
 		</div>
 		<div id="textWrapper">
+			<a href="https://beyondparallel.csis.org/">
+				<img id="bplogo" src="BP_logo.svg" alt="Beyond Parallel">
+			</a>
 			<h1>A Visual History of US-North Korea relations</h1>
 			<div class="textpara">
 				<center>Key Findings</center>
@@ -39,11 +47,11 @@
 					<br>3. There has been a significant decline in U.S.-DPRK negotiations and a rapid increase in the number and intensity of North Korean provocations since 2012. This could indicate that North Korea has undergone a major strategic shift under the leadership of Kim Jong-un.
 					<br>4. The total number of publicly disclosed negotiations conducted under Kim Jong-un has experienced a significant drop-off as compared with Kim Jong-il and Kim Il-sung. Conversely, there has been an exponential increase in the number of provocation events carried out under Kim Jong-un since 2012.
 			</div>
-			<p class="textpara">
+			<div class="textpara">
 			Negotiations over North Korea's nuclear program have occurred for nearly 30 years. The debate over the efficacy of dialogue and engagement with North Korea has been raging even longer. Here we analyze the history of talks between the U.S. and North Korea to see if there are trends that could help shed light on the present nuclear conundrum.
 			<br><br>
 				Numerous studies have assessed various diplomatic efforts, including the 1994 Geneva Agreed Framework and the Six Party Talks, to explain the international community's failure to stop the DPRK's nuclear program and the complexities of negotiating with North Korea. However, there are few open source studies that have explored the entire record of nuclear diplomacy between North Korea and the United States and have tested the relationship between negotiations and other material variables to explain historical outcomes. 
-			</p>
+			</div>
 			<h2>About the Interactive</h2>
 			<p class="textpara instruc" id="para1">
 				This calendar interactive displays Provacations by North Korea and Negotations between the United States and North Korea. Each month in an year has two boxes, one for negotiations and one for provocations. 
@@ -59,7 +67,11 @@
 				Key events will be annotated for you
 			</p>
 			<h2>First North Korean Nuclear Crisis & 1994 Geneva Agreed Framework</h2>
-			<img class="image leftImage" id="dum1" src="dum1.png"></img>
+			<div id="dum1" class="image leftImage">
+				<img class="leaderImages" src="dum1.png"></img>
+				<div width="100%">something</div>
+			</div>
+
 			<img class="image rightImage" id="dun1" src="dun1.png"></img>
 			<p class="textpara" id="para5">
 				The beginning of North Korea's ballistic missiles and nuclear weapons program can be traced as far back as the 1960's. However, the collapse of the Soviet Union in 1991 had significant consequences for North Korea. The loss of support from its largest Cold War benefactor caused the regime to push for greater military self-reliance including through development of strategic nuclear weapons. Although North Korea only succeeded in testing a couple short-to-medium range ballistic missiles during this time the groundwork was laid for the first nuclear crisis. Given its limited nuclear capabilities at this time, North Korea continued to rely on conventional forces for deterrence purposes and to maintain leverage against South Korea and the U.S.  There appears to be little to no relationship between negotiations and provocations at this time.

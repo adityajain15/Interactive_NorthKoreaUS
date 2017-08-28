@@ -1,12 +1,13 @@
+
 window.onload = function(){
 	if(!(window.navigator.userAgent.includes("mobi")||window.navigator.userAgent.includes("Mobi"))){
-	resize();
-	setup();
-	var q = d3.queue()
-    .defer(d3.csv, "USKoreaData.csv")
-    .defer(d3.csv, "Negotiations.csv")
-    .defer(d3.csv, "Provocations.csv")
-    .awaitAll(makeStuff);
+		resize();
+		setup();
+		var q = d3.queue()
+	    .defer(d3.csv, "USKoreaData.csv")
+	    .defer(d3.csv, "Negotiations.csv")
+	    .defer(d3.csv, "Provocations.csv")
+	    .awaitAll(makeStuff);
 	}
 	else{
 		mobileSetup();
@@ -190,13 +191,13 @@ function setup(){
 function resize(){
 	if(window.innerWidth>=1024){
 		d3.select("#calendar")
-		.style("width",0.35*document.getElementById("contentWrapper").getBoundingClientRect().width)
+		.style("width",0.325*document.getElementById("contentWrapper").getBoundingClientRect().width)
 		.style("height",null);
 
 		d3.select("#calendarContainer")
 		.style("width",d3.select("#calendar").style("width"))
 		.style("height",null)
-		.style("margin-left",0.025*document.getElementById("contentWrapper").getBoundingClientRect().width)
+		.style("margin-left",0.050*document.getElementById("contentWrapper").getBoundingClientRect().width)
 		.style("margin-right",0.025*document.getElementById("contentWrapper").getBoundingClientRect().width)
 		.style("top",(window.innerHeight/2)-(document.getElementById('calendarContainer').clientHeight/2))
 		.style("left",document.getElementById('contentWrapper').getBoundingClientRect().left);
