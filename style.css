@@ -125,6 +125,8 @@ p{
 }
 
 .leaderImages{
+	height:50px;
+	width: 50px;
 	border-radius: 50%;
 	object-position: 50% 50%;
 	object-fit: cover;
