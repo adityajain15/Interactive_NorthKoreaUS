@@ -71,11 +71,8 @@ p{
 	margin-top: 100px;
 }
 
-.textpara:not(:last-of-type){
-	margin-bottom: 100px;
-}
-
 .textpara{
+	margin-bottom: 100px;
 	padding: 20px;
 	background: white;
 	opacity: 0.3;
@@ -372,4 +369,10 @@ text.title {
 	margin-top: 0px;
 	padding-top: 10px;
 	padding-bottom: 10px;
+}
+
+#footer{
+	width: 100%;
+	background-color: black;
+	height:10%;
 }

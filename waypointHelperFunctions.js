@@ -1,8 +1,4 @@
 function placeImages(padding){
-	d3.selectAll(".image").select(function(){
-		
-		d3.select(this).style("width",0.9*padding);
-	});
 
 	d3.selectAll(".leaderImages").select(function(){
 		d3.select(this).style("height",0.9*padding);

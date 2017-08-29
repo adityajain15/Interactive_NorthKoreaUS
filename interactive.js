@@ -186,6 +186,7 @@ function setup(){
 		makeWaypoint11(window.innerHeight*0.7);
 		makeWaypoint12(window.innerHeight*0.7);
 	}
+	calendarStop();
 }
 
 function resize(){
@@ -310,4 +311,5 @@ function mobileSetup(){
 	makeWaypoint10(window.innerHeight*0.9);
 	makeWaypoint11(window.innerHeight*0.9);
 	makeWaypoint12(window.innerHeight*0.9);
+	calendarStop();
 }

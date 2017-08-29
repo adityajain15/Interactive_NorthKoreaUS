@@ -333,3 +333,22 @@ function leftImageUp(element,name,para){
 	    offset: -para.clientHeight+((window.innerHeight/2)-(document.getElementById('calendarContainer').clientHeight/2))+document.getElementById(name).clientHeight
 	});
 }
+
+function calendarStop(){
+	theCalendarStop = new Waypoint({
+		element: document.getElementById('footer'),
+		handler: function(direction){
+			if(direction==="down"){
+				d3.select("#calendarContainer")
+				.style("top",document.getElementById('footer').offsetTop-document.getElementById('calendarContainer').clientHeight-((window.innerHeight-document.getElementById('calendarContainer').clientHeight)/2))
+				.style("position","absolute");
+			}
+			else{
+				d3.select("#calendarContainer")
+				.style("top",(window.innerHeight/2)-(document.getElementById('calendarContainer').clientHeight/2))
+				.style("position","fixed");
+			}
+		},
+		offset: window.innerHeight
+	});
+}
