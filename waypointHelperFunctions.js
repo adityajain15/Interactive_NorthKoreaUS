@@ -5,12 +5,26 @@ function placeImages(padding){
 		d3.select(this).style("width",0.9*padding);
 	});
 
+	d3.selectAll(".leaderSpan").select(function(){
+		d3.select(this).style("width",0.9*padding);
+	})
+
 	d3.selectAll(".rightImage").select(function(){
-		d3.select(this).style("right",0.05*padding);
+		if(d3.select(this).style("position")!="fixed"){
+			d3.select(this).style("right",0.05*padding);
+		}
+		else{
+			d3.select(this).style("right",(0.05*parseFloat(d3.select("#textWrapper").style("padding-right")))+parseFloat(d3.select("#textWrapper").style("margin-right"))+parseFloat(d3.select("#contentWrapper").style("margin-right")))
+		}	
 	});
 
 	d3.selectAll(".leftImage").select(function(){
-		d3.select(this).style("left",0.05*padding);
+		if(d3.select(this).style("position")!="fixed"){
+			d3.select(this).style("left",0.05*padding);
+		}
+		else{
+			d3.select(this).style("left",(0.05*parseFloat(d3.select("#textWrapper").style("padding-left")))+(parseFloat(d3.select("#textWrapper").style("margin-left")))+parseFloat(d3.select("#contentWrapper").style("margin-left")))
+		}
 	});
 }
 

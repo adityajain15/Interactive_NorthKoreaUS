@@ -64,15 +64,18 @@ p{
 	font-size: 20px;
 	margin-left: auto;
 	margin-right: auto;
-	line-height: 1.2;
 }
 
 .textpara:not(:first-of-type){
 	margin-top: 100px;
 }
 
-.textpara{
+.textpara:not(:last-of-type){
 	margin-bottom: 100px;
+}
+
+.textpara{
+	
 	padding: 20px;
 	background: white;
 	opacity: 0.3;
@@ -374,7 +377,58 @@ text.title {
 }
 
 #footer{
+	margin-top: 100px;
 	width: 100%;
 	background-color: black;
-	height:10%;
+
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: 400;
+	font-size: 14px;
+	color: white;
+	line-height: 1.3;
+}
+
+#footerWrapper{
+	max-width: 1750px;
+	width: 80%;
+	padding: 2%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.footerBox{
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.footerBox:not(:last-of-type){
+	margin-right: 5%;
+}
+
+.footerBox:not(:first-of-type){
+	margin-left: 5%;
+}
+
+.footerText{
+	display: block;
+}
+
+.footerHeading{
+	font-size: 18px;
+}
+
+#csislogo{
+
+}
+
+#logoWrapper{
+	width: 29%;
+}
+
+#credits{
+	width: 25%;
+}
+
+#thanks{
+	width: 25%;
 }
