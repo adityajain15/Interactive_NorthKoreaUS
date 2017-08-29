@@ -15,23 +15,28 @@
 	<div id="calendarContainer">
 			<svg id="calendar" viewBox="0 0 420 460"></svg>
 			<div id="legend">
-				<div class="legendText">
-					<div id="negoLegend">
+				<div class="legendComponent">
+					<div class="legendIcon">
 						<span class="legendBox" style="background: rgb(239, 243, 255);"></span><span class="legendBox" style="background: rgb(189, 215, 231);"></span><span class="legendBox" style="background: rgb(107, 174, 214);"></span><span class="legendBox" style="background: rgb(33, 113, 181);"></span>
 					</div>
-					<div>A darker shade of blue represents a greater number of negotiations between North Korea and the United States.</div>
+					<div class="legendText">A darker shade of blue represents a greater number of negotiations between North Korea and the United States.</div>
 				</div>
-				<div class="legendText">
-					<div id="provLegend">
+				<div class="legendComponent">
+					<div class="legendIcon">
 						<span class="legendBox" style="background: rgb(254, 229, 217);"></span><span class="legendBox" style="background: rgb(252, 174, 145);"></span><span class="legendBox" style="background: rgb(251, 106, 74);"></span><span class="legendBox" style="background: rgb(203, 24, 29);"></span>
 					</div>
-					<div>A darker shade of red represents a greater number of provocations by North Korea</div>
+					<div class="legendText">A darker shade of red represents a greater number of provocations by North Korea</div>
 				</div>
 				
-				<div class="legendText" id="annIcon"><svg viewBox="-1 -1 32 32" height="25px" width="25px"><g class="annotation-subject"><path class="subject" transform="translate(15 15)" d="M8.572527594031472e-16,-14A14,14,0,1,1,-8.572527594031472e-16,14A14,14,0,1,1,8.572527594031472e-16,-14Z" fill-opacity="0" stroke="#E8336D" stroke-width="3px" stroke-dasharray="9"></path></g></svg></div>
-				<div class="legendText">Key events are marked with a dashed circle</div>
+				<div class="legendComponent">
+					<svg class="legendIcon" viewBox="-1 -1 32 32" height="25px" width="40px" id="annSVG"><g class="annotation-subject"><path class="subject" transform="translate(15 15)" d="M8.572527594031472e-16,-14A14,14,0,1,1,-8.572527594031472e-16,14A14,14,0,1,1,8.572527594031472e-16,-14Z" fill-opacity="0" stroke="#E8336D" stroke-width="3px" stroke-dasharray="9"></path></g></svg>
+					<div class="legendText">Key events are marked with a dashed circle</div>
+				</div>
 
-				<div class="legendText">Hover over boxes for more information</div>
+				<div class="legendComponent">
+					<div class="legendIcon"></div>
+					<div class="legendText">Hover over boxes for more information</div>
+				</div>
 			</div>
 		</div>
 	<div id="contentWrapper">

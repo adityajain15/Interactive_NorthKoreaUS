@@ -298,44 +298,39 @@ text.title {
 }
 
 #legend{
-	width: 80%;
+	width: 95%;
 	color:white;
 	margin-top:10px;
     margin-left: auto;
     margin-right: auto;
 }
 
-.legendboxContainer{
-	margin-right: auto;
-	margin-left: auto;
-	width: 80%;
-}
 
-.legendText{
+
+.legendComponent{
 	font-family: 'Source Sans Pro', sans-serif;
 	font-weight: 400;
 	font-size:12px;
     margin-left: auto;
     margin-right: auto;
 	text-rendering: optimizeLegibility;
-	text-align: center;
 	margin-bottom: 10px;
 }
 
-.legendText:last-child{
+.legendComponent:last-child{
 	margin-bottom: 0px;
 }
 
-#negoLegend{
+.legendIcon{
+	width: 12%;
+	max-width: 40px;
+	margin-right: 5%;
 	display: inline-block;
-	margin-left: auto;
-	margin-right: auto;
 }
 
-#provLegend{
+.legendText{
+	width: 80%;
 	display: inline-block;
-	margin-left: auto;
-	margin-right: auto;
 }
 
 #annIcon{
@@ -347,7 +342,7 @@ text.title {
 }
 
 .legendBox{
-	width: 10px;
+	width: 25%;
 	height: 10px;
 	display: inline-block;
 }
