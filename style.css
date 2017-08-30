@@ -213,7 +213,6 @@ h1{
 	font-weight:800;
 	color: white;
 	margin-top: 50px;
-	margin-bottom: 50px;
 }
 
 h2{
@@ -385,23 +384,18 @@ text.title {
 
 #footerWrapper{
 	max-width: 1750px;
-	width: 80%;
+	width: 90%;
 	padding: 2%;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.footerBox{
-	display: inline-block;
-	vertical-align: middle;
+	display: flex;
+	flex-direction: row;
+	flex-wrap:wrap;
+	justify-content:space-evenly;
+	align-items:center;
+	align-content:center;
 }
 
 .footerBox:not(:last-of-type){
-	margin-right: 5%;
-}
-
-.footerBox:not(:first-of-type){
-	margin-left: 5%;
+	margin-right: 20px;
 }
 
 .footerText{
@@ -412,18 +406,66 @@ text.title {
 	font-size: 18px;
 }
 
-#csislogo{
-
-}
-
 #logoWrapper{
-	width: 29%;
+	width: 30%;
 }
 
-#credits{
-	width: 25%;
+#landingSpot{
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: 400;
+	font-size: 18px;
+	color: white;
+	text-align: center;
 }
 
-#thanks{
-	width: 25%;
+@media (min-width:0px) and (max-width:500px){
+	h1{
+		font-size: 32px;
+		margin-top: 25px;
+	}
 }
+
+@media (min-width: 500px) and (max-width:1024px){
+	h1{
+		font-size: 48px;
+		margin-top: 25px;
+	}
+}
+
+@media (max-width:1024px){
+	#landingSpot{
+		background-color: #16222a;
+		padding: 20px;
+		opacity: 0.8;
+	}
+
+	#hoverEvents{
+		display: none;
+	}
+}
+
+#chevron {
+	display: inline-block;
+  	transform:rotate(90deg);
+  	font-size: 38px;
+  	vertical-align: middle;
+}
+
+#chevWrapper{
+	animation: chevbounce 0.9s infinite ease;
+  	animation-direction: alternate;
+}
+
+@keyframes chevbounce{
+	from {
+    transform: translate(0px,0px);
+  }
+
+  to {
+    transform: translate(0px,10px);
+  }
+}
+
+
+
+

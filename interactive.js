@@ -228,10 +228,11 @@ function resize(){
 	}
 	else{
 		d3.select("#calendar")
-		.style("height",null) 
-		.style("width",window.innerWidth);
+		.style("width",null)
+		.style("height",0.75*window.innerHeight);
 
 		d3.select("#calendarContainer")
+		.style("height",window.innerHeight*0.9)
 		.style("width",document.getElementById('calendar').clientWidth)
 		.style("margin-left",0.5*(window.innerWidth-document.getElementById('calendar').clientWidth))
 		.style("margin-right",0.5*(window.innerWidth-document.getElementById('calendar').clientWidth))
@@ -240,7 +241,7 @@ function resize(){
 
 		d3.select("#textWrapper")
 		.style("width","95%")
-		.style("margin-top",500)
+		.style("margin-top",(window.innerHeight/2)-(document.getElementById('landingSpot').clientHeight/2))
 		.style("margin-right",0)
 		.style("margin-left",0)
 		.style("padding-left","2.5%")
@@ -254,6 +255,7 @@ function resize(){
 		.style("margin-top",200)
 		.style("margin-bottom",200)
 		.style("opacity",0.5);
+
 	}
 }
 
@@ -282,7 +284,7 @@ function mobileSetup(){
 
 	d3.select("#textWrapper")
 		.style("width","95%")
-		.style("margin-top",document.getElementById('calendarContainer').clientHeight+window.innerHeight*0.1)
+		.style("margin-top",(window.innerHeight/2)-(document.getElementById('landingSpot').clientHeight/2))
 		.style("margin-right",0)
 		.style("margin-left",0)
 		.style("padding-left","2.5%")
