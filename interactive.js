@@ -1,6 +1,5 @@
-
-
-if(!(window.navigator.userAgent.includes("mobi")||window.navigator.userAgent.includes("Mobi"))){
+$(window).load(function(){
+	if(!(window.navigator.userAgent.includes("mobi")||window.navigator.userAgent.includes("Mobi"))){
 	resize();
 	setup();
 	var q = d3.queue()
@@ -8,16 +7,16 @@ if(!(window.navigator.userAgent.includes("mobi")||window.navigator.userAgent.inc
     .defer(d3.csv, "Negotiations.csv")
     .defer(d3.csv, "Provocations.csv")
     .awaitAll(makeStuff);
-}
-else{
-	mobileSetup();
-	var q = d3.queue()
-    .defer(d3.csv, "USKoreaData.csv")
-    .defer(d3.csv, "Negotiations.csv")
-    .defer(d3.csv, "Provocations.csv")
-    .awaitAll(makeStuff);
-}
-
+	}
+	else{
+		mobileSetup();
+		var q = d3.queue()
+	    .defer(d3.csv, "USKoreaData.csv")
+	    .defer(d3.csv, "Negotiations.csv")
+	    .defer(d3.csv, "Provocations.csv")
+	    .awaitAll(makeStuff);
+	}
+});
 
 var calendar = d3.select("#calendar");
 
