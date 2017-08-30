@@ -265,6 +265,7 @@ function mobileWindowResize(){
 		.duration(300)
 		.ease(d3.easeQuadInOut)
 		.style("top",(window.innerHeight/2)-(document.getElementById('calendarContainer').clientHeight/2));
+	window.addEventListener('resize',null);
 }
 
 function mobileSetup(){
