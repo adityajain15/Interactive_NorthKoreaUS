@@ -430,6 +430,8 @@ text.title {
 		font-size: 48px;
 		margin-top: 25px;
 	}
+
+
 }
 
 @media (max-width:1024px){
@@ -441,6 +443,25 @@ text.title {
 
 	#hoverEvents{
 		display: none;
+	}
+
+	.textpara{
+		width: 90%;
+		padding: 20px;
+		background: #16222a;
+		color: white;
+		margin-bottom: 200px;
+		margin-top: 200px;
+		opacity: 0.8;
+		font-size: 18px;
+	}
+
+	#textWrapper{
+		width: 70%;
+		margin-right: 0px;
+		margin-left: 0px;
+		padding-left: 15%;
+		padding-right: 15%;
 	}
 }
 

@@ -1,5 +1,5 @@
 $(window).load(function(){
-	if(!(window.navigator.userAgent.includes("mobi")||window.navigator.userAgent.includes("Mobi"))){
+	if(!(window.navigator.userAgent.includes("mobi")||window.navigator.userAgent.includes("Mobi"))||(window.navigator.userAgent.includes("iPad"))){
 	resize();
 	setup();
 	var q = d3.queue()
@@ -171,19 +171,19 @@ function setup(){
 		makeWaypoint12(window.innerHeight*0.5);
 	}
 	else{
-		opacityWaypoint(window.innerHeight*0.7);
-		makeWaypoint1(window.innerHeight*0.7);
-		makeWaypoint2(window.innerHeight*0.7);
-		makeWaypoint3(window.innerHeight*0.7);
-		makeWaypoint4(window.innerHeight*0.7);
-		makeWaypoint5(window.innerHeight*0.7);
-		makeWaypoint6(window.innerHeight*0.7);
-		makeWaypoint7(window.innerHeight*0.7);
-		makeWaypoint8(window.innerHeight*0.7);
-		makeWaypoint9(window.innerHeight*0.7);
-		makeWaypoint10(window.innerHeight*0.7);
-		makeWaypoint11(window.innerHeight*0.7);
-		makeWaypoint12(window.innerHeight*0.7);
+		opacityWaypoint(window.innerHeight*0.9);
+		makeWaypoint1(window.innerHeight*0.9);
+		makeWaypoint2(window.innerHeight*0.9);
+		makeWaypoint3(window.innerHeight*0.9);
+		makeWaypoint4(window.innerHeight*0.9);
+		makeWaypoint5(window.innerHeight*0.9);
+		makeWaypoint6(window.innerHeight*0.9);
+		makeWaypoint7(window.innerHeight*0.9);
+		makeWaypoint8(window.innerHeight*0.9);
+		makeWaypoint9(window.innerHeight*0.9);
+		makeWaypoint10(window.innerHeight*0.9);
+		makeWaypoint11(window.innerHeight*0.9);
+		makeWaypoint12(window.innerHeight*0.9);
 	}
 	calendarStop();
 }
@@ -228,11 +228,11 @@ function resize(){
 	}
 	else{
 		d3.select("#calendar")
-		.style("width",null)
-		.style("height",0.75*window.innerHeight);
+		.style("width",0.70*window.innerWidth)
+		.style("height",null);
 
 		d3.select("#calendarContainer")
-		.style("height",window.innerHeight*0.9)
+		.style("height",null)
 		.style("width",document.getElementById('calendar').clientWidth)
 		.style("margin-left",0.5*(window.innerWidth-document.getElementById('calendar').clientWidth))
 		.style("margin-right",0.5*(window.innerWidth-document.getElementById('calendar').clientWidth))
@@ -240,22 +240,9 @@ function resize(){
 		.style("left",0);
 
 		d3.select("#textWrapper")
-		.style("width","95%")
-		.style("margin-top",(window.innerHeight/2)-(document.getElementById('landingSpot').clientHeight/2))
-		.style("margin-right",0)
-		.style("margin-left",0)
-		.style("padding-left","2.5%")
-		.style("padding-right","2.5%");
+		.style("margin-top",(window.innerHeight/2)-(document.getElementById('landingSpot').clientHeight/2));
 
-		d3.selectAll(".textpara")
-		.style("width","90%")
-		.style("padding","5%")
-		.style("background","#16222a")
-		.style("color","white")
-		.style("margin-top",200)
-		.style("margin-bottom",200)
-		.style("opacity",0.5);
-
+		placeImages(parseFloat(d3.select("#textWrapper").style("padding-right")));
 	}
 }
 
