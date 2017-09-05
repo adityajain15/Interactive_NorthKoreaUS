@@ -300,15 +300,7 @@ function action4on(){
 	.domain([1990,2017])
 	.range([0, 405]);
 
-	const annotations = [{
-	data:{
-		month: "Oct", year: 1994, type:"Misc"
-	},
-	  subject: {
-	radius: 14,
-	radiusPadding: 0,
-	 }
-	},
+	const annotations = [
 	{
 	data:{
 		month: "Dec", year: 1995, type:"Nego"
@@ -335,28 +327,11 @@ function action4on(){
 	radius: 14,
 	radiusPadding: 0,
 	 }
-	},
+	}
+	,
 	{
 	data:{
 		month: "Oct", year: 2002, type:"Nego"
-	},
-	  subject: {
-	radius: 14,
-	radiusPadding: 0,
-	 }
-	},
-	{
-	data:{
-		month: "Nov", year: 2002, type:"Misc"
-	},
-	  subject: {
-	radius: 14,
-	radiusPadding: 0,
-	 }
-	},
-	{
-	data:{
-		month: "Jan", year: 2003, type:"Misc"
 	},
 	  subject: {
 	radius: 14,
@@ -419,24 +394,6 @@ function action4on(){
 	},
 	{
 	data:{
-		month: "Sep", year: 1990, type:"Misc"
-	},
-	  subject: {
-	radius: 14,
-	radiusPadding: 0,
-	 }
-	},
-	{
-	data:{
-		month: "Dec", year: 1991, type:"Misc"
-	},
-	  subject: {
-	radius: 14,
-	radiusPadding: 0,
-	 }
-	},
-	{
-	data:{
 		month: "Jan", year: 1992, type:"Nego"
 	},
 	  subject: {
@@ -446,53 +403,7 @@ function action4on(){
 	},
 	{
 	data:{
-		month: "Aug", year: 1992, type:"Misc"
-	},
-	  subject: {
-	radius: 14,
-	radiusPadding: 0,
-	 }
-	},
-	{
-	data:{
-		month: "Mar", year: 1993, type:"Misc"
-	},
-	  subject: {
-	radius: 14,
-	radiusPadding: 0,
-	 }
-	}
-	,
-	{
-	data:{
-		month: "Jul", year: 1994, type:"Misc"
-	},
-	  subject: {
-	radius: 14,
-	radiusPadding: 0,
-	 }
-	},
-	{
-	data:{
-		month: "Oct", year: 2006, type:"Prov"
-	},
-	  subject: {
-	radius: 14,
-	radiusPadding: 0,
-	 }
-	},
-	{
-	data:{
 		month: "May", year: 2009, type:"Prov"
-	},
-	  subject: {
-	radius: 14,
-	radiusPadding: 0,
-	 }
-	},
-	{
-	data:{
-		month: "Dec", year: 2011, type:"Misc"
 	},
 	  subject: {
 	radius: 14,

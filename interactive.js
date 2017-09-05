@@ -138,7 +138,7 @@ function makeStuff(error,data){
 function setup(){
 
 	rightImageDown(d3.select("#dun1"),'dun1',document.getElementById('para5'));
-	rightImageUp(d3.select("#dun1"),'dun1',document.getElementById('para5'));
+	rightImageUp(d3.select("#dun1"),'dun1',document.getElementById('hwend'));
 	rightImageDown(d3.select("#dun2"),'dun2',document.getElementById('para6'));
 	rightImageUp(d3.select("#dun2"),'dun2',document.getElementById('clintonend'));
 	rightImageDown(d3.select("#dun3"),'dun3',document.getElementById('para8'));
@@ -146,14 +146,14 @@ function setup(){
 	rightImageDown(d3.select("#dun4"),'dun4',document.getElementById('para9'));
 	rightImageUp(d3.select("#dun4"),'dun4',document.getElementById('obamaend'));
 	rightImageDown(d3.select("#dun5"),'dun5',document.getElementById('para11'));
-	rightImageUp(d3.select("#dun5"),'dun5',document.getElementById('para11'));
+	rightImageUp(d3.select("#dun5"),'dun5',document.getElementById('bothend'));
 
 	leftImageDown(d3.select("#dum1"),'dum1',document.getElementById('para5'));
 	leftImageUp(d3.select("#dum1"),'dum1',document.getElementById('regime1end'));
 	leftImageDown(d3.select("#dum2"),'dum2',document.getElementById('para7'));
 	leftImageUp(d3.select("#dum2"),'dum2',document.getElementById('regime2end'));
 	leftImageDown(d3.select("#dum3"),'dum3',document.getElementById('para10'));
-	leftImageUp(d3.select("#dum3"),'dum3',document.getElementById('para11'));
+	leftImageUp(d3.select("#dum3"),'dum3',document.getElementById('bothend'));
 
 	if(window.innerWidth>=1024){
 		opacityWaypoint(window.innerHeight*0.5);
