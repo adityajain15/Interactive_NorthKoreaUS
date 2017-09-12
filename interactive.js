@@ -105,12 +105,23 @@ function makeStuff(error,data){
 	.attr("transform", "translate(45,30)")
 	.call(xGrid);
 
+	var yGridScale = d3.scaleLinear().domain([0,12]).range([0, 420]);
+	var yGrid = d3.axisLeft(yGridScale)
+	.tickSizeOuter(0)
+	.ticks(0)
+	.tickSize(-361)
+	.tickFormat("");
+
 	var yScale =  d3.scaleTime()
 	.domain([new Date(1989, 5, 1), new Date(2017, 5, 1)])
 	.range([0, 420]);
 	var yAxis = d3.axisLeft(yScale)
-	.ticks(5)
+	.ticks(15)
 	.tickSizeOuter(0);
+
+	calendar.append("g")
+	.attr("transform", "translate(45,30)")
+	.call(yGrid);
 
 	calendar.append("g")
 	.attr('id','Axis')

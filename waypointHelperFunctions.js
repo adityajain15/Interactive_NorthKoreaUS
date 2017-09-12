@@ -56,13 +56,17 @@ function attachNegotiationEvents(d){
 		var localNegoData = negoData.filter(function(w){return ((w.Year==d.Year)&&(w.Month==d.Month))});
 
 		if(localNegoData.length!=0){
-			
-				
-			for(let i=0;i<localNegoData.length;i++)
-			{
-				let negoBox = d3.select("#tooltip")
+			var negoBox = d3.select("#tooltip")
 				.append("div")
 				.attr("class","tooltipNegotiation");
+
+			negoBox
+				.append("span")
+				.attr("class","tooltipDate")
+				.text(localNegoData[0]['Month']+" "+localNegoData[0]['Year']);
+			for(var i=0;i<localNegoData.length;i++)
+			{
+				
 
 				negoBox
 				.append("span")
@@ -106,6 +110,7 @@ function attachNegotiationEvents(d){
 }
 
 function removeNegotiationEvents(){
+	
 	var firstChild = this.parentNode.parentNode.firstChild; 
     if(firstChild){ 
     	this.parentNode.parentNode.insertBefore(this.parentNode, firstChild); 
@@ -113,7 +118,8 @@ function removeNegotiationEvents(){
 	firstChild = this.parentNode.firstChild; 
 	if(firstChild){ 
     	this.parentNode.insertBefore(this, firstChild); 
-	} 
+	}
+
 	d3.select(this)
 	.style("stroke",null)
 	.style("stroke-width",null)
@@ -136,12 +142,16 @@ function attachProvocationEvents(d){
 				var localProvData = provData.filter(function(w){return ((w.Year==d.Year)&&(w.Month==d.Month))});
 
 				if(localProvData.length!=0){
-					for(let i=0;i<localProvData.length;i++)
-					{
-						let provBox = d3.select("#tooltip")
+					var provBox = d3.select("#tooltip")
 						.append("div")
 						.attr("class","tooltipNegotiation");
-						
+
+					provBox
+						.append("span")
+						.attr("class","tooltipDate")
+						.text(localProvData[0]['Month']+" "+localProvData[0]['Year']);
+					for(var i=0;i<localProvData.length;i++)
+					{
 						provBox
 						.append("span")
 						.attr("class","tooltipType provocationColor")
@@ -1263,7 +1273,7 @@ function action11on(){
     title: "1. North Korea successfully tests ICBM Hwasong-14 twice"
   },
   dx:15,
-  dy:-30,
+  dy:-90,
 	data:{
 		month: "Jul", year: 2017
 	},
@@ -1271,7 +1281,22 @@ function action11on(){
 	radius: 14,
 	radiusPadding: 1,
 	 }
-	}]
+	}];
+
+	const annotations2= [{
+	note: {
+    title: "2. North Korea's sixth Nuclear test"
+  },
+  dx:15,
+  dy:-30,
+	data:{
+		month: "Sep", year: 2017
+	},
+	  subject: {
+	radius: 14,
+	radiusPadding: 1,
+	 }
+	}];
 
 	var xScale =  d3.scaleBand()
 	.domain(["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"])
@@ -1289,10 +1314,23 @@ function action11on(){
     y: d => yScale(d.year)+37.5
   }).notePadding(-5).textWrap(140).annotations(annotations)
 
+	const makeAnnotations2 = d3.annotation()
+	  .editMode(false)
+	  .type(type)
+	   .accessors({
+    x: d => xScale(d.month)+67.5,
+    y: d => yScale(d.year)+37.5
+  }).notePadding(-5).textWrap(80).annotations(annotations2)
+
 	d3.select("svg")
 	  .append("g")
 	  .attr("class", "keyevents")
 	  .call(makeAnnotations)
+
+	d3.select("svg")
+	  .append("g")
+	  .attr("class", "keyevents")
+	  .call(makeAnnotations2)
 
 	var g = d3.transition().duration(500).ease(d3.easeQuadInOut);
 
