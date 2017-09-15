@@ -261,10 +261,6 @@ h2{
 	margin-top: 100px;
 }
 
-.yGrid .tick {
-    display: none;
-}
-
 .grid .tick {
     stroke: lightgrey;
     opacity: 0.3;

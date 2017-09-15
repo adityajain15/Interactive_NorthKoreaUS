@@ -251,7 +251,7 @@ function rightImageDown(element,name,para){
 	    handler: function(direction) {
 	    	if(direction==="down"){
     			element
-    			.style("right",(0.05*parseFloat(d3.select("#textWrapper").style("padding-right")))+parseFloat(d3.select("#textWrapper").style("margin-right"))+parseFloat(d3.select("#contentWrapper").style("margin-right")))
+    			.style("right",(0.05*parseFloat(d3.select("#textWrapper").style("padding-right")))+parseFloat(d3.select("#textWrapper").style("margin-right"))+((window.innerWidth-document.getElementById('contentWrapper').clientWidth)/2))
     			.style("top",(window.innerHeight/2)-(document.getElementById('calendarContainer').clientHeight/2))
     			.style("position","fixed");
 
@@ -280,7 +280,7 @@ function rightImageUp(element,name,para){
 	    	}
 	    	else{
 	    		element
-	    		.style("right",(0.05*parseFloat(d3.select("#textWrapper").style("padding-right")))+parseFloat(d3.select("#textWrapper").style("margin-right"))+parseFloat(d3.select("#contentWrapper").style("margin-right")))
+	    		.style("right",(0.05*parseFloat(d3.select("#textWrapper").style("padding-right")))+parseFloat(d3.select("#textWrapper").style("margin-right"))+((window.innerWidth-document.getElementById('contentWrapper').clientWidth)/2))
 	    		.style("top",(window.innerHeight/2)-(document.getElementById('calendarContainer').clientHeight/2))	
 	    		.style("position","fixed");
 	    	}
@@ -296,7 +296,7 @@ function leftImageDown(element,name,para){
 	    handler: function(direction) {
 	    	if(direction==="down"){
     			element
-    			.style("left",(0.05*parseFloat(d3.select("#textWrapper").style("padding-left")))+(parseFloat(d3.select("#textWrapper").style("margin-left")))+parseFloat(d3.select("#contentWrapper").style("margin-left")))
+    			.style("left",(0.05*parseFloat(d3.select("#textWrapper").style("padding-left")))+(parseFloat(d3.select("#textWrapper").style("margin-left")))+((window.innerWidth-document.getElementById('contentWrapper').clientWidth)/2))
     			.style("top",(window.innerHeight/2)-(document.getElementById('calendarContainer').clientHeight/2))
     			.style("position","fixed");
 
@@ -325,7 +325,7 @@ function leftImageUp(element,name,para){
 	    	}
 	    	else{
 	    		element
-	    		.style("left",(0.05*parseFloat(d3.select("#textWrapper").style("padding-left")))+(parseFloat(d3.select("#textWrapper").style("margin-left")))+parseFloat(d3.select("#contentWrapper").style("margin-left")))
+	    		.style("left",(0.05*parseFloat(d3.select("#textWrapper").style("padding-left")))+(parseFloat(d3.select("#textWrapper").style("margin-left")))+((window.innerWidth-document.getElementById('contentWrapper').clientWidth)/2))
 	    		.style("top",(window.innerHeight/2)-(document.getElementById('calendarContainer').clientHeight/2))
 	    		.style("position","fixed");
 	    	}
