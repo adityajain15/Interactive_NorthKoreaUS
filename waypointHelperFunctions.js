@@ -1034,7 +1034,7 @@ function action9on(){
 
 	const annotations = [{
 	note: {
-    title: "1. North Korea's second Nuclear test"
+    title: "1. North Korea's second nuclear test"
   },
   dx:15,
   dy:-30,
@@ -1152,7 +1152,7 @@ function action10on(){
 	 }
 	},{
 	note: {
-    title: "2. North Korea's third Nuclear test"
+    title: "2. North Korea's third nuclear test"
   },
   dx:15,
   dy:-65,
@@ -1165,7 +1165,7 @@ function action10on(){
 	 }
 	},{
 	note: {
-    title: "3. North Korea's fourth Nuclear test"
+    title: "3. North Korea's fourth nuclear test"
   },
   dx:0,
   dy:-200,
@@ -1178,7 +1178,7 @@ function action10on(){
 	 }
 	},{
 	note: {
-    title: "4. North Korea's fifth Nuclear test"
+    title: "4. North Korea's fifth nuclear test"
   },
   dx:-10,
   dy:-85,
@@ -1285,7 +1285,7 @@ function action11on(){
 
 	const annotations2= [{
 	note: {
-    title: "2. North Korea's sixth Nuclear test"
+    title: "2. North Korea's sixth nuclear test"
   },
   dx:15,
   dy:-30,
