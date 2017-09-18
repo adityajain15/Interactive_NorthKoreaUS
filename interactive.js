@@ -141,6 +141,7 @@ function makeStuff(error,data){
 			.on("mouseenter",function(d){attachProvocationEvents.call(this,d)})
 			.on("mouseleave",function(d){removeProvocationEvents.call(this)});	
 }
+}
 
 function setup(){
 
