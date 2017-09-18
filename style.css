@@ -253,7 +253,7 @@ h1{
 }
 
 h3{
-	font-size: 28px;
+	font-size: 24px;
 	text-align: center;
 	font-family: 'Biryani', sans-serif;
 	font-weight:700;
@@ -472,6 +472,7 @@ text.title {
 	padding: 2%;
 	display: flex;
 	flex-direction: row;
+	flex-wrap: wrap;
 	justify-content:center;
 	align-content:center;
 
@@ -487,8 +488,8 @@ text.title {
 	-ms-flex-pack:space-evenly;
 }
 
-.footerBox:not(:last-of-type){
-	margin-right: 50px;
+.footerBox{
+	margin:auto;
 }
 
 .footerText{
@@ -527,6 +528,16 @@ text.title {
 
 }
 
+@media(max-width: 961px){
+	#logoWrapper{
+		width: 45%;
+	}
+
+	.footerBox{
+		width: 45%;
+	}
+}
+
 @media (max-width:1024px){
 	#landingSpot{
 		background-color: #16222a;
@@ -547,6 +558,14 @@ text.title {
 		margin-top: 200px;
 		opacity: 0.8;
 		font-size: 18px;
+	}
+
+	a{
+		color:white;
+	}
+
+	a:visited{
+		color:gray;
 	}
 
 	#textWrapper{

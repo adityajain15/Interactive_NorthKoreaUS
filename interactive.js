@@ -130,10 +130,7 @@ function makeStuff(error,data){
 
 	
 
-	if(window.navigator.userAgent.includes("mobi")||window.navigator.userAgent.includes("Mobi")){
-		window.addEventListener('resize', _.debounce(mobileWindowResize, 150));
-	}
-	else{
+	if(!(window.navigator.userAgent.includes("mobi")||window.navigator.userAgent.includes("Mobi"))){
 		window.addEventListener('resize', _.debounce(resize, 150));
 		
 		d3.selectAll(".nego")
@@ -143,7 +140,6 @@ function makeStuff(error,data){
 		d3.selectAll(".prov")
 			.on("mouseenter",function(d){attachProvocationEvents.call(this,d)})
 			.on("mouseleave",function(d){removeProvocationEvents.call(this)});	
-	}
 }
 
 function setup(){
