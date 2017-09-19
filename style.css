@@ -517,6 +517,9 @@ text.title {
 		font-size: 32px;
 		margin-top: 25px;
 	}
+	h3{
+		font-size: 14px;
+	}
 }
 
 @media (min-width: 500px) and (max-width:1024px){
@@ -524,7 +527,9 @@ text.title {
 		font-size: 48px;
 		margin-top: 25px;
 	}
-
+	h3{
+		font-size: 18px;
+	}
 
 }
 
