@@ -1,5 +1,5 @@
 $(window).load(function(){
-	if(!(window.navigator.userAgent.includes("mobi")||window.navigator.userAgent.includes("Mobi"))||(window.navigator.userAgent.includes("iPad"))){
+	if(!(window.navigator.userAgent.includes("mobi")||window.navigator.userAgent.includes("Mobi")||window.navigator.userAgent.includes("iPad"))){
 	resize();
 	setup();
 	var q = d3.queue()
