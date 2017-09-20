@@ -1,5 +1,5 @@
 $(window).load(function(){
-	if(window.navigator.userAgent.includes("Trident")||window.navigator.userAgent.includes("Edge")){
+	if(window.navigator.userAgent.indexOf("Trident")!=-1||window.navigator.userAgent.indexOf("Edge")!=-1){
 		window.alert("We noticed that you may be using Microsoft Internet Explorer.\n\nTo best experience this website please consider using Google Chrome, Mozilla Firefox or Apple Safari");
 	}
 
