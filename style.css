@@ -273,8 +273,19 @@ h2{
 	font-family: 'Biryani', sans-serif;
 	font-weight:800;
 	color: #ffcc00;
-	margin-bottom: 100px;
 	margin-top: 100px;
+	margin-bottom: 100px;
+}
+
+.upperHeading{
+	margin-bottom: 5px;
+}
+
+.lowerHeading{
+	margin-top: 0px;
+	font-size: 16px;
+	font-weight: 700;
+	color:white;
 }
 
 .grid .tick {
