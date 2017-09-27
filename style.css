@@ -89,12 +89,7 @@ a:visited{
 	color: black;
 }
 
-#dataSource{
-	color: white;
-}
-#devSource{
-	color: white;
-}
+
 
 .textpara:not(:first-of-type){
 	margin-top: 100px;
@@ -514,6 +509,7 @@ text.title {
 
 .footerText{
 	display: block;
+	color: white;
 }
 
 .footerHeading{
@@ -522,6 +518,10 @@ text.title {
 
 #logoWrapper{
 	width: 30%;
+}
+
+#sources{
+	width: 25%;
 }
 
 #landingSpot{
