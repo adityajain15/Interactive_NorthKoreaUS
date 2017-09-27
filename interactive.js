@@ -169,6 +169,7 @@ function setup(){
 
 	if(window.innerWidth>=1024){
 		opacityWaypoint(window.innerHeight*0.5);
+		introParaWaypoint(window.innerHeight*0.5);
 		makeWaypoint1(window.innerHeight*0.5);
 		makeWaypoint2(window.innerHeight*0.5);
 		makeWaypoint3(window.innerHeight*0.5);
@@ -184,6 +185,7 @@ function setup(){
 	}
 	else{
 		opacityWaypoint(window.innerHeight*0.9);
+		introParaWaypoint(window.innerHeight*0.9);
 		makeWaypoint1(window.innerHeight*0.9);
 		makeWaypoint2(window.innerHeight*0.9);
 		makeWaypoint3(window.innerHeight*0.9);
@@ -300,6 +302,7 @@ function mobileSetup(){
 		.style("opacity",0.5);
 
 	opacityWaypoint(window.innerHeight*0.9);
+	introParaWaypoint(window.innerHeight*0.9);
 	makeWaypoint1(window.innerHeight*0.9);
 	makeWaypoint2(window.innerHeight*0.9);
 	makeWaypoint3(window.innerHeight*0.9);

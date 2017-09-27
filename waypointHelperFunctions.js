@@ -29,6 +29,7 @@ function placeImages(padding){
 }
 
 function displayAll(){
+	d3.selectAll(".keyevents").remove();
 	var g = d3.transition().duration(500).ease(d3.easeQuadInOut);
 
 	d3.selectAll(".nego")
