@@ -272,6 +272,10 @@ h2{
 	margin-bottom: 100px;
 }
 
+#socialh2{
+	margin-bottom: 20px;
+}
+
 .upperHeading{
 	margin-bottom: 5px;
 }
@@ -458,6 +462,10 @@ text.title {
 	position: relative;
     top: -3px;
     margin-left: 5px;
+}
+
+.socialmedia{
+	text-align: center;
 }
 
 .twitlogo{

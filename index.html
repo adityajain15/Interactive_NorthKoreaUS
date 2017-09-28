@@ -36,6 +36,14 @@
 	<script src="https://d3js.org/d3-axis.v1.min.js"></script>
 	<script type="text/javascript" src="d3-annotation.min.js"></script>
 	<script type="text/javascript" src="lodash.js"></script>	
+	<!-- Global Site Tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-80051375-1"></script>
+	<script>
+  		window.dataLayer = window.dataLayer || [];
+  		function gtag(){dataLayer.push(arguments)};
+  		gtag('js', new Date());
+		gtag('config', 'UA-80051375-1');
+	</script>
 </head>
 <body>
 	<div id="calendarContainer">
@@ -79,7 +87,7 @@
 			</div>
 
 			<p class="textpara instruc" id="para1">
-				<a href="https://beyondparallel.csis.org/" target="_blank">CSIS Beyond Parallel</a> has compiled <a href="https://beyondparallel.csis.org/databases/" target="_blank">a record of bilateral and multilateral negotiations between the United States and North Korea from 1990 to 2017</a>. The interactive calendar on your screen displays Provocations by North Korea and Negotiations between the United States and North Korea. Each <span class="monthColor">month</span> in an year may have two squares, one for the number of negotiations and one for the number of provocations. 
+				<a href="https://beyondparallel.csis.org/" target="_blank">CSIS Beyond Parallel</a> has compiled <a href="https://beyondparallel.csis.org/databases/" target="_blank">a record of bilateral and multilateral negotiations between the United States and North Korea from 1990 to 2017</a>. The interactive calendar on your screen displays Provocations by North Korea and Negotiations between the United States and North Korea. Each <span class="monthColor">month</span> in a year may have two squares, one for the number of negotiations and one for the number of provocations. 
 			</p>
 			<p class="textpara instruc" id="para2">
 				<span class="negotiationColor">Negotiations</span> between North Korea and the United States are shown as squares in shades of blue. A darker shade of blue represents more Negotiations. 
@@ -299,6 +307,17 @@
 			<p class="textpara" id="para12">
 				Periods of negotiation between the United States and North Korea in a bilateral or multilateral format appear to have some correlation with a decrease in the number of North Korean provocations. Those in favor of dialogue with North Korea might see this as evidence of the efficacy of diplomacy. Skeptics will argue that the absence of North Korean provocations does not necessarily mean that nuclear proliferation, both horizontal and vertical, is not still occurring during these periods. However, there is no denying that a decrease in nuclear provocations by North Korea would be a welcome development.  
 			</p>
+			<h2 id="socialh2">Liked this Interactive? Share it on Social Media!</h2>
+			<div class="socialmedia">
+				<a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=Explore%20the%2025%20year%20history%20of%20North%20Korea-U.S.%20relations%20in%20this%20interactive%20data%20visualization&via=CSISKoreaChair&url=https://beyondparallel.csis.org/25-years-of-negotiations-provocations/" data-size="small">
+					Tweet
+				</a>
+				<div class="fb-share-button" data-href="https://beyondparallel.csis.org/25-years-of-negotiations-provocations/" data-layout="button" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fbeyondparallel.csis.org%2F25-years-of-negotiations-provocations%2F&amp;src=sdkpreparse">
+					Share
+				</a></div>
+				<script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
+<script type="IN/Share" data-url="https://beyondparallel.csis.org/25-years-of-negotiations-provocations/"></script>
+			</div>
 		</div>
 		<div id="tooltip">
 		</div>
@@ -336,4 +355,28 @@
 <script type="text/javascript" src="waypointHelperFunctions.js"></script>
 <script type="text/javascript" src="wayPointFunctions.js"></script>
 <script type="text/javascript" src="interactive.js"></script>
+<script>window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+
+  return t;
+}(document, "script", "twitter-wjs"));</script>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 </html>
