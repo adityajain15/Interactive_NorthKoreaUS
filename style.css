@@ -268,12 +268,11 @@ h2{
 	font-family: 'Biryani', sans-serif;
 	font-weight:800;
 	color: #ffcc00;
-	margin-top: 100px;
-	margin-bottom: 100px;
 }
 
-#socialh2{
-	margin-bottom: 20px;
+.headingWrapper{
+	margin-top: 100px;
+	margin-bottom: 100px;
 }
 
 .upperHeading{
@@ -463,9 +462,12 @@ text.title {
     top: -3px;
     margin-left: 5px;
 }
-
+#socialh2{
+	margin-bottom: 0px;
+}
 .socialmedia{
 	text-align: center;
+	padding-bottom: 10px;
 }
 
 .twitlogo{
@@ -609,6 +611,12 @@ text.title {
 		padding-left: 15%;
 		padding-right: 15%;
 	}
+	.headingWrapper{
+		background: black;
+		padding-top: 15px;
+		padding-bottom: 15px;
+	}
+	
 }
 
 #chevron {
