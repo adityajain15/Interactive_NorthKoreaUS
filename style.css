@@ -551,12 +551,6 @@ text.title {
 	h3{
 		font-size: 14px;
 	}
-	#logoWrapper{
-		width: 100%;
-	}
-	#sources{
-		width: 100%;
-	}
 }
 
 @media (min-width: 500px) and (max-width:1024px){
@@ -572,11 +566,11 @@ text.title {
 
 @media(max-width: 961px){
 	#logoWrapper{
-		width: 45%;
+		width: 100%;
 	}
 
 	.footerBox{
-		width: 45%;
+		width: 100%;
 	}
 }
 
