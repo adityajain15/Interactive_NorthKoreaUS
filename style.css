@@ -1,7 +1,6 @@
 
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
+/* 
+	If this style sheet makes you sad, I'm sorry. I'll do better next time
 */
 
 html, body, div, span, applet, object, iframe,
@@ -564,17 +563,12 @@ text.title {
 
 }
 
-@media(max-width: 961px){
-	#logoWrapper{
-		width: 100%;
-	}
-
-	#sources{
-		width: 100%;
-	}
-
+@media(max-width: 600px){
 	.footerBox{
-		width: 100%;
+		width: 80% !important;
+	}
+	.footerBox:not(:last-of-type){
+		margin-bottom: 15px;
 	}
 }
 
