@@ -1,7 +1,6 @@
 
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
+/* 
+	If this style sheet makes you sad, I'm sorry. I'll do better next time
 */
 
 html, body, div, span, applet, object, iframe,
@@ -89,12 +88,7 @@ a:visited{
 	color: black;
 }
 
-#dataSource{
-	color: white;
-}
-#devSource{
-	color: white;
-}
+
 
 .textpara:not(:first-of-type){
 	margin-top: 100px;
@@ -109,7 +103,8 @@ a:visited{
 	padding: 20px;
 	background: white;
 	opacity: 0.3;
-	width: 80%;
+	width: 90%;
+	box-sizing:border-box;
 	font-family: georgia, serif;
 	font-size: 20px;
 	margin-left: auto;
@@ -272,8 +267,22 @@ h2{
 	font-family: 'Biryani', sans-serif;
 	font-weight:800;
 	color: #ffcc00;
-	margin-bottom: 100px;
+}
+
+.headingWrapper{
 	margin-top: 100px;
+	margin-bottom: 100px;
+}
+
+.upperHeading{
+	margin-bottom: 5px;
+}
+
+.lowerHeading{
+	margin-top: 0px;
+	font-size: 16px;
+	font-weight: 700;
+	color:white;
 }
 
 .grid .tick {
@@ -416,7 +425,9 @@ text.title {
 
 .headlineBox{
 	height: auto;
-	width: 100%;
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
 	margin-top: 50px;
 	display: block;
 }
@@ -427,8 +438,13 @@ text.title {
 	margin-bottom: 100px;
 	margin-top: 0px;
 	padding: 10px;
+	padding-right: 20px;
+	padding-left: 20px;
 	font-size: 15px;
-
+	width: 90%;
+	box-sizing:border-box;
+	margin-left: auto;
+	margin-right: auto;
 	text-align: center;
 	font-family: 'Source Sans Pro', sans-serif;
 	font-weight:500;
@@ -444,6 +460,13 @@ text.title {
 	position: relative;
     top: -3px;
     margin-left: 5px;
+}
+#socialh2{
+	margin-bottom: 15px;
+}
+.socialmedia{
+	text-align: center;
+	padding-bottom: 10px;
 }
 
 .twitlogo{
@@ -475,7 +498,8 @@ text.title {
 	flex-wrap: wrap;
 	justify-content:center;
 	align-content:center;
-
+	margin-left: auto;
+	margin-right: auto;
 	display: -webkit-flex;
 	display: -ms-flexbox;
 	-ms-flex-line-pack:center;
@@ -494,6 +518,7 @@ text.title {
 
 .footerText{
 	display: block;
+	color: white;
 }
 
 .footerHeading{
@@ -504,18 +529,26 @@ text.title {
 	width: 30%;
 }
 
+#sources{
+	width: 25%;
+}
+
 #landingSpot{
 	font-family: 'Source Sans Pro', sans-serif;
 	font-weight: 400;
 	font-size: 18px;
 	color: white;
 	text-align: center;
+	margin-bottom: 100px;
 }
 
 @media (min-width:0px) and (max-width:500px){
 	h1{
 		font-size: 32px;
 		margin-top: 25px;
+	}
+	h3{
+		font-size: 14px;
 	}
 }
 
@@ -524,17 +557,18 @@ text.title {
 		font-size: 48px;
 		margin-top: 25px;
 	}
-
+	h3{
+		font-size: 18px;
+	}
 
 }
 
-@media(max-width: 961px){
-	#logoWrapper{
-		width: 45%;
-	}
-
+@media(max-width: 600px){
 	.footerBox{
-		width: 45%;
+		width: 80% !important;
+	}
+	.footerBox:not(:last-of-type){
+		margin-bottom: 15px;
 	}
 }
 
@@ -574,6 +608,11 @@ text.title {
 		margin-left: 0px;
 		padding-left: 15%;
 		padding-right: 15%;
+	}
+	.headingWrapper{
+		background: black;
+		padding-top: 15px;
+		padding-bottom: 15px;
 	}
 }
 

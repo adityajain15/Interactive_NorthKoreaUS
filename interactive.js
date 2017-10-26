@@ -1,4 +1,15 @@
+console.log("This interactive was made by Immigrants");
+console.log("****")
+console.log("I, too by Langston Hughes");
+console.log("\n");
+console.log("I, too, sing America.\nI am the darker brother. \nThey send me to eat in the kitchen \nWhen company comes, \nBut I laugh, \nAnd eat well, \nAnd grow strong. \n\nTomorrow, \nI’ll be at the table \nWhen company comes. \nNobody’ll dare \nSay to me, \n“Eat in the kitchen,” \nThen. \n\nBesides, \nThey’ll see how beautiful I am \nAnd be ashamed— \n\nI, too, am America.");
+
 $(window).load(function(){
+
+	if(window.navigator.userAgent.indexOf("Trident")!=-1||window.navigator.userAgent.indexOf("Edge")!=-1){
+		window.alert("We noticed that you may be using Microsoft Internet Explorer.\n\nTo best experience this website please consider using Google Chrome, Mozilla Firefox or Apple Safari");
+	}
+
 	//check user agent string to find if device is mobile
 	if(!(window.navigator.userAgent.includes("mobi")||window.navigator.userAgent.includes("Mobi"))||(window.navigator.userAgent.includes("iPad"))){
 		// not mobile, proceed normal setup
@@ -169,6 +180,7 @@ function setup(){
 	// Waypoints for calendar changes
 	if(window.innerWidth>=1024){
 		opacityWaypoint(window.innerHeight*0.5);
+		introParaWaypoint(window.innerHeight*0.5);
 		makeWaypoint1(window.innerHeight*0.5);
 		makeWaypoint2(window.innerHeight*0.5);
 		makeWaypoint3(window.innerHeight*0.5);
@@ -184,6 +196,7 @@ function setup(){
 	}
 	else{
 		opacityWaypoint(window.innerHeight*0.9);
+		introParaWaypoint(window.innerHeight*0.9);
 		makeWaypoint1(window.innerHeight*0.9);
 		makeWaypoint2(window.innerHeight*0.9);
 		makeWaypoint3(window.innerHeight*0.9);
@@ -301,6 +314,7 @@ function mobileSetup(){
 		.style("opacity",0.5);
 
 	opacityWaypoint(window.innerHeight*0.9);
+	introParaWaypoint(window.innerHeight*0.9);
 	makeWaypoint1(window.innerHeight*0.9);
 	makeWaypoint2(window.innerHeight*0.9);
 	makeWaypoint3(window.innerHeight*0.9);

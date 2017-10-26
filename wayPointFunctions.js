@@ -57,6 +57,21 @@ function opacityWaypoint(theOffset){
 	});
 }
 
+function introParaWaypoint(theOffset){
+	introWay = new Waypoint({
+		element: document.getElementById('intropara'),
+		handler: function(direction){
+			if(direction==="down"){
+				displayAll();
+			}
+			else{
+				action4on();
+			}
+		},
+		offset: theOffset
+	});
+}
+
 function makeWaypoint1(theOffset){
 waypointAction1 = new Waypoint({
 		element: document.getElementById('para1'),
@@ -132,7 +147,6 @@ function makeWaypoint5(theOffset){
 	    	}
 	    	else{
 	    		displayAll();
-	    		action4on();
 	    	}
 	    },
 	    offset: theOffset
@@ -352,3 +366,4 @@ function calendarStop(){
 		offset: window.innerHeight
 	});
 }
+

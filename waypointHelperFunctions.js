@@ -29,6 +29,7 @@ function placeImages(padding){
 }
 
 function displayAll(){
+	d3.selectAll(".keyevents").remove();
 	var g = d3.transition().duration(500).ease(d3.easeQuadInOut);
 
 	d3.selectAll(".nego")
@@ -708,7 +709,7 @@ function action7on(){
 
 	const annotations = [{
 	note: {
-    title: "1. Geneva Agreed Framework Signed"
+    title: "1. Geneva Agreed Framework signed"
   },
   dx:-115,
   dy:-13,
@@ -722,7 +723,7 @@ function action7on(){
 	},
 	{
 	note: {
-    title: "2. KEDO Light Water Reactor Agreement Signed"
+    title: "2. KEDO Light Water Reactor Agreement signed"
   },
   dx:-15,
   dy:-38,
@@ -857,7 +858,7 @@ function action8on(){
 	},
 	{
 	note: {
-    title: "4. Six Party Talks Begin"
+    title: "4. Six Party Talks begin"
   },
   dx:-15,
   dy:-50,
@@ -941,7 +942,7 @@ function action8on(){
 	},
 	{
 	note: {
-    title: "6. KEDO Project Terminated"
+    title: "6. KEDO Project terminated"
   },
   dx:-1,
   dy:100,
@@ -1372,5 +1373,4 @@ function action11on(){
 			}
 	});
 }
-
 
