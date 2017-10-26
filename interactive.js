@@ -1,19 +1,22 @@
 $(window).load(function(){
+	//check user agent string to find if device is mobile
 	if(!(window.navigator.userAgent.includes("mobi")||window.navigator.userAgent.includes("Mobi"))||(window.navigator.userAgent.includes("iPad"))){
-	resize();
-	setup();
-	var q = d3.queue()
-    .defer(d3.csv, "USKoreaData.csv")
-    .defer(d3.csv, "Negotiations.csv")
-    .defer(d3.csv, "Provocations.csv")
-    .awaitAll(makeStuff);
+		// not mobile, proceed normal setup
+		resize();
+		setup();
+		var q = d3.queue()
+	    .defer(d3.csv, "./data/USKoreaData.csv")
+	    .defer(d3.csv, "./data/Negotiations.csv")
+	    .defer(d3.csv, "./data/Provocations.csv")
+	    .awaitAll(makeStuff);
 	}
 	else{
+		//set up for mobile
 		mobileSetup();
 		var q = d3.queue()
-	    .defer(d3.csv, "USKoreaData.csv")
-	    .defer(d3.csv, "Negotiations.csv")
-	    .defer(d3.csv, "Provocations.csv")
+	    .defer(d3.csv, "./data/USKoreaData.csv")
+	    .defer(d3.csv, "./data/Negotiations.csv")
+	    .defer(d3.csv, "./data/Provocations.csv")
 	    .awaitAll(makeStuff);
 	}
 });
@@ -129,7 +132,7 @@ function makeStuff(error,data){
 	.attr("transform","translate(45,30)");
 
 	
-
+	//if not mobile then add resize events, and add mouse hover events
 	if(!(window.navigator.userAgent.includes("mobi")||window.navigator.userAgent.includes("Mobi"))){
 		window.addEventListener('resize', _.debounce(resize, 150));
 		
@@ -144,7 +147,7 @@ function makeStuff(error,data){
 }
 
 function setup(){
-
+	// Waypoints for presidential/regime images
 	rightImageDown(d3.select("#dun1"),'dun1',document.getElementById('para5'));
 	rightImageUp(d3.select("#dun1"),'dun1',document.getElementById('hwend'));
 	rightImageDown(d3.select("#dun2"),'dun2',document.getElementById('para6'));
@@ -163,6 +166,7 @@ function setup(){
 	leftImageDown(d3.select("#dum3"),'dum3',document.getElementById('para10'));
 	leftImageUp(d3.select("#dum3"),'dum3',document.getElementById('bothend'));
 
+	// Waypoints for calendar changes
 	if(window.innerWidth>=1024){
 		opacityWaypoint(window.innerHeight*0.5);
 		makeWaypoint1(window.innerHeight*0.5);
@@ -193,6 +197,7 @@ function setup(){
 		makeWaypoint11(window.innerHeight*0.9);
 		makeWaypoint12(window.innerHeight*0.9);
 	}
+	//waypoint that makes the calendar stop at the bottom before credits
 	calendarStop();
 }
 

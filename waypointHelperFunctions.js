@@ -36,7 +36,6 @@ function displayAll(){
 		.transition(g)
 		.style("fill-opacity",1);
 
-//.filter(function(d){return d.Year>1992})
 	d3.selectAll(".prov")
 		.style("display",null)	
 		.transition(g)

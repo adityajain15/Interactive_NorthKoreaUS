@@ -64,7 +64,7 @@ ul{
 }
 
 li{
-	list-style-image:url('BP_bookend.png');
+	list-style-image:url('./Images/miscImages/BP_bookend.png');
 }
 
 li:not(:last-of-type){
