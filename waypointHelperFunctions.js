@@ -87,7 +87,7 @@ function attachNegotiationEvents(d){
 
 				for(var j=0;j<leaderString.length;j++){
 					var theParty = partyBox.append("div").attr("class","party");
-					theParty.append("img").attr("class","countryFlags").attr("src","flags/"+nationString[j].trim()+".png");
+					theParty.append("img").attr("class","countryFlags").attr("src","Images/flags/"+nationString[j].trim()+".png");
 					theParty.append("span").attr("class","leaderName").text(leaderString[j]);
 					//partyBox.append("span").attr("class","nationName").text(nationString[j]);;
 				}
@@ -528,13 +528,16 @@ function action4off(){
 }
 
 function action5on(){
-	d3.selectAll(".keyevents").remove();
+	d3.selectAll(".keyevents").remove(); // remove all annotations
+
+	//set type of annotation
 	const type = d3.annotationCustomType(
   d3.annotationCalloutCircle, 
   {"className":"custom",
     "connector":{"type":"elbow"},
     "note":{"lineType":"horizontal"}})
 
+	//enter annotations
 	const annotations = [{
 	note: {
     title: "1. North Korea signs Joint Declaration of Denuclearization of Korean Peninsula"
@@ -550,14 +553,15 @@ function action5on(){
 	 }
 	}]
 
-
+	//xScale that we will use to place our annotation
 	var xScale =  d3.scaleBand()
 	.domain(["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"])
 	.range([0, 360]);
 
+	//yScale that we will use to place our annotation
 	var yScale =  d3.scaleLinear()
 	.domain([1990,2017])
-	.range([0, 405]);
+	.range([0, 420]);
 
 	const makeAnnotations = d3.annotation()
 	  .editMode(false)
@@ -575,6 +579,7 @@ function action5on(){
 	
 	var g = d3.transition().duration(500).ease(d3.easeQuadInOut);
 
+	/* Hides all negotiations that are not from the HW Bush era */
 	d3.selectAll(".nego")
 		.select(function(d){
 			if(d.Year<1990||d.Year>1993||(d.Year==1993&&d.Month!=="Jan")){
@@ -590,6 +595,7 @@ function action5on(){
 			}
 		});
 
+	/* Hides all provocations that are not from the HW Bush era */
 	d3.selectAll(".prov")
 		.select(function(d){
 			if(d.Year<1990||d.Year>1993||(d.Year==1993&&d.Month!=="Jan")){

@@ -38,6 +38,7 @@ var makeAnnotations;
 var theData;
 var negoData;
 var provData;
+var yearMultiple; 
 
 function makeStuff(error,data){
 
@@ -57,6 +58,9 @@ function makeStuff(error,data){
 		}
 	}
 	
+	yearMultiple =  theData.map(d=>d.Year).reduce((a,b)=> Math.max(a,b))-theData.map(d=>d.Year).reduce((a,b)=> Math.min(a,b))+1;
+
+
 	var provColor = d3.scaleQuantize()
 	.domain([0,ProvMax])
 	.range(["#fee5d9","#fcae91","#fb6a4a","#cb181d"]);
@@ -98,10 +102,12 @@ function makeStuff(error,data){
 	var xAxis = d3.axisTop(xScale)
 	.tickSizeOuter(0);
 	
+
+
 	var xGridScale = d3.scaleLinear().domain([0,12]).range([0, 360]);
 	var xGrid = d3.axisTop(xGridScale)
 	.tickSizeOuter(0)
-	.tickSize(-420)
+	.tickSize(-(yearMultiple*15)) 
 	.tickFormat("");
 
 	calendar.append("g")
@@ -119,7 +125,8 @@ function makeStuff(error,data){
 	.attr("transform", "translate(45,30)")
 	.call(xGrid);
 
-	var yGridScale = d3.scaleLinear().domain([0,12]).range([0, 420]);
+
+	var yGridScale = d3.scaleLinear().domain([0,12]).range([0, (yearMultiple*15)]) 
 	var yGrid = d3.axisLeft(yGridScale)
 	.tickSizeOuter(0)
 	.ticks(0)
@@ -127,8 +134,8 @@ function makeStuff(error,data){
 	.tickFormat("");
 
 	var yScale =  d3.scaleTime()
-	.domain([new Date(1989, 5, 1), new Date(2017, 5, 1)])
-	.range([0, 420]);
+	.domain([new Date(1989, 5, 1), new Date(theData.map(d=>d.Year).reduce((a,b)=> Math.max(a,b)), 5, 1)]) // MUST UPDATE LATEST DATE HERE
+	.range([0, (yearMultiple*15)]); 
 	var yAxis = d3.axisLeft(yScale)
 	.ticks(15)
 	.tickSizeOuter(0);
@@ -155,6 +162,8 @@ function makeStuff(error,data){
 			.on("mouseenter",function(d){attachProvocationEvents.call(this,d)})
 			.on("mouseleave",function(d){removeProvocationEvents.call(this)});	
 }
+
+	d3.select("#calendar").attr("viewBox","0 0 420 "+(40+(yearMultiple*15)));
 }
 
 function setup(){
