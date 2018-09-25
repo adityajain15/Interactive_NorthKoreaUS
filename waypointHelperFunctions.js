@@ -1245,7 +1245,7 @@ function action10on(){
 
 	d3.selectAll(".nego")
 		.select(function(d){
-			if(d.Year<2012||(d.Year==2017&&d.Month!=="Jan")){
+			if(d.Year<2012||(d.Year==2017&&d.Month!=="Jan")||(d.Year>2017)){
 				d3.select(this)
 				.transition(g)
 				.style("fill-opacity",0)
@@ -1260,7 +1260,7 @@ function action10on(){
 
 	d3.selectAll(".prov")
 		.select(function(d){
-			if(d.Year<2012||(d.Year==2017&&d.Month!=="Jan")){
+			if(d.Year<2012||(d.Year==2017&&d.Month!=="Jan")||(d.Year>2017)){
 				d3.select(this)
 				.transition(g)
 				.style("fill-opacity",0)
